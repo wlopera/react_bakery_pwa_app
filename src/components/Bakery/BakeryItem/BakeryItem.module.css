@@ -1,0 +1,14 @@
+.iconHover:hover {
+    color: rgb(59, 218, 232)
+}
+
+.buttonToLink {
+    cursor: pointer;
+    border-bottom: 4px solid black;
+}
+
+.buttonToLink:hover {
+    color: rgb(37, 73, 251);
+    background-color: aquamarine;
+    cursor: pointer;
+}

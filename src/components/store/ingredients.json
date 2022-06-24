@@ -1,0 +1,27 @@
+[
+  {
+    "value": 100,
+    "key": 100,
+    "text": "Agua"
+  },
+  {
+    "key": 101,
+    "value": 101,
+    "text": "Levadura"
+  },
+  {
+    "key": 102,
+    "value": 102,
+    "text": "Sal"
+  },
+  {
+    "key": 103,
+    "value": 103,
+    "text": "Azucar"
+  },
+  {
+    "key": 104,
+    "value": 104,
+    "text": "Leche en polvo"
+  }
+]
