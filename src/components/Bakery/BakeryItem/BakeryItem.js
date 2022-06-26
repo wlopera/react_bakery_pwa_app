@@ -24,7 +24,7 @@ const BakeryItem = (props) => {
             <div className="col-2 fw-bold fs-4 d-flex justify-content-end">
               <FontAwesomeIcon
                 className={classes.iconHover}
-                onClick={() => props.onDelete(props.id)}
+                onClick={props.onDelete}
                 icon={faTrash}
               />
             </div>

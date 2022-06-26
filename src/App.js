@@ -1,8 +1,8 @@
 import React from "react";
-import BakeryList from "./components/Bakery/BakeryList";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
-  return <BakeryList />;
+  return <Layout />;
 };
 
 export default App;
