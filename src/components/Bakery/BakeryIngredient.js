@@ -9,7 +9,7 @@ import ProcessIngredient from "../Form/ProcessIngredient";
 
 import { newRow, editRow } from "../utilities/Utility";
 
-const BakeryFlour = () => {
+const BakeryIngredient = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState({});
 
@@ -71,7 +71,7 @@ const BakeryFlour = () => {
           </div>
         )}
         <CardHeader
-          ingredient="Harina"
+          ingredient="Ingredientes"
           percentageTitle={`${bakeryCtx.percentageFlour} %`}
           gramTitle="Gramos"
           onAdd={addRowHandler}
@@ -95,4 +95,4 @@ const BakeryFlour = () => {
   );
 };
 
-export default BakeryFlour;
+export default BakeryIngredient;

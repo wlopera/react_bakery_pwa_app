@@ -2,8 +2,8 @@ import React, { useReducer } from "react";
 
 import BakeryContext from "./bakery-context";
 
-import flours from "./flours.json";
-import ingredients from "./ingredients.json";
+import flours from "./data/flours.json";
+import ingredients from "./data/ingredients.json";
 
 const defaultBakeryState = {
   flours: flours,

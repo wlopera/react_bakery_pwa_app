@@ -9,7 +9,7 @@ import classes from "./BakeryItem.module.css";
 const BakeryItem = (props) => {
   return (
     <div className=" shadow-lg p-0 mb-1 bg-body rounded">
-      <li className="mb-2 ">
+      <li>
         <Card>
           <div className="row " style={{ height: "30px" }}>
             <h3 className="col-5 fw-bold fs-4">{props.ingredient}</h3>

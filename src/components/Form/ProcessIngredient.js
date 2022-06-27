@@ -122,6 +122,8 @@ const ProcessIngredient = ({
                     type="number"
                     value={record.number}
                     onChange={numberChangeHandler}
+                    autoFocus={record.value !== -1}
+                    onFocus={(event) => event.target.select()}
                   />
                 </div>
               </div>

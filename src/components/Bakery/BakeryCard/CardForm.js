@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+
 import Card from "../../UI/Card";
+import CardFormContext from "../../store/card-form-context";
 
 const CardForm = () => {
-  const [amount, setAmount] = useState(0);
-  const [perUnit, setPerUnit] = useState(0);
-  const [total, setTotal] = useState(0);
+  const cardFormCtx = useContext(CardFormContext);
 
   const amountHandler = (event) => {
-    setAmount(event.target.value);
-    setTotal(event.target.value * perUnit);
+    cardFormCtx.onAmount(event.target.value);
   };
 
   const perUnitHandler = (event) => {
-    setPerUnit(event.target.value);
-    setTotal(event.target.value * amount);
+    cardFormCtx.onPerUnit(event.target.value);
   };
+
+  const { amount, perUnit, total } = cardFormCtx;
 
   return (
     <Card>
-      <div className="row  col-row-sm-1 col-row-md-3">
-        <div className="col-sm col-md-auto">
+      <div className="row col-row-sm-1 col-row-md-3">
+        <div className="col-sm col-md-auto input-group-lg">
           <input
             type="number"
             value={amount}
             onChange={amountHandler}
             placeholder="Cantidad"
             className="form-control"
+            autoFocus
           />
         </div>
-        <div className="col-sm col-md-auto">
+        <div className="col-sm col-md-auto input-group-lg">
           <input
             type="number"
             value={perUnit}
@@ -37,7 +38,7 @@ const CardForm = () => {
             className="form-control"
           />
         </div>
-        <div className="col-sm col-md-auto">
+        <div className="col-sm col-md-auto input-group-lg">
           <span htmlFor="perUnit" className="form-control">
             {total} grs.
           </span>
