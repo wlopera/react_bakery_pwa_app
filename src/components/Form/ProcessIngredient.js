@@ -27,9 +27,9 @@ const ProcessIngredient = ({
         ...newData,
       ]);
     } else {
-      setIngredients([...currentData]);
+      setIngredients([row]);
     }
-  }, [row, currentData]);
+  }, [row, currentData, combo]);
 
   const numberChangeHandler = (e) => {
     setAlert(null);

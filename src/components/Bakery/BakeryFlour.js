@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
-import CardTitle from "./BakeryCard/CardTitle";
 import CardHeader from "./BakeryCard/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
+import BakeryContext from "../store/bakery-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
-import { newRow, editRow, processRow } from "../utilities/Utility";
+import { newRow, editRow } from "../utilities/Utility";
 
-const BakeryFlour = ({ cardTitle, combo }) => {
-  const [data, setData] = useState([]);
+const BakeryFlour = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState({});
+
+  const bakeryCtx = useContext(BakeryContext);
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -24,7 +25,14 @@ const BakeryFlour = ({ cardTitle, combo }) => {
   };
 
   const processRowHandler = (row) => {
-    setData((currentData) => processRow(row, currentData));
+    const oldData = bakeryCtx.dataFours.filter((item) => item.id === row.id);
+
+    if (oldData.length === 0) {
+      bakeryCtx.addRowFlour(row);
+    } else {
+      bakeryCtx.updateRowFlour(row);
+    }
+
     toggle();
   };
 
@@ -34,18 +42,18 @@ const BakeryFlour = ({ cardTitle, combo }) => {
   };
 
   const deleteRowHadler = (id) => {
-    setData((currentData) => currentData.filter((item) => item.id !== id));
+    bakeryCtx.removeRowFlour(id);
   };
 
-  const bakeryList = data.map((record) => (
+  const bakeryList = bakeryCtx.dataFours.map((row) => (
     <BakeryItem
-      id={record.id}
-      key={record.id}
-      ingredient={record.text}
-      percentage={record.percentage}
-      grams={record.grams}
-      onEdit={() => editRowHadler(record)}
-      onDelete={() => deleteRowHadler(record.id)}
+      id={row.id}
+      key={row.id}
+      ingredient={row.text}
+      percentage={row.percentage}
+      grams={row.grams}
+      onEdit={() => editRowHadler(row)}
+      onDelete={() => deleteRowHadler(row.id)}
     />
   ));
 
@@ -54,7 +62,7 @@ const BakeryFlour = ({ cardTitle, combo }) => {
       <div>
         <CardHeader
           ingredient="Harina"
-          percentageTitle="%"
+          percentageTitle={`${bakeryCtx.percentageFlour} %`}
           gramTitle="Gramos"
           onAdd={addRowHandler}
           type="FLOUR"
@@ -66,10 +74,10 @@ const BakeryFlour = ({ cardTitle, combo }) => {
         <Modal onClose={toggle}>
           <ProcessIngredient
             row={row}
-            currentData={data}
+            currentData={bakeryCtx.dataFours}
             onClose={toggle}
             processRow={processRowHandler}
-            combo={combo}
+            combo={bakeryCtx.flours}
           />
         </Modal>
       )}

@@ -23,22 +23,3 @@ export const editRow = (item, number, type) => ({
   number,
   type,
 });
-
-export const processRow = (row, data) => {
-  const oldData = data.filter((item) => item.id === row.id);
-
-  if (oldData.length > 0) {
-    return data.map((item) => {
-      if (item.id === row.id) {
-        return {
-          ...item,
-          percentage: row.percentage,
-          grams: row.grams,
-        };
-      }
-      return item;
-    });
-  } else {
-    return [...data, row];
-  }
-};
