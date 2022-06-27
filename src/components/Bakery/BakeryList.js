@@ -1,55 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
-
 import flours from "../store/flours.json";
 import ingredients from "../store/ingredients.json";
-import Card from "../UI/Card";
-
+import CardTitle from "./BakeryCard/CardTitle";
+import CardHeader from "./BakeryCard/CardHeader";
 import bg_bread from "../../assets/bg_bread.png";
+import Modal from "../UI/Modal/Modal";
+import ProcessIngredient from "../Form/ProcessIngredient";
+import {
+  newPercetage,
+  editPercentage,
+  processRecord,
+} from "../utilities/Utility";
 
 const BakeryList = () => {
   const [data, setData] = useState([]);
   const [others, setOthers] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [row, setRow] = useState({});
 
-  useEffect(() => {
-    const newData = flours.map((flour) => ({
-      key: flour.key,
-      id: uuidv4(),
-      ingredient: flour.text,
-      percentage: 100,
-      grams: 1650.5,
-    }));
-    setData(newData);
+  const toggle = () => {
+    setShowModal((currentValue) => !currentValue);
+  };
 
-    const newOthers = ingredients.map((ingredient) => ({
-      key: ingredient.key,
-      id: uuidv4(),
-      ingredient: ingredient.text,
-      percentage: 25,
-      grams: 156.5,
-    }));
-    setOthers(newOthers);
-  }, []);
+  const addFlourHandler = (type) => {
+    setRow(newPercetage);
+    toggle();
+  };
 
-  const addHandler = () => {
-    setData((currentData) => {
-      const newData = [
-        ...currentData,
-        {
-          id: uuidv4(),
-          key: 1,
-          ingredient: "Ingrediente",
-          percentage: 75,
-          grams: 135,
-        },
-      ];
+  const addHandler = (type) => {
+    toggle();
+  };
 
-      return newData;
-    });
+  const processRowHandler = (row) => {
+    setData((currentData) => processRecord(row, currentData));
+    toggle();
+  };
+
+  const editFlourHadler = (item) => {
+    setRow(editPercentage(item));
+    toggle();
   };
 
   const editHadler = (id) => {
@@ -57,7 +48,6 @@ const BakeryList = () => {
   };
 
   const deleteHadler = (id) => {
-    console.log("BORRAR INGREDIENTE: ", id);
     setData((currentData) => currentData.filter((item) => item.id !== id));
   };
 
@@ -65,11 +55,11 @@ const BakeryList = () => {
     <BakeryItem
       id={record.id}
       key={record.id}
-      ingredient={record.ingredient}
+      ingredient={record.text}
       percentage={record.percentage}
       grams={record.grams}
-      onEdit={editHadler}
-      onDelete={deleteHadler}
+      onEdit={() => editFlourHadler(record)}
+      onDelete={() => deleteHadler(record.id)}
     />
   ));
 
@@ -77,7 +67,7 @@ const BakeryList = () => {
     <BakeryItem
       id={record.id}
       key={record.id}
-      ingredient={record.ingredient}
+      ingredient={record.text}
       percentage={record.percentage}
       grams={record.grams}
       onEdit={editHadler}
@@ -94,51 +84,39 @@ const BakeryList = () => {
       }}
     >
       <section className="w-100 mt-5">
-        <Card>
-          <div className="row d-flex align-items-center">
-            <h1 className="col fw-bold fs-1">Pan Francés</h1>
-          </div>
-        </Card>
+        <CardTitle title="Pan Francés" />
         <br />
-        <Card>
-          <div className="row d-flex align-items-center">
-            <h3 className="col-5 fw-bold fs-4">Harina</h3>
-            <div className="col-2 fw-bold fs-4 d-flex justify-content-center">
-              %
-            </div>
-            <div className="col-3 fw-bold fs-4  d-flex justify-content-center">
-              Gramos
-            </div>
-            <div className="col-2 d-flex justify-content-end">
-              <button className="btn btn-primary btn-lg" onClick={addHandler}>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </div>
-          </div>
-        </Card>
 
+        <CardHeader
+          ingredient="Harina"
+          percentageTitle="%"
+          gramTitle="Gramos"
+          onAdd={addFlourHandler}
+          type="FLOUR"
+        />
         <ul className="list-unstyled mt-3">{bakeryList}</ul>
-
         <br />
-        <Card>
-          <div className="row d-flex align-items-center">
-            <h3 className="col-5 fw-bold fs-4">Otros Ingredientes</h3>
-            <div className="col-2 fw-bold fs-4 d-flex justify-content-center">
-              %
-            </div>
-            <div className="col-3 fw-bold fs-4  d-flex justify-content-center">
-              Gramos
-            </div>
-            <div className="col-2 d-flex justify-content-end">
-              <button className="btn btn-primary btn-lg" onClick={addHandler}>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </div>
-          </div>
-        </Card>
 
+        <CardHeader
+          ingredient="Otros Ingredientes"
+          percentageTitle="%"
+          gramTitle="Gramos"
+          onAdd={addHandler}
+          type="OTHER"
+        />
         <ul className="list-unstyled mt-3">{othersList}</ul>
       </section>
+      {showModal && (
+        <Modal onClose={toggle}>
+          <ProcessIngredient
+            row={row}
+            currentData={data}
+            onClose={toggle}
+            processRow={processRowHandler}
+            combo={flours}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -1,81 +1,65 @@
 [
   {
     "value": 100,
-    "key": 100,
     "text": "Agua"
   },
   {
     "key": 101,
-    "value": 101,
     "text": "Levadura"
   },
   {
-    "key": 102,
     "value": 102,
     "text": "Sal"
   },
   {
-    "key": 103,
     "value": 103,
     "text": "Azucar"
   },
   {
-    "key": 104,
     "value": 104,
     "text": "Leche en polvo"
   },
   {
-    "key": 105,
     "value": 105,
     "text": "Extracto de Malta"
   },
   {
-    "key": 106,
     "value": 106,
     "text": "Mantequilla o Margarina"
   },
   {
-    "key": 107,
     "value": 107,
     "text": "Avena en remojo"
   },
   {
-    "key": 108,
     "value": 108,
     "text": "Manteca vegetal"
   },
   {
-    "key": 109,
     "value": 109,
     "text": "Huevos"
   },
   {
-    "key": 110,
     "value": 110,
     "text": "Hierbas"
   },
   {
-    "key": 111,
     "value": 111,
     "text": "Pure de papas"
   },
   {
-    "key": 112,
     "value": 112,
     "text": "Aceite"
   },
   {
-    "key": 113,
     "value": 113,
     "text": "Ajo cortado"
   },
   {
-    "key": 114,
     "value": 114,
     "text": "Anis en granos"
   },
   {
-    "key": 115,
     "value": 115,
     "text": "Esencia de vainilla"
   }
