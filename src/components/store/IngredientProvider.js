@@ -1,17 +1,17 @@
 import React, { useReducer } from "react";
 
-import BakeryContext from "./bakery-context";
+import IngredientContext from "./ingredient-context";
 
-import flours from "./data/flours.json";
+import ingredients from "./data/ingredients.json";
 
 const defaultState = {
-  flours: flours,
+  ingredients: ingredients,
   data: [],
   percentages: 0,
   grams: 0,
 };
 
-const bakeryReducer = (state, action) => {
+const ingredientReducer = (state, action) => {
   if (action.type === "ADD") {
     const data = [...state.data, action.row];
     return processData(data, state);
@@ -49,7 +49,7 @@ const processData = (data, state) => {
     data.length > 0 ? data.map((item) => parseFloat(item.grams)) : [];
 
   return {
-    flours: state.flours,
+    ingredients: state.ingredients,
     data: data,
     percentages:
       Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100,
@@ -57,36 +57,39 @@ const processData = (data, state) => {
   };
 };
 
-const BakeryProvider = (props) => {
-  const [bakeryState, dispatchAction] = useReducer(bakeryReducer, defaultState);
+const IngredientProvider = (props) => {
+  const [ingredientState, dispatchAction] = useReducer(
+    ingredientReducer,
+    defaultState
+  );
 
-  const addFlourHandler = (row) => {
+  const addIngredientHandler = (row) => {
     dispatchAction({ type: "ADD", row: row });
   };
 
-  const updateFlourHandler = (row) => {
+  const updateIngredientHandler = (row) => {
     dispatchAction({ type: "UPDATE", row: row });
   };
 
-  const removeFlourHandler = (id) => {
+  const removeIngredientHandler = (id) => {
     dispatchAction({ type: "REMOVE", id: id });
   };
 
-  const bakeryContext = {
-    flours: bakeryState.flours,
-    data: bakeryState.data,
-    percentages: bakeryState.percentages,
-    grams: bakeryState.grams,
-    addFlour: addFlourHandler,
-    updateFlour: updateFlourHandler,
-    removeFlour: removeFlourHandler,
+  const ingredientContext = {
+    ingredients: ingredientState.ingredients,
+    data: ingredientState.data,
+    percentages: ingredientState.percentages,
+    grams: ingredientState.grams,
+    addIngredient: addIngredientHandler,
+    updateIngredient: updateIngredientHandler,
+    removeIngredient: removeIngredientHandler,
   };
 
   return (
-    <BakeryContext.Provider value={bakeryContext}>
+    <IngredientContext.Provider value={ingredientContext}>
       {props.children}
-    </BakeryContext.Provider>
+    </IngredientContext.Provider>
   );
 };
 
-export default BakeryProvider;
+export default IngredientProvider;
