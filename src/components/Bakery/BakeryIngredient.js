@@ -25,7 +25,6 @@ const BakeryIngredient = () => {
   };
 
   const processRowHandler = (row) => {
-    console.log(122, row);
     const oldData = ingredientCtx.data.filter((item) => item.id === row.id);
 
     if (oldData.length === 0) {

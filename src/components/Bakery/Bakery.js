@@ -6,6 +6,7 @@ import BakeryFlour from "./BakeryFlour";
 
 import CardFormContext from "../store/card-form-context";
 import BakeryIngredient from "./BakeryIngredient";
+import BakeryTotal from "./BakeryTotal";
 
 const Bakery = () => {
   const cardFormCtx = useContext(CardFormContext);
@@ -20,6 +21,7 @@ const Bakery = () => {
         <div>
           <BakeryFlour />
           <BakeryIngredient />
+          <BakeryTotal />
         </div>
       )}
     </Fragment>

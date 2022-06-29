@@ -8,6 +8,7 @@ const BakeryContext = createContext({
   addFlour: (row) => {},
   updateFlour: (row) => {},
   removeFlour: (id) => {},
+  updateGrams: () => {},
 });
 
 export default BakeryContext;

@@ -8,6 +8,7 @@ const IngredientContext = createContext({
   addIngredient: (row) => {},
   updateIngredient: (row) => {},
   removeIngredient: (id) => {},
+  updateGrams: () => {},
 });
 
 export default IngredientContext;

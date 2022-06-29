@@ -3,9 +3,9 @@ import React, { useReducer } from "react";
 import CardFormContext from "./card-form-context";
 
 const defaultCardFormState = {
-  amount: 0,
-  perUnit: 0,
-  total: 0,
+  amount: 20,
+  perUnit: 300,
+  total: 6000,
 };
 
 const cardFormReducer = (state, action) => {

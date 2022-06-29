@@ -31,6 +31,20 @@ const bakeryReducer = (state, action) => {
     return processData(data, state);
   }
 
+  if (action.type === "UPDATE_GRAMS") {
+    const percentages = action.percentages;
+    const grams = action.grams;
+
+    const data = state.data.map((item) => {
+      return {
+        ...item,
+        grams:
+          Math.round(((item.percentage * grams) / percentages) * 100) / 100,
+      };
+    });
+    return processData(data, state);
+  }
+
   if (action.type === "REMOVE") {
     const data = state.data.filter((item) => item.id !== action.id);
     return processData(data, state);
@@ -61,15 +75,19 @@ const BakeryProvider = (props) => {
   const [bakeryState, dispatchAction] = useReducer(bakeryReducer, defaultState);
 
   const addFlourHandler = (row) => {
-    dispatchAction({ type: "ADD", row: row });
+    dispatchAction({ type: "ADD", row });
   };
 
   const updateFlourHandler = (row) => {
-    dispatchAction({ type: "UPDATE", row: row });
+    dispatchAction({ type: "UPDATE", row });
+  };
+
+  const updateGramsHandler = (percentages, grams) => {
+    dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
   };
 
   const removeFlourHandler = (id) => {
-    dispatchAction({ type: "REMOVE", id: id });
+    dispatchAction({ type: "REMOVE", id });
   };
 
   const bakeryContext = {
@@ -80,6 +98,7 @@ const BakeryProvider = (props) => {
     addFlour: addFlourHandler,
     updateFlour: updateFlourHandler,
     removeFlour: removeFlourHandler,
+    updateGrams: updateGramsHandler,
   };
 
   return (

@@ -15,11 +15,13 @@ const CardHeader = ({ ingredient, percentageTitle, gramTitle, onAdd }) => {
         <div className="col-3 fw-bold fs-4  d-flex justify-content-center">
           {gramTitle}
         </div>
-        <div className="col-2 d-flex justify-content-end">
-          <button className="btn btn-primary btn-lg" onClick={() => onAdd()}>
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-        </div>
+        {onAdd && (
+          <div className="col-2 d-flex justify-content-end">
+            <button className="btn btn-primary btn-lg" onClick={() => onAdd()}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </div>
+        )}
       </div>
     </Card>
   );

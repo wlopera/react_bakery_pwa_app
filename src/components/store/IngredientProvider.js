@@ -31,6 +31,20 @@ const ingredientReducer = (state, action) => {
     return processData(data, state);
   }
 
+  if (action.type === "UPDATE_GRAMS") {
+    const percentages = action.percentages;
+    const grams = action.grams;
+
+    const data = state.data.map((item) => {
+      return {
+        ...item,
+        grams:
+          Math.round(((item.percentage * grams) / percentages) * 100) / 100,
+      };
+    });
+    return processData(data, state);
+  }
+
   if (action.type === "REMOVE") {
     const data = state.data.filter((item) => item.id !== action.id);
     return processData(data, state);
@@ -71,6 +85,10 @@ const IngredientProvider = (props) => {
     dispatchAction({ type: "UPDATE", row: row });
   };
 
+  const updateGramsHandler = (percentages, grams) => {
+    dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
+  };
+
   const removeIngredientHandler = (id) => {
     dispatchAction({ type: "REMOVE", id: id });
   };
@@ -83,6 +101,7 @@ const IngredientProvider = (props) => {
     addIngredient: addIngredientHandler,
     updateIngredient: updateIngredientHandler,
     removeIngredient: removeIngredientHandler,
+    updateGrams: updateGramsHandler,
   };
 
   return (
