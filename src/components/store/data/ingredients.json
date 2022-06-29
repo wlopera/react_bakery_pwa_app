@@ -1,66 +1,66 @@
 [
   {
     "value": 100,
-    "text": "Agua"
+    "label": "Agua"
   },
   {
     "value": 101,
-    "text": "Levadura"
+    "label": "Levadura"
   },
   {
     "value": 102,
-    "text": "Sal"
+    "label": "Sal"
   },
   {
     "value": 103,
-    "text": "Azucar"
+    "label": "Azucar"
   },
   {
     "value": 104,
-    "text": "Leche en polvo"
+    "label": "Leche en polvo"
   },
   {
     "value": 105,
-    "text": "Extracto de Malta"
+    "label": "Extracto de Malta"
   },
   {
     "value": 106,
-    "text": "Mantequilla o Margarina"
+    "label": "Mantequilla o Margarina"
   },
   {
     "value": 107,
-    "text": "Avena en remojo"
+    "label": "Avena en remojo"
   },
   {
     "value": 108,
-    "text": "Manteca vegetal"
+    "label": "Manteca vegetal"
   },
   {
     "value": 109,
-    "text": "Huevos"
+    "label": "Huevos"
   },
   {
     "value": 110,
-    "text": "Hierbas"
+    "label": "Hierbas"
   },
   {
     "value": 111,
-    "text": "Pure de papas"
+    "label": "Pure de papas"
   },
   {
     "value": 112,
-    "text": "Aceite"
+    "label": "Aceite"
   },
   {
     "value": 113,
-    "text": "Ajo cortado"
+    "label": "Ajo cortado"
   },
   {
     "value": 114,
-    "text": "Anis en granos"
+    "label": "Anis en granos"
   },
   {
     "value": 115,
-    "text": "Esencia de vainilla"
+    "label": "Esencia de vainilla"
   }
 ]

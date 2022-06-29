@@ -63,7 +63,7 @@ const processData = (data, state) => {
     data.length > 0 ? data.map((item) => parseFloat(item.grams)) : [];
 
   // Ordenar la lista de ingredientes
-  data = data.sort((row1, row2) => (row1.text > row2.text ? 1 : -1));
+  data = data.sort((row1, row2) => (row1.label > row2.label ? 1 : -1));
 
   return {
     ingredients: state.ingredients,

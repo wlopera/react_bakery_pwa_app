@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/CardHeader";
@@ -24,15 +25,18 @@ const BakeryIngredient = () => {
     toggle();
   };
 
-  const processRowHandler = (row) => {
-    const oldData = ingredientCtx.data.filter((item) => item.id === row.id);
-
-    if (oldData.length === 0) {
-      ingredientCtx.addIngredient(row);
-    } else {
-      ingredientCtx.updateIngredient(row);
-    }
-
+  const processRowHandler = (record) => {
+    record.ingredients.forEach((item) => {
+      const id = uuidv4();
+      ingredientCtx.addIngredient({
+        id: id,
+        key: id,
+        value: item.value,
+        ingredient: item.label,
+        percentage: record.amount,
+        grams: 0,
+      });
+    });
     toggle();
   };
 
@@ -49,7 +53,7 @@ const BakeryIngredient = () => {
     <BakeryItem
       id={row.id}
       key={row.id}
-      ingredient={row.text}
+      ingredient={row.ingredient}
       percentage={row.percentage}
       grams={row.grams}
       onEdit={() => editRowHadler(row)}

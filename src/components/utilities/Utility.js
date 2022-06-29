@@ -7,11 +7,8 @@ const Utility = () => {
 export default Utility;
 
 export const newRow = (type) => ({
-  id: -1,
-  key: -1,
-  value: -1,
-  text: "",
-  number: 0,
+  amount: 0,
+  ingredient: [],
   type,
 });
 

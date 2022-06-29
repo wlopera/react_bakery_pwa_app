@@ -1,18 +1,18 @@
 [
   {
     "value": 1,
-    "text": "Harina Panadera"
+    "label": "Harina Panadera"
   },
   {
     "value": 2,
-    "text": "Afrecho"
+    "label": "Afrecho"
   },
   {
     "value": 3,
-    "text": "Avena en polvo"
+    "label": "Avena en polvo"
   },
   {
     "value": 4,
-    "text": "Harina de Centeno"
+    "label": "Harina de Centeno"
   }
 ]
