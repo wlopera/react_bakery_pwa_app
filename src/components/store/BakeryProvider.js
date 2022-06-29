@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import BakeryContext from "./bakery-context";
 
@@ -62,6 +62,9 @@ const processData = (data, state) => {
   const grams =
     data.length > 0 ? data.map((item) => parseFloat(item.grams)) : [];
 
+  // Ordenar la lista de harinas
+  data = data.sort((row1, row2) => (row1.value > row2.value ? 1 : -1));
+
   return {
     flours: state.flours,
     data: data,
@@ -82,9 +85,9 @@ const BakeryProvider = (props) => {
     dispatchAction({ type: "UPDATE", row });
   };
 
-  const updateGramsHandler = (percentages, grams) => {
+  const updateGramsFlourHandler = useCallback((percentages, grams) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
-  };
+  }, []);
 
   const removeFlourHandler = (id) => {
     dispatchAction({ type: "REMOVE", id });
@@ -98,7 +101,7 @@ const BakeryProvider = (props) => {
     addFlour: addFlourHandler,
     updateFlour: updateFlourHandler,
     removeFlour: removeFlourHandler,
-    updateGrams: updateGramsHandler,
+    updateGramsFlour: updateGramsFlourHandler,
   };
 
   return (

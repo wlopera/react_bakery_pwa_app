@@ -43,10 +43,6 @@ const BakeryList = () => {
     toggle();
   };
 
-  const editHadler = (id) => {
-    console.log("MODIFICAR INGREDIENTE");
-  };
-
   const deleteHadler = (id) => {
     setData((currentData) => currentData.filter((item) => item.id !== id));
   };
@@ -70,7 +66,6 @@ const BakeryList = () => {
       ingredient={record.text}
       percentage={record.percentage}
       grams={record.grams}
-      onEdit={editHadler}
       onDelete={deleteHadler}
     />
   ));

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import CardHeader from "./BakeryCard/CardHeader";
 
 import BakeryContext from "../store/bakery-context";
@@ -13,21 +13,15 @@ const BakeryTotal = () => {
   const percentages = bakeryCtx.percentages + ingredientCtx.percentages;
   const grams = bakeryCtx.grams + ingredientCtx.grams;
   const gramsTotal = cardFormCtx.total;
-  const { updateGrams: updateGramsFlour } = bakeryCtx;
-  const { updateGrams: updateGramsIngredient } = ingredientCtx;
+  const { updateGramsFlour } = bakeryCtx;
+  const { updateGramsIngredient } = ingredientCtx;
 
-  const addRowHandler = () => {
+  useEffect(() => {
     updateGramsFlour(percentages, gramsTotal);
     updateGramsIngredient(percentages, gramsTotal);
-  };
+  }, [percentages, gramsTotal, updateGramsFlour, updateGramsIngredient]);
 
-  return (
-    <CardHeader
-      percentageTitle={percentages}
-      gramTitle={grams}
-      onAdd={addRowHandler}
-    />
-  );
+  return <CardHeader percentageTitle={percentages} gramTitle={grams} />;
 };
 
 export default BakeryTotal;
