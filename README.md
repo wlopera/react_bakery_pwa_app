@@ -25,3 +25,8 @@ React Fórmula Panadera -PWA - Bootstrap
 ## Al agregar el 100 de laharina se elimina el mensaje de error
 ![Captura5](https://user-images.githubusercontent.com/7141537/176057208-7325038f-6b80-4e14-a111-adb0494c9cec.PNG)
 
+## Agregar ingredientes
+![Captura](https://user-images.githubusercontent.com/7141537/176325357-48e3766a-879a-4d5f-9cab-cdbbe7ec9a6a.PNG)
+
+## Calcular totales con boton 
+![Captura1](https://user-images.githubusercontent.com/7141537/176325355-eded5e94-6675-4e63-91d7-902ab3323e33.PNG)

@@ -2,16 +2,13 @@ import { createContext } from "react";
 
 const BakeryContext = createContext({
   flours: [],
-  ingredients: [],
-  dataFours: [],
-  dataIngredients: [],
-  percentageFlour: 0,
-  gramsFlour: 0,
-  percentageIngredient: 0,
-  gramsIngredient: 0,
-  addRowFlour: (row) => {},
-  updateRowFlour: (row) => {},
-  removeRowFlour: (id) => {},
+  data: [],
+  percentages: 0,
+  grams: 0,
+  addFlour: (row) => {},
+  updateFlour: (row) => {},
+  removeFlour: (id) => {},
+  updateGrams: () => {},
 });
 
 export default BakeryContext;

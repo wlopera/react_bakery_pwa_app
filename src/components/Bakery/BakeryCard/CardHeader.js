@@ -4,13 +4,7 @@ import Card from "../../UI/Card";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CardHeader = ({
-  ingredient,
-  percentageTitle,
-  gramTitle,
-  onAdd,
-  type,
-}) => {
+const CardHeader = ({ ingredient, percentageTitle, gramTitle, onAdd }) => {
   return (
     <Card>
       <div className="row d-flex align-items-center">
@@ -21,14 +15,13 @@ const CardHeader = ({
         <div className="col-3 fw-bold fs-4  d-flex justify-content-center">
           {gramTitle}
         </div>
-        <div className="col-2 d-flex justify-content-end">
-          <button
-            className="btn btn-primary btn-lg"
-            onClick={() => onAdd(type)}
-          >
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-        </div>
+        {onAdd && (
+          <div className="col-2 d-flex justify-content-end">
+            <button className="btn btn-primary btn-lg" onClick={() => onAdd()}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </div>
+        )}
       </div>
     </Card>
   );

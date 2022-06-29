@@ -25,12 +25,12 @@ const BakeryFlour = () => {
   };
 
   const processRowHandler = (row) => {
-    const oldData = bakeryCtx.dataFours.filter((item) => item.id === row.id);
+    const oldData = bakeryCtx.data.filter((item) => item.id === row.id);
 
     if (oldData.length === 0) {
-      bakeryCtx.addRowFlour(row);
+      bakeryCtx.addFlour(row);
     } else {
-      bakeryCtx.updateRowFlour(row);
+      bakeryCtx.updateFlour(row);
     }
 
     toggle();
@@ -42,10 +42,10 @@ const BakeryFlour = () => {
   };
 
   const deleteRowHadler = (id) => {
-    bakeryCtx.removeRowFlour(id);
+    bakeryCtx.removeFlour(id);
   };
 
-  const bakeryList = bakeryCtx.dataFours.map((row) => (
+  const bakeryList = bakeryCtx.data.map((row) => (
     <BakeryItem
       id={row.id}
       key={row.id}
@@ -58,7 +58,7 @@ const BakeryFlour = () => {
   ));
 
   let alert = null;
-  if (bakeryCtx.dataFours.length > 0 && bakeryCtx.percentageFlour !== 100) {
+  if (bakeryCtx.data.length > 0 && bakeryCtx.percentages !== 100) {
     alert = "La harina total debe ser 100%";
   }
 
@@ -71,11 +71,10 @@ const BakeryFlour = () => {
           </div>
         )}
         <CardHeader
-          ingredient="Harina"
-          percentageTitle={`${bakeryCtx.percentageFlour} %`}
+          ingredient="Harinas"
+          percentageTitle={`${bakeryCtx.percentages} %`}
           gramTitle="Gramos"
           onAdd={addRowHandler}
-          type="FLOUR"
         />
         <ul className="list-unstyled mt-1">{bakeryList}</ul>
         <br />
@@ -84,7 +83,7 @@ const BakeryFlour = () => {
         <Modal onClose={toggle}>
           <ProcessIngredient
             row={row}
-            currentData={bakeryCtx.dataFours}
+            currentData={bakeryCtx.data}
             onClose={toggle}
             processRow={processRowHandler}
             combo={bakeryCtx.flours}
