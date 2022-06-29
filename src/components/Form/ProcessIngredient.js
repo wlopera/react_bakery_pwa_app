@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const ProcessIngredient = ({
@@ -11,6 +11,14 @@ const ProcessIngredient = ({
   const [record, setRecord] = useState(row);
   const [ingredients, setIngredients] = useState([]);
   const [alert, setAlert] = useState(null);
+
+  const inputElementRef = useRef();
+
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      submitHandler(event);
+    }
+  };
 
   useEffect(() => {
     if (row.id === -1) {
@@ -51,6 +59,8 @@ const ProcessIngredient = ({
       value: ingredient.value,
       text: ingredient.text,
     }));
+
+    inputElementRef.current.focus();
   };
 
   const submitHandler = (event) => {
@@ -124,6 +134,8 @@ const ProcessIngredient = ({
                     onChange={numberChangeHandler}
                     autoFocus={record.value !== -1}
                     onFocus={(event) => event.target.select()}
+                    ref={inputElementRef}
+                    onKeyDown={handleKeyDown}
                   />
                 </div>
               </div>
