@@ -40,3 +40,6 @@ React Fórmula Panadera -PWA - Bootstrap
 ## Aregar recetas
 ![Captura](https://user-images.githubusercontent.com/7141537/176973582-06267d05-589b-4dc4-9caf-b96a715dd8bf.PNG)
 ![Captura2](https://user-images.githubusercontent.com/7141537/176973578-6425f6b6-0594-43fb-9054-ba7b770e6e86.PNG)
+
+## Publicado en [netflity](https://app.netlify.com/)
+![Captura](https://user-images.githubusercontent.com/7141537/176975019-0c6cf876-e13a-41cb-9af7-4640384cde3f.PNG)
