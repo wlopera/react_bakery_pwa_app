@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 5px;
+}
+
+.footer {
+    margin: 1%;
+    background-color: #eeeeee;
+    padding: 5px;
+    text-align: center;
+    border-top: 1px solid #333;
+    border-radius: 6px;
+    background: linear-gradient(110deg, #eff1e8 60%, #f7f1b0 60%);
+}
+
+.footerText {
+    font-size: 14px;
+    font-weight: bold;
+    background: #f19d9d
+}

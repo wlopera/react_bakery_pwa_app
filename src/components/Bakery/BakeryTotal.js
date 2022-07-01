@@ -16,12 +16,17 @@ const BakeryTotal = () => {
   const { updateGramsFlour } = bakeryCtx;
   const { updateGramsIngredient } = ingredientCtx;
 
+  console.log(1111, bakeryCtx);
+  console.log(2222, ingredientCtx);
+
   useEffect(() => {
     updateGramsFlour(percentages, gramsTotal);
     updateGramsIngredient(percentages, gramsTotal);
   }, [percentages, gramsTotal, updateGramsFlour, updateGramsIngredient]);
 
-  return <CardHeader percentageTitle={percentages} gramTitle={grams} />;
+  const perGramsTotal = Math.round(grams * 100) / 100;
+
+  return <CardHeader percentageTitle={percentages} gramTitle={perGramsTotal} />;
 };
 
 export default BakeryTotal;

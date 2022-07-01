@@ -1,0 +1,7 @@
+.iconHover {
+    color: rgb(37, 73, 251);
+}
+
+.iconHover:hover {
+    color: rgb(59, 218, 232)
+}

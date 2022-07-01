@@ -1,0 +1,300 @@
+[
+  {
+    "id": 1,
+    "name": "Baguetes",
+    "order": {
+      "amount": 20,
+      "perGram": 300
+    },
+    "flours": [
+      {
+        "id": "1000",
+        "key": "1000",
+        "value": 1,
+        "ingredient": "Harina Panadera",
+        "percentage": 100
+      }
+    ],
+    "ingredients": [
+      {
+        "id": "2000",
+        "key": "2000",
+        "value": 100,
+        "ingredient": "Agua",
+        "percentage": 60
+      },
+      {
+        "id": "2001",
+        "key": "2001",
+        "value": 101,
+        "ingredient": "Levadura",
+        "percentage": 1.8
+      },
+      {
+        "id": "2002",
+        "key": "2002",
+        "value": 102,
+        "ingredient": "Sal",
+        "percentage": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Canilla",
+    "order": {
+      "amount": 7.1,
+      "perGram": 300
+    },
+    "flours": [
+      {
+        "id": "1000",
+        "key": "1000",
+        "value": 1,
+        "ingredient": "Harina Panadera",
+        "percentage": 100
+      }
+    ],
+    "ingredients": [
+      {
+        "id": "2000",
+        "key": "2000",
+        "value": 100,
+        "ingredient": "Agua",
+        "percentage": 52
+      },
+      {
+        "id": "2001",
+        "key": "2001",
+        "value": 101,
+        "ingredient": "Levadura",
+        "percentage": 2
+      },
+      {
+        "id": "2002",
+        "key": "2002",
+        "value": 102,
+        "ingredient": "Sal",
+        "percentage": 1.8
+      },
+      {
+        "id": "2003",
+        "key": "2003",
+        "value": 103,
+        "ingredient": "Azucar",
+        "percentage": 3.3
+      },
+      {
+        "id": "2004",
+        "key": "2004",
+        "value": 108,
+        "ingredient": "Manteca Vegetal",
+        "percentage": 2.2
+      },
+      {
+        "id": "2005",
+        "key": "2005",
+        "value": 109,
+        "ingredient": "Huevos",
+        "percentage": 2.8
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Gallego",
+    "order": {
+      "amount": 6.1,
+      "perGram": 500
+    },
+    "flours": [
+      {
+        "id": "1000",
+        "key": "1000",
+        "value": 1,
+        "ingredient": "Harina Panadera",
+        "percentage": 87
+      },
+      {
+        "id": "1001",
+        "key": "1001",
+        "value": 2,
+        "ingredient": "Afrecho",
+        "percentage": 3
+      },
+      {
+        "id": "1002",
+        "key": "1002",
+        "value": 4,
+        "ingredient": "Harina de Centeno",
+        "percentage": 10
+      }
+    ],
+    "ingredients": [
+      {
+        "id": "2000",
+        "key": "2000",
+        "value": 100,
+        "ingredient": "Agua",
+        "percentage": 63
+      },
+      {
+        "id": "2001",
+        "key": "2001",
+        "value": 101,
+        "ingredient": "Levadura",
+        "percentage": 1.5
+      },
+      {
+        "id": "2002",
+        "key": "2002",
+        "value": 102,
+        "ingredient": "Sal",
+        "percentage": 1.8
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Avena",
+    "order": {
+      "amount": 6.1,
+      "perGram": 400
+    },
+    "flours": [
+      {
+        "id": "1000",
+        "key": "1000",
+        "value": 1,
+        "ingredient": "Harina Panadera",
+        "percentage": 75
+      },
+      {
+        "id": "1001",
+        "key": "1001",
+        "value": 2,
+        "ingredient": "Afrecho",
+        "percentage": 75
+      },
+      {
+        "id": "1002",
+        "key": "1002",
+        "value": 3,
+        "ingredient": "Avena en Polvo",
+        "percentage": 20
+      }
+    ],
+    "ingredients": [
+      {
+        "id": "2000",
+        "key": "2000",
+        "value": 100,
+        "ingredient": "Agua",
+        "percentage": 52
+      },
+      {
+        "id": "2001",
+        "key": "2001",
+        "value": 104,
+        "ingredient": "Leche en Polvo",
+        "percentage": 3
+      },
+      {
+        "id": "2002",
+        "key": "2002",
+        "value": 101,
+        "ingredient": "Levadura",
+        "percentage": 2
+      },
+      {
+        "id": "2003",
+        "key": "2003",
+        "value": 102,
+        "ingredient": "Sal",
+        "percentage": 1.5
+      },
+      {
+        "id": "2004",
+        "key": "2004",
+        "value": 105,
+        "ingredient": "Extracto de Malta",
+        "percentage": 1.5
+      },
+      {
+        "id": "2005",
+        "key": "2005",
+        "value": 106,
+        "ingredient": "Mantequilla o Margarina",
+        "percentage": 3
+      },
+      {
+        "id": "2006",
+        "key": "2006",
+        "value": 107,
+        "ingredient": "Avena en Remojo",
+        "percentage": 30
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Pan de Ajo",
+    "order": {
+      "amount": 11.1,
+      "perGram": 200
+    },
+    "flours": [
+      {
+        "id": "1000",
+        "key": "1000",
+        "value": 1,
+        "ingredient": "Harina Panadera",
+        "percentage": 97
+      },
+      {
+        "id": "1001",
+        "key": "1001",
+        "value": 2,
+        "ingredient": "Afrecho",
+        "percentage": 3
+      }
+    ],
+    "ingredients": [
+      {
+        "id": "2000",
+        "key": "2000",
+        "value": 100,
+        "ingredient": "Agua",
+        "percentage": 62
+      },
+      {
+        "id": "2001",
+        "key": "2001",
+        "value": 101,
+        "ingredient": "Levadura",
+        "percentage": 1.5
+      },
+      {
+        "id": "2002",
+        "key": "2002",
+        "value": 102,
+        "ingredient": "Sal",
+        "percentage": 1.8
+      },
+      {
+        "id": "2003",
+        "key": "2003",
+        "value": 113,
+        "ingredient": "Ajo Cortado",
+        "percentage": 4
+      },
+      {
+        "id": "2005",
+        "key": "2005",
+        "value": 106,
+        "ingredient": "Mantequilla o Margarina",
+        "percentage": 3
+      }
+    ]
+  }
+]
