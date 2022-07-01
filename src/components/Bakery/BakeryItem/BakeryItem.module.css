@@ -12,7 +12,14 @@
 }
 
 .buttonToLink:hover {
-
     background-color: aquamarine;
     cursor: pointer;
+}
+
+.inputHover {
+    border: none
+}
+
+.inputHover:hover {
+    border: 2px solid rgb(37, 73, 251);
 }

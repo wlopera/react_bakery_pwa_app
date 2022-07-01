@@ -18,7 +18,7 @@ const CardForm = () => {
 
   return (
     <Card>
-      <div className="row  d-flex justify-content-between">
+      <div className="row d-flex justify-content-between fs-5">
         <div className="col-3">
           <input
             type="number"

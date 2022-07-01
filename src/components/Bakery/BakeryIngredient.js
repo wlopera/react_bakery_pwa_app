@@ -72,7 +72,6 @@ const BakeryIngredient = () => {
           onAdd={addRowHandler}
         />
         <ul className="list-unstyled mt-1">{bakeryList}</ul>
-        <br />
       </div>
       {showModal && (
         <Modal onClose={toggle}>

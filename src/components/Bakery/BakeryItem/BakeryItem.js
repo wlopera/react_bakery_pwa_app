@@ -46,6 +46,7 @@ const BakeryItem = (props) => {
                 onKeyDown={handleKeyDown}
                 min={0}
                 max={100}
+                className={classes.inputHover}
               />
             </div>
             <div className="col-3 fw-bold fs-5  d-flex justify-content-center">

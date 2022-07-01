@@ -76,7 +76,6 @@ const processData = (data, state) => {
     }
   }
 
-  console.log(12345, percentages, isValid);
   return {
     flours: state.flours,
     data: data,

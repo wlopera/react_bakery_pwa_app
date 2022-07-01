@@ -16,7 +16,7 @@ const Bakery = () => {
   return (
     <Fragment>
       <CardTitle title="Baguettes" />
-      <div className="mb-1"></div>
+      <div className="mb-2"></div>
       <CardForm />
       <div className="mb-1"></div>
       {cardFormCtx.total > 0 && (

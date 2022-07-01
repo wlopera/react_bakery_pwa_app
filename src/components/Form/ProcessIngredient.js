@@ -48,6 +48,8 @@ const ProcessIngredient = ({
     }
   };
 
+  const handleFocus = (event) => event.target.select();
+
   return (
     <>
       <h3>Agregar Ingredientes</h3>
@@ -65,6 +67,7 @@ const ProcessIngredient = ({
                     value={record.amount}
                     onChange={amountChangeHandler}
                     onKeyDown={handleKeyDown}
+                    onFocus={handleFocus}
                   />
                 </div>
               </div>

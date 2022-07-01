@@ -19,8 +19,6 @@ const ingredientReducer = (state, action) => {
     data = data.sort((row1, row2) =>
       row1.ingredient > row2.ingredient ? 1 : -1
     );
-
-    console.log(123, data);
     return processData(data, state);
   }
 
