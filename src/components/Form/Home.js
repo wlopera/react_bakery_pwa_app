@@ -70,7 +70,11 @@ const Home = () => {
 
   const recipeList = dataBasic.map((row) => (
     <div key={row.id}>
-      <CardRecipe title={row.name} onInit={() => handleInit(row)} />
+      <CardRecipe
+        title={row.name}
+        onAction={() => handleInit(row)}
+        typeIcon="action"
+      />
       <div className="mb-2"></div>
     </div>
   ));
