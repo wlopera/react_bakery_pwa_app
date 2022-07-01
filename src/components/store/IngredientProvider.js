@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import IngredientContext from "./ingredient-context";
 
@@ -13,7 +13,12 @@ const defaultState = {
 
 const ingredientReducer = (state, action) => {
   if (action.type === "ADD") {
-    const data = [...state.data, action.row];
+    let data = [...state.data, action.row];
+
+    // Ordenar la lista de ingredientes
+    data = data.sort((row1, row2) =>
+      row1.ingredient > row2.ingredient ? 1 : -1
+    );
     return processData(data, state);
   }
 
@@ -62,11 +67,20 @@ const processData = (data, state) => {
   const grams =
     data.length > 0 ? data.map((item) => parseFloat(item.grams)) : [];
 
+  let isValid = true;
+  for (let index = 0; index < percentages.length; index++) {
+    if (isNaN(percentages[index])) {
+      isValid = false;
+      break;
+    }
+  }
+
   return {
     ingredients: state.ingredients,
     data: data,
-    percentages:
-      Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100,
+    percentages: isValid
+      ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
+      : 0,
     grams: Math.round(grams.reduce((acc, item) => acc + item, 0) * 100) / 100,
   };
 };
@@ -85,9 +99,9 @@ const IngredientProvider = (props) => {
     dispatchAction({ type: "UPDATE", row: row });
   };
 
-  const updateGramsHandler = (percentages, grams) => {
+  const updateGramsIngredientHandler = useCallback((percentages, grams) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
-  };
+  }, []);
 
   const removeIngredientHandler = (id) => {
     dispatchAction({ type: "REMOVE", id: id });
@@ -101,7 +115,7 @@ const IngredientProvider = (props) => {
     addIngredient: addIngredientHandler,
     updateIngredient: updateIngredientHandler,
     removeIngredient: removeIngredientHandler,
-    updateGrams: updateGramsHandler,
+    updateGramsIngredient: updateGramsIngredientHandler,
   };
 
   return (

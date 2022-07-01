@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/CardHeader";
@@ -6,8 +7,6 @@ import Modal from "../UI/Modal/Modal";
 
 import BakeryContext from "../store/bakery-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
-
-import { newRow, editRow } from "../utilities/Utility";
 
 const BakeryFlour = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,25 +19,32 @@ const BakeryFlour = () => {
   };
 
   const addRowHandler = () => {
-    setRow(newRow("PERCENTAGE"));
+    setRow({ amount: 0, ingredient: [] });
     toggle();
   };
 
-  const processRowHandler = (row) => {
-    const oldData = bakeryCtx.data.filter((item) => item.id === row.id);
-
-    if (oldData.length === 0) {
-      bakeryCtx.addFlour(row);
-    } else {
-      bakeryCtx.updateFlour(row);
-    }
+  const processRowHandler = (record) => {
+    record.ingredients.forEach((item) => {
+      const id = uuidv4();
+      bakeryCtx.addFlour({
+        id: id,
+        key: id,
+        value: item.value,
+        ingredient: item.label,
+        percentage: record.amount,
+        grams: 0,
+      });
+    });
 
     toggle();
   };
 
-  const editRowHadler = (item) => {
-    setRow(editRow(item, item.percentage, "PERCENTAGE"));
-    toggle();
+  const editRowHadler = (value, id) => {
+    const row = bakeryCtx.data.filter((item) => item.id === id)[0];
+    bakeryCtx.updateFlour({
+      ...row,
+      percentage: value,
+    });
   };
 
   const deleteRowHadler = (id) => {
@@ -49,10 +55,10 @@ const BakeryFlour = () => {
     <BakeryItem
       id={row.id}
       key={row.id}
-      ingredient={row.text}
+      ingredient={row.ingredient}
       percentage={row.percentage}
       grams={row.grams}
-      onEdit={() => editRowHadler(row)}
+      onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
     />
   ));
@@ -64,7 +70,7 @@ const BakeryFlour = () => {
 
   return (
     <>
-      <div>
+      <div className="mt-3">
         {alert && (
           <div className="alert alert-danger mb-1" role="alert">
             {alert}
@@ -77,7 +83,6 @@ const BakeryFlour = () => {
           onAdd={addRowHandler}
         />
         <ul className="list-unstyled mt-1">{bakeryList}</ul>
-        <br />
       </div>
       {showModal && (
         <Modal onClose={toggle}>

@@ -30,3 +30,9 @@ React Fórmula Panadera -PWA - Bootstrap
 
 ## Calcular totales con boton 
 ![Captura1](https://user-images.githubusercontent.com/7141537/176325355-eded5e94-6675-4e63-91d7-902ab3323e33.PNG)
+
+## Combo multi selección
+![Captura](https://user-images.githubusercontent.com/7141537/176921781-39237cf4-548b-4ada-9673-84c5e73aa93a.PNG)
+
+## Carga de porcentajes en la vista
+![Captura2](https://user-images.githubusercontent.com/7141537/176921777-a56a8939-73bd-45ed-9b85-7fc06ae22ad5.PNG)

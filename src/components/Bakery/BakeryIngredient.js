@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/CardHeader";
@@ -6,8 +7,6 @@ import Modal from "../UI/Modal/Modal";
 
 import IngredientContext from "../store/ingredient-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
-
-import { newRow, editRow } from "../utilities/Utility";
 
 const BakeryIngredient = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,25 +19,31 @@ const BakeryIngredient = () => {
   };
 
   const addRowHandler = () => {
-    setRow(newRow("PERCENTAGE"));
+    setRow({ amount: 0, ingredient: [] });
     toggle();
   };
 
-  const processRowHandler = (row) => {
-    const oldData = ingredientCtx.data.filter((item) => item.id === row.id);
-
-    if (oldData.length === 0) {
-      ingredientCtx.addIngredient(row);
-    } else {
-      ingredientCtx.updateIngredient(row);
-    }
-
+  const processRowHandler = (record) => {
+    record.ingredients.forEach((item) => {
+      const id = uuidv4();
+      ingredientCtx.addIngredient({
+        id: id,
+        key: id,
+        value: item.value,
+        ingredient: item.label,
+        percentage: record.amount,
+        grams: 0,
+      });
+    });
     toggle();
   };
 
-  const editRowHadler = (item) => {
-    setRow(editRow(item, item.percentage, "PERCENTAGE"));
-    toggle();
+  const editRowHadler = (value, id) => {
+    const row = ingredientCtx.data.filter((item) => item.id === id)[0];
+    ingredientCtx.updateIngredient({
+      ...row,
+      percentage: value,
+    });
   };
 
   const deleteRowHadler = (id) => {
@@ -49,10 +54,10 @@ const BakeryIngredient = () => {
     <BakeryItem
       id={row.id}
       key={row.id}
-      ingredient={row.text}
+      ingredient={row.ingredient}
       percentage={row.percentage}
       grams={row.grams}
-      onEdit={() => editRowHadler(row)}
+      onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
     />
   ));
@@ -67,7 +72,6 @@ const BakeryIngredient = () => {
           onAdd={addRowHandler}
         />
         <ul className="list-unstyled mt-1">{bakeryList}</ul>
-        <br />
       </div>
       {showModal && (
         <Modal onClose={toggle}>
