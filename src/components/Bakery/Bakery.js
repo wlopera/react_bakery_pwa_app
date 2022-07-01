@@ -15,7 +15,7 @@ const Bakery = () => {
 
   return (
     <Fragment>
-      <CardTitle title="Baguettes" />
+      <CardTitle title={bakeryCtx.title} />
       <div className="mb-2"></div>
       <CardForm />
       <div className="mb-1"></div>

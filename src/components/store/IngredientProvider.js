@@ -12,6 +12,10 @@ const defaultState = {
 };
 
 const ingredientReducer = (state, action) => {
+  if (action.type === "RESET") {
+    return defaultState;
+  }
+
   if (action.type === "ADD") {
     let data = [...state.data, action.row];
 
@@ -91,6 +95,10 @@ const IngredientProvider = (props) => {
     defaultState
   );
 
+  const resetIngredientHandler = () => {
+    dispatchAction({ type: "RESET" });
+  };
+
   const addIngredientHandler = (row) => {
     dispatchAction({ type: "ADD", row: row });
   };
@@ -112,6 +120,7 @@ const IngredientProvider = (props) => {
     data: ingredientState.data,
     percentages: ingredientState.percentages,
     grams: ingredientState.grams,
+    resetIngredient: resetIngredientHandler,
     addIngredient: addIngredientHandler,
     updateIngredient: updateIngredientHandler,
     removeIngredient: removeIngredientHandler,

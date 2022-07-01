@@ -26,9 +26,6 @@ const App = () => {
                 <Route path="/bakery">
                   <Bakery />
                 </Route>
-                <Route path="/bakery">
-                  <Bakery />
-                </Route>
               </Switch>
             </Layout>
           </RecipeProvider>

@@ -5,6 +5,7 @@ import BakeryContext from "./bakery-context";
 import flours from "./data/flours.json";
 
 const defaultState = {
+  title: "",
   flours: flours,
   data: [],
   percentages: 0,
@@ -12,6 +13,14 @@ const defaultState = {
 };
 
 const bakeryReducer = (state, action) => {
+  if (action.type === "TITLE") {
+    return { ...state, title: action.title };
+  }
+
+  if (action.type === "RESET") {
+    return defaultState;
+  }
+
   if (action.type === "ADD") {
     let data = [...state.data, action.row];
 
@@ -77,7 +86,7 @@ const processData = (data, state) => {
   }
 
   return {
-    flours: state.flours,
+    ...state,
     data: data,
     percentages: isValid
       ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
@@ -88,6 +97,14 @@ const processData = (data, state) => {
 
 const BakeryProvider = (props) => {
   const [bakeryState, dispatchAction] = useReducer(bakeryReducer, defaultState);
+
+  const setTitleHandler = (title) => {
+    dispatchAction({ type: "TITLE", title });
+  };
+
+  const resetFlourHandler = () => {
+    dispatchAction({ type: "RESET" });
+  };
 
   const addFlourHandler = (row) => {
     dispatchAction({ type: "ADD", row });
@@ -106,10 +123,13 @@ const BakeryProvider = (props) => {
   };
 
   const bakeryContext = {
+    title: bakeryState.title,
     flours: bakeryState.flours,
     data: bakeryState.data,
     percentages: bakeryState.percentages,
     grams: bakeryState.grams,
+    setTitle: setTitleHandler,
+    resetFlour: resetFlourHandler,
     addFlour: addFlourHandler,
     updateFlour: updateFlourHandler,
     removeFlour: removeFlourHandler,

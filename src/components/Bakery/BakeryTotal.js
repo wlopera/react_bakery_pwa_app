@@ -16,9 +16,6 @@ const BakeryTotal = () => {
   const { updateGramsFlour } = bakeryCtx;
   const { updateGramsIngredient } = ingredientCtx;
 
-  console.log(1111, bakeryCtx);
-  console.log(2222, ingredientCtx);
-
   useEffect(() => {
     updateGramsFlour(percentages, gramsTotal);
     updateGramsIngredient(percentages, gramsTotal);

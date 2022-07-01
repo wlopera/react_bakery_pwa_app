@@ -4,7 +4,7 @@
     "name": "Baguetes",
     "order": {
       "amount": 20,
-      "perGram": 300
+      "perUnit": 300
     },
     "flours": [
       {
@@ -44,7 +44,7 @@
     "name": "Canilla",
     "order": {
       "amount": 7.1,
-      "perGram": 300
+      "perUnit": 300
     },
     "flours": [
       {
@@ -105,7 +105,7 @@
     "name": "Gallego",
     "order": {
       "amount": 6.1,
-      "perGram": 500
+      "perUnit": 500
     },
     "flours": [
       {
@@ -159,7 +159,7 @@
     "name": "Avena",
     "order": {
       "amount": 6.1,
-      "perGram": 400
+      "perUnit": 400
     },
     "flours": [
       {
@@ -174,7 +174,7 @@
         "key": "1001",
         "value": 2,
         "ingredient": "Afrecho",
-        "percentage": 75
+        "percentage": 5
       },
       {
         "id": "1002",
@@ -241,7 +241,7 @@
     "name": "Pan de Ajo",
     "order": {
       "amount": 11.1,
-      "perGram": 200
+      "perUnit": 200
     },
     "flours": [
       {
