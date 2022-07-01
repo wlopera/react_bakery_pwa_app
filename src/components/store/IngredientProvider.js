@@ -13,7 +13,14 @@ const defaultState = {
 
 const ingredientReducer = (state, action) => {
   if (action.type === "ADD") {
-    const data = [...state.data, action.row];
+    let data = [...state.data, action.row];
+
+    // Ordenar la lista de ingredientes
+    data = data.sort((row1, row2) =>
+      row1.ingredient > row2.ingredient ? 1 : -1
+    );
+
+    console.log(123, data);
     return processData(data, state);
   }
 
@@ -62,14 +69,20 @@ const processData = (data, state) => {
   const grams =
     data.length > 0 ? data.map((item) => parseFloat(item.grams)) : [];
 
-  // Ordenar la lista de ingredientes
-  data = data.sort((row1, row2) => (row1.label > row2.label ? 1 : -1));
+  let isValid = true;
+  for (let index = 0; index < percentages.length; index++) {
+    if (isNaN(percentages[index])) {
+      isValid = false;
+      break;
+    }
+  }
 
   return {
     ingredients: state.ingredients,
     data: data,
-    percentages:
-      Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100,
+    percentages: isValid
+      ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
+      : 0,
     grams: Math.round(grams.reduce((acc, item) => acc + item, 0) * 100) / 100,
   };
 };

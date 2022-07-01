@@ -8,8 +8,6 @@ import Modal from "../UI/Modal/Modal";
 import BakeryContext from "../store/bakery-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
-import { newRow, editRow } from "../utilities/Utility";
-
 const BakeryFlour = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState({});
@@ -21,7 +19,7 @@ const BakeryFlour = () => {
   };
 
   const addRowHandler = () => {
-    setRow(newRow("PERCENTAGE"));
+    setRow({ amount: 0, ingredient: [] });
     toggle();
   };
 
@@ -41,9 +39,12 @@ const BakeryFlour = () => {
     toggle();
   };
 
-  const editRowHadler = (item) => {
-    setRow(editRow(item, item.percentage, "PERCENTAGE"));
-    toggle();
+  const editRowHadler = (value, id) => {
+    const row = bakeryCtx.data.filter((item) => item.id === id)[0];
+    bakeryCtx.updateFlour({
+      ...row,
+      percentage: value,
+    });
   };
 
   const deleteRowHadler = (id) => {
@@ -57,7 +58,7 @@ const BakeryFlour = () => {
       ingredient={row.ingredient}
       percentage={row.percentage}
       grams={row.grams}
-      onEdit={() => editRowHadler(row)}
+      onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
     />
   ));

@@ -62,7 +62,7 @@ const ProcessIngredient = ({
                 <div className="col-9">
                   <input
                     type="number"
-                    value={record.account}
+                    value={record.amount}
                     onChange={amountChangeHandler}
                     onKeyDown={handleKeyDown}
                   />

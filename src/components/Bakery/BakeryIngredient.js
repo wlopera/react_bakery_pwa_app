@@ -8,8 +8,6 @@ import Modal from "../UI/Modal/Modal";
 import IngredientContext from "../store/ingredient-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
-import { newRow, editRow } from "../utilities/Utility";
-
 const BakeryIngredient = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState({});
@@ -21,7 +19,7 @@ const BakeryIngredient = () => {
   };
 
   const addRowHandler = () => {
-    setRow(newRow("PERCENTAGE"));
+    setRow({ amount: 0, ingredient: [] });
     toggle();
   };
 
@@ -40,9 +38,12 @@ const BakeryIngredient = () => {
     toggle();
   };
 
-  const editRowHadler = (item) => {
-    setRow(editRow(item, item.percentage, "PERCENTAGE"));
-    toggle();
+  const editRowHadler = (value, id) => {
+    const row = ingredientCtx.data.filter((item) => item.id === id)[0];
+    ingredientCtx.updateIngredient({
+      ...row,
+      percentage: value,
+    });
   };
 
   const deleteRowHadler = (id) => {
@@ -56,7 +57,7 @@ const BakeryIngredient = () => {
       ingredient={row.ingredient}
       percentage={row.percentage}
       grams={row.grams}
-      onEdit={() => editRowHadler(row)}
+      onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
     />
   ));
