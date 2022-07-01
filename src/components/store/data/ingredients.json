@@ -21,11 +21,11 @@
   },
   {
     "value": 105,
-    "label": "Extracto de Malta"
+    "label": "Extracto Malta"
   },
   {
     "value": 106,
-    "label": "Manteq o Margarina"
+    "label": "Manteq/Margar"
   },
   {
     "value": 107,
@@ -61,6 +61,6 @@
   },
   {
     "value": 115,
-    "label": "Esencia de Vainilla"
+    "label": "Esencia Vainill"
   }
 ]
