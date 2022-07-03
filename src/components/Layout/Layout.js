@@ -1,9 +1,9 @@
 import React from "react";
 
 import bg_bread from "../../assets/bg_bread.png";
-import footer from "../../assets/programming.gif";
 
-import classes from "./Layout.module.css";
+// import footer from "../../assets/programming.gif";
+// import classes from "./Layout.module.css";
 
 const Layout = (props) => {
   return (
@@ -18,7 +18,7 @@ const Layout = (props) => {
         }}
       >
         <section className=" container w-100 mt-2">{props.children}</section>
-        <div>
+        {/* <div>
           <div className={classes.footer}>
             <img
               src={footer}
@@ -27,7 +27,7 @@ const Layout = (props) => {
             />
             <div className={classes.footerText}>wlopera @2022</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

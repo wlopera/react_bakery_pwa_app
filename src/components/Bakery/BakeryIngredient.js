@@ -59,6 +59,7 @@ const BakeryIngredient = () => {
       grams={row.grams}
       onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
+      className="row d-flex align-items-center bg-white border-bottom w-50"
     />
   ));
 
@@ -70,8 +71,9 @@ const BakeryIngredient = () => {
           percentageTitle="%"
           gramTitle="Gramos"
           onAdd={addRowHandler}
+          className="row d-flex align-items-center bg-primary w-50"
         />
-        <ul className="list-unstyled mt-1">{bakeryList}</ul>
+        <ul className="list-unstyled">{bakeryList}</ul>
       </div>
       {showModal && (
         <Modal onClose={toggle}>

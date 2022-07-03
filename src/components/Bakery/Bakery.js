@@ -26,7 +26,9 @@ const Bakery = () => {
   const { resetIngredient, addIngredient } = ingredientCtx;
 
   useEffect(() => {
-    const recipe = recipeCtx.recipesBasic[param.id];
+    const recipe = recipeCtx.recipesBasic.find(
+      (row) => row.id === parseInt(param.id)
+    );
 
     // Limpiar la data
     resetFlour();
@@ -83,13 +85,12 @@ const Bakery = () => {
   return (
     <Fragment>
       <CardRecipe
+        className="row d-flex align-items-center bg-primary border-bottom w-50"
         title={bakeryCtx.title}
         onAction={() => handleReturn()}
         typeIcon="home"
       />
-      <div className="mb-2"></div>
       <CardForm />
-      <div className="mb-1"></div>
       {cardFormCtx.total > 0 && (
         <div>
           <BakeryFlour />

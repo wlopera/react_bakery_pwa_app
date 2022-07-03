@@ -1,12 +1,10 @@
 import React from "react";
 import Card from "../../UI/Card";
 
-const CardTitle = ({ title }) => {
+const CardTitle = ({ title, className }) => {
   return (
-    <Card>
-      <div className="row d-flex align-items-center mb-4" style={{ height: 0 }}>
-        <h1 className="col fw-bold fs-4">{title}</h1>
-      </div>
+    <Card className={className}>
+      <h1 className="col fw-bold fs-3">{title}</h1>
     </Card>
   );
 };
