@@ -98,29 +98,29 @@ const processData = (data, state) => {
 const BakeryProvider = (props) => {
   const [bakeryState, dispatchAction] = useReducer(bakeryReducer, defaultState);
 
-  const setTitleHandler = (title) => {
+  const setTitleHandler = useCallback((title) => {
     dispatchAction({ type: "TITLE", title });
-  };
+  }, []);
 
-  const resetFlourHandler = () => {
+  const resetFlourHandler = useCallback(() => {
     dispatchAction({ type: "RESET" });
-  };
+  }, []);
 
-  const addFlourHandler = (row) => {
+  const addFlourHandler = useCallback((row) => {
     dispatchAction({ type: "ADD", row });
-  };
+  }, []);
 
-  const updateFlourHandler = (row) => {
+  const updateFlourHandler = useCallback((row) => {
     dispatchAction({ type: "UPDATE", row });
-  };
+  }, []);
 
   const updateGramsFlourHandler = useCallback((percentages, grams) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
   }, []);
 
-  const removeFlourHandler = (id) => {
+  const removeFlourHandler = useCallback((id) => {
     dispatchAction({ type: "REMOVE", id });
-  };
+  }, []);
 
   const bakeryContext = {
     title: bakeryState.title,
