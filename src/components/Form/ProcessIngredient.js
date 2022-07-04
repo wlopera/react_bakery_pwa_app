@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import CardCheck from "../Bakery/BakeryCard/CardCheck";
 
 const ProcessIngredient = ({
   row,
@@ -8,15 +9,8 @@ const ProcessIngredient = ({
   currentData,
   combo,
 }) => {
-  const [record, setRecord] = useState(row);
   const [ingredients, setIngredients] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleKeyDown = (event) => {
-    if (event.keyCode === 13) {
-      submitHandler(event);
-    }
-  };
+  const [selectedOption, setSelectedOption] = useState([]);
 
   useEffect(() => {
     let newData = [...combo];
@@ -27,82 +21,57 @@ const ProcessIngredient = ({
     setIngredients([...newData]);
   }, [row, currentData, combo]);
 
-  const amountChangeHandler = (e) => {
-    setRecord((currentRecord) => ({
-      ...currentRecord,
-      amount: e.target.value,
-    }));
+  const handleCheck = (ingredient) => {
+    setSelectedOption((options) => {
+      const data = options.filter((item) => item.value === ingredient.value);
+      if (data.length > 0) {
+        return options.filter((item) => item.value !== ingredient.value);
+      } else {
+        return [...options, ingredient];
+      }
+    });
   };
 
-  const comboChangeHandler = (options) => {
-    setSelectedOption(options);
-  };
+  const checksList = ingredients.map((ingredient) => (
+    <CardCheck
+      key={ingredient.value}
+      title={ingredient.label}
+      onAction={() => handleCheck(ingredient)}
+      className="d-flex align-items-center bg-white border-bottom w-100"
+      checked={false}
+    />
+  ));
 
   const submitHandler = (event) => {
+    console.log(123456, selectedOption);
     event.preventDefault();
-    if (selectedOption) {
-      processRow({
-        ingredients: selectedOption,
-        amount: parseFloat(record.amount),
-      });
+    if (selectedOption.length > 0) {
+      processRow(selectedOption);
     }
   };
 
-  const handleFocus = (event) => event.target.select();
-
   return (
     <>
-      <h3>Agregar Ingredientes</h3>
+      <h5 className="bg-primary">Agregar Ingredientes</h5>
       <form onSubmit={submitHandler}>
-        <div className="row row-cols-sm-1 row-cols-md-2">
-          <div className="col-sm col-md-10 bg-warning pt-3 pb-3">
-            <div className="container">
-              <div className="row g-2 align-items-center">
-                <div className="col-3">
-                  <label className="col-form-label">Porcentaje:</label>
-                </div>
-                <div className="col-9">
-                  <input
-                    type="number"
-                    value={record.amount}
-                    onChange={amountChangeHandler}
-                    onKeyDown={handleKeyDown}
-                    onFocus={handleFocus}
-                  />
-                </div>
-              </div>
-
-              <div className="row g-2 align-items-center">
-                <div className="col-3">
-                  <label className="col-form-label">Ingrediente(s):</label>
-                </div>
-                <div className="col-9">
-                  <Select
-                    defaultValue={selectedOption}
-                    onChange={comboChangeHandler}
-                    options={ingredients}
-                    isMulti
-                    closeMenuOnSelect={false}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm col-md-2 bg-primary  ">
-            <div className="d-flex flex-column justify-content-center">
-              <div className="row p-2">
-                <button onClick={onClose} className="btn btn-info ">
-                  Cancelar
-                </button>
-              </div>
-
-              <div className="row p-2">
-                <button type="submit" className="btn btn-success">
-                  Agregar
-                </button>
-              </div>
-            </div>
-          </div>
+        <div
+          style={{
+            overflowY: "auto",
+            height: `${ingredients.length > 15 ? "58vh" : ""}`,
+            paddingRight: "20px",
+          }}
+        >
+          {checksList}
+        </div>
+        <div className="row justify-content-md-center">
+          <button onClick={onClose} className="btn btn-link w-50">
+            Cancelar
+          </button>
+          {selectedOption.length > 0 ? (
+            <button type="submit" className="btn btn-link w-50">
+              Agregar
+            </button>
+          ) : null}
         </div>
       </form>
     </>

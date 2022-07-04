@@ -5,16 +5,10 @@ import CardTitle from "../Bakery/BakeryCard/CardTitle";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe";
 
 import RecipeContext from "../store/recipe-context";
-import BakeryContext from "../store/bakery-context";
-import IngredientContext from "../store/ingredient-context";
-import CardFormContext from "../store/card-form-context";
 
 const Home = () => {
   const [dataBasic, setDataBasic] = useState([]);
   const recipesCtx = useContext(RecipeContext);
-  const bakeryCtx = useContext(BakeryContext);
-  const ingredientContext = useContext(IngredientContext);
-  const cardFormContext = useContext(CardFormContext);
   let history = useHistory();
 
   useEffect(() => {
@@ -29,60 +23,28 @@ const Home = () => {
     setDataBasic(data);
   }, [recipesCtx]);
 
-  const handleInit = (recipe) => {
-    // Limpiar la data
-    bakeryCtx.resetFlour();
-    ingredientContext.resetIngredient();
-
-    //Tipo de pan
-    bakeryCtx.setTitle(recipe.name);
-
-    // Orden
-    cardFormContext.onAmount(recipe.order.amount);
-    cardFormContext.onPerUnit(recipe.order.perUnit);
-
-    // harinas
-    recipe.flours.forEach((row) => {
-      bakeryCtx.addFlour({
-        id: row.id,
-        key: row.id,
-        value: row.value,
-        ingredient: row.ingredient,
-        percentage: row.percentage,
-        grams: 0,
-      });
-    });
-
-    //Otros Ingredientes
-    recipe.ingredients.forEach((row) => {
-      ingredientContext.addIngredient({
-        id: row.id,
-        key: row.id,
-        value: row.value,
-        ingredient: row.ingredient,
-        percentage: row.percentage,
-        grams: 0,
-      });
-    });
-
-    history.push("/bakery");
+  const handleInit = (id) => {
+    history.push("/bakery/" + id);
   };
 
   const recipeList = dataBasic.map((row) => (
     <div key={row.id}>
       <CardRecipe
+        className="row d-flex align-items-center bg-white border-bottom w-100"
         title={row.name}
-        onAction={() => handleInit(row)}
+        onAction={() => handleInit(row.id)}
         typeIcon="action"
       />
-      <div className="mb-2"></div>
     </div>
   ));
 
   return (
     <div>
-      <CardTitle title="RECETAS PANADERO - PASTELERO" />
-      <ul className="list-unstyled mt-1">{recipeList}</ul>
+      <CardTitle
+        title="Recetas"
+        className="row d-flex align-items-center bg-primary w-100"
+      />
+      <ul className="list-unstyled">{recipeList}</ul>
     </div>
   );
 };

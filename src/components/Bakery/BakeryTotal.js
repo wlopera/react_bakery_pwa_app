@@ -23,7 +23,13 @@ const BakeryTotal = () => {
 
   const perGramsTotal = Math.round(grams * 100) / 100;
 
-  return <CardHeader percentageTitle={percentages} gramTitle={perGramsTotal} />;
+  return (
+    <CardHeader
+      percentageTitle={percentages}
+      gramTitle={perGramsTotal}
+      className="row d-flex align-items-center bg-primary w-100"
+    />
+  );
 };
 
 export default BakeryTotal;

@@ -126,7 +126,7 @@
         "id": "1002",
         "key": "1002",
         "value": 4,
-        "ingredient": "Harina de Centeno",
+        "ingredient": "Harina Centeno",
         "percentage": 10
       }
     ],
@@ -217,14 +217,14 @@
         "id": "2004",
         "key": "2004",
         "value": 105,
-        "ingredient": "Extracto de Malta",
+        "ingredient": "Extracto Malta",
         "percentage": 1.5
       },
       {
         "id": "2005",
         "key": "2005",
         "value": 106,
-        "ingredient": "Manteq o Margarina",
+        "ingredient": "Manteq/Margar",
         "percentage": 3
       },
       {

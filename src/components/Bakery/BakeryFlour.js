@@ -24,14 +24,14 @@ const BakeryFlour = () => {
   };
 
   const processRowHandler = (record) => {
-    record.ingredients.forEach((item) => {
+    record.forEach((item) => {
       const id = uuidv4();
       bakeryCtx.addFlour({
         id: id,
         key: id,
         value: item.value,
         ingredient: item.label,
-        percentage: record.amount,
+        percentage: 0,
         grams: 0,
       });
     });
@@ -60,6 +60,7 @@ const BakeryFlour = () => {
       grams={row.grams}
       onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
+      className="row d-flex align-items-center bg-white border-bottom w-100"
     />
   ));
 
@@ -70,7 +71,7 @@ const BakeryFlour = () => {
 
   return (
     <>
-      <div className="mt-3">
+      <div>
         {alert && (
           <div className="alert alert-danger mb-1" role="alert">
             {alert}
@@ -78,11 +79,13 @@ const BakeryFlour = () => {
         )}
         <CardHeader
           ingredient="Harinas"
-          percentageTitle={`${bakeryCtx.percentages} %`}
+          percentageTitle="%"
           gramTitle="Gramos"
           onAdd={addRowHandler}
+          className="row d-flex align-items-center bg-primary w-100"
         />
-        <ul className="list-unstyled mt-1">{bakeryList}</ul>
+
+        <ul className="list-unstyled">{bakeryList}</ul>
       </div>
       {showModal && (
         <Modal onClose={toggle}>

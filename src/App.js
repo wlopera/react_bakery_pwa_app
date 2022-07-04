@@ -23,7 +23,7 @@ const App = () => {
                 <Route path="/home">
                   <Home />
                 </Route>
-                <Route path="/bakery">
+                <Route path="/bakery/:id">
                   <Bakery />
                 </Route>
               </Switch>

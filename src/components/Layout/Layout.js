@@ -1,9 +1,9 @@
 import React from "react";
 
 import bg_bread from "../../assets/bg_bread.png";
-import footer from "../../assets/programming.gif";
 
-import classes from "./Layout.module.css";
+// import footer from "../../assets/programming.gif";
+// import classes from "./Layout.module.css";
 
 const Layout = (props) => {
   return (
@@ -11,14 +11,16 @@ const Layout = (props) => {
       <div
         className="d-flex flex-column justify-content-center bg-image"
         style={{
-          backgroundImage: `url(${bg_bread}) `,
+          // backgroundImage: `url(${bg_bread}) `,
           right: 0,
           top: 0,
           zIndex: -100,
         }}
       >
-        <section className=" container w-100 mt-2">{props.children}</section>
-        <div>
+        <section className=" container w-100 mt-2 me-auto">
+          {props.children}
+        </section>
+        {/* <div>
           <div className={classes.footer}>
             <img
               src={footer}
@@ -27,7 +29,7 @@ const Layout = (props) => {
             />
             <div className={classes.footerText}>wlopera @2022</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -29,41 +29,33 @@ const BakeryItem = (props) => {
   };
 
   return (
-    <div className=" shadow-lg p-0 mb-1 bg-body rounded">
-      <li>
-        <Card>
-          <div
-            className="row d-flex align-items-start mb-4"
-            style={{ height: 0 }}
-          >
-            <h3 className="col-5 fw-bold fs-5">{props.ingredient}</h3>
-            <div className="col-2 fw-bold text-success fs-5 d-flex justify-content-center">
-              <input
-                type="number"
-                value={props.percentage}
-                onChange={(event) => handleInputChange(event, props.id)}
-                onFocus={handleFocus}
-                onKeyDown={handleKeyDown}
-                min={0}
-                max={100}
-                className={classes.inputHover}
-              />
-            </div>
-            <div className="col-3 fw-bold fs-5  d-flex justify-content-center">
-              {props.grams}
-            </div>
-            <div className="col-2 fw-bold d-flex justify-content-end">
-              <FontAwesomeIcon
-                className={classes.iconHover}
-                onClick={props.onDelete}
-                icon={faTrashCan}
-                size="2x"
-              />
-            </div>
-          </div>
-        </Card>
-      </li>
-    </div>
+    <li>
+      <Card className={props.className}>
+        <h3 className="col-5 fs-6">{props.ingredient}</h3>
+        <div className="col-2 text-success fs-5 d-flex justify-content-center">
+          <input
+            type="number"
+            value={props.percentage}
+            onChange={(event) => handleInputChange(event, props.id)}
+            onFocus={handleFocus}
+            onKeyDown={handleKeyDown}
+            min={0}
+            max={100}
+            className={classes.inputHover}
+          />
+        </div>
+        <div className="col-3 fs-5  d-flex justify-content-center">
+          {props.grams}
+        </div>
+        <div className="col-2 d-flex justify-content-end">
+          <FontAwesomeIcon
+            className={classes.iconHover}
+            onClick={props.onDelete}
+            icon={faTrashCan}
+          />
+        </div>
+      </Card>
+    </li>
   );
 };
 

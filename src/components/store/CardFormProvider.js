@@ -1,11 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import CardFormContext from "./card-form-context";
 
 const defaultCardFormState = {
-  amount: 20,
-  perUnit: 300,
-  total: 6000,
+  amount: 0,
+  perUnit: 0,
+  total: 0,
 };
 
 const cardFormReducer = (state, action) => {
@@ -34,13 +34,13 @@ const CardFormProvider = (props) => {
     defaultCardFormState
   );
 
-  const onAmountHandler = (value) => {
+  const onAmountHandler = useCallback((value) => {
     dispatchCardFormState({ type: "AMOUNT", value: value });
-  };
+  }, []);
 
-  const onPerUnitHandler = (value) => {
+  const onPerUnitHandler = useCallback((value) => {
     dispatchCardFormState({ type: "PER_UNIT", value: value });
-  };
+  }, []);
 
   const cardFormContext = {
     amount: cardFormState.amount,

@@ -95,25 +95,24 @@ const IngredientProvider = (props) => {
     defaultState
   );
 
-  const resetIngredientHandler = () => {
+  const resetIngredientHandler = useCallback(() => {
     dispatchAction({ type: "RESET" });
-  };
-
-  const addIngredientHandler = (row) => {
+  }, []);
+  const addIngredientHandler = useCallback((row) => {
     dispatchAction({ type: "ADD", row: row });
-  };
+  }, []);
 
-  const updateIngredientHandler = (row) => {
+  const updateIngredientHandler = useCallback((row) => {
     dispatchAction({ type: "UPDATE", row: row });
-  };
+  }, []);
 
   const updateGramsIngredientHandler = useCallback((percentages, grams) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
   }, []);
 
-  const removeIngredientHandler = (id) => {
+  const removeIngredientHandler = useCallback((id) => {
     dispatchAction({ type: "REMOVE", id: id });
-  };
+  }, []);
 
   const ingredientContext = {
     ingredients: ingredientState.ingredients,

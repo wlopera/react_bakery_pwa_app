@@ -24,14 +24,14 @@ const BakeryIngredient = () => {
   };
 
   const processRowHandler = (record) => {
-    record.ingredients.forEach((item) => {
+    record.forEach((item) => {
       const id = uuidv4();
       ingredientCtx.addIngredient({
         id: id,
         key: id,
         value: item.value,
         ingredient: item.label,
-        percentage: record.amount,
+        percentage: 0,
         grams: 0,
       });
     });
@@ -59,6 +59,7 @@ const BakeryIngredient = () => {
       grams={row.grams}
       onEdit={editRowHadler}
       onDelete={() => deleteRowHadler(row.id)}
+      className="row d-flex align-items-center bg-white border-bottom w-100"
     />
   ));
 
@@ -70,8 +71,9 @@ const BakeryIngredient = () => {
           percentageTitle="%"
           gramTitle="Gramos"
           onAdd={addRowHandler}
+          className="row d-flex align-items-center bg-primary w-100"
         />
-        <ul className="list-unstyled mt-1">{bakeryList}</ul>
+        <ul className="list-unstyled">{bakeryList}</ul>
       </div>
       {showModal && (
         <Modal onClose={toggle}>
