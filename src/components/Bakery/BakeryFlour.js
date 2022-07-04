@@ -79,7 +79,7 @@ const BakeryFlour = () => {
         )}
         <CardHeader
           ingredient="Harinas"
-          percentageTitle="Porcentaje"
+          percentageTitle="%"
           gramTitle="Gramos"
           onAdd={addRowHandler}
           className="row d-flex align-items-center bg-primary w-100"
