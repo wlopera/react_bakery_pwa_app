@@ -11,7 +11,7 @@ const Layout = (props) => {
       <div
         className="d-flex flex-column justify-content-center bg-image"
         style={{
-          backgroundImage: `url(${bg_bread}) `,
+          // backgroundImage: `url(${bg_bread}) `,
           right: 0,
           top: 0,
           zIndex: -100,

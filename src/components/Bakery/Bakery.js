@@ -85,7 +85,7 @@ const Bakery = () => {
   return (
     <Fragment>
       <CardRecipe
-        className="row d-flex align-items-center bg-primary border-bottom w-50"
+        className="row d-flex align-items-center bg-primary border-bottom w-100"
         title={bakeryCtx.title}
         onAction={() => handleReturn()}
         typeIcon="home"

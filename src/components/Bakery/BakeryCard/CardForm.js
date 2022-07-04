@@ -17,8 +17,8 @@ const CardForm = () => {
   const { amount, perUnit, total } = cardFormCtx;
 
   return (
-    <Card className="row d-flex justify-content-between w-50">
-      <div className="col-3">
+    <Card className="row d-flex justify-content-between w-100">
+      <div className="col">
         <input
           type="number"
           value={amount}
@@ -28,7 +28,7 @@ const CardForm = () => {
           autoFocus
         />
       </div>
-      <div className=" col-3">
+      <div className=" col">
         <input
           type="number"
           value={perUnit}
@@ -37,7 +37,7 @@ const CardForm = () => {
           className=""
         />
       </div>
-      <div className="col-3">
+      <div className="col">
         <span htmlFor="perUnit" className=" w-25" style={{ border: "none" }}>
           {total} grs.
         </span>

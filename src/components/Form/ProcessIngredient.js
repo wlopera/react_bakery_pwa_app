@@ -11,7 +11,7 @@ const ProcessIngredient = ({
 }) => {
   const [record, setRecord] = useState(row);
   const [ingredients, setIngredients] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState([]);
 
   useEffect(() => {
     let newData = [...combo];
@@ -22,26 +22,34 @@ const ProcessIngredient = ({
     setIngredients([...newData]);
   }, [row, currentData, combo]);
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    if (selectedOption) {
-      processRow({
-        ingredients: selectedOption,
-        amount: parseFloat(record.amount),
-      });
-    }
+  const handleCheck = (ingredient) => {
+    setSelectedOption((options) => {
+      const data = options.filter((item) => item.value === ingredient.value);
+      if (data.length > 0) {
+        return options.filter((item) => item.value !== ingredient.value);
+      } else {
+        return [...options, ingredient];
+      }
+    });
   };
-
-  const handleCheck = (id) => {};
 
   const checksList = ingredients.map((ingredient) => (
     <CardCheck
-      key={ingredient.value + 1000}
+      key={ingredient.value}
       title={ingredient.label}
-      onAction={handleCheck(ingredient.value)}
+      onAction={() => handleCheck(ingredient)}
       className="d-flex align-items-center bg-white border-bottom w-100"
+      checked={false}
     />
   ));
+
+  const submitHandler = (event) => {
+    console.log(123456, selectedOption);
+    event.preventDefault();
+    if (selectedOption.length > 0) {
+      processRow(selectedOption);
+    }
+  };
 
   return (
     <>

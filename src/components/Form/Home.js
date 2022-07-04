@@ -30,7 +30,7 @@ const Home = () => {
   const recipeList = dataBasic.map((row) => (
     <div key={row.id}>
       <CardRecipe
-        className="row d-flex align-items-center bg-white border-bottom w-50"
+        className="row d-flex align-items-center bg-white border-bottom w-100"
         title={row.name}
         onAction={() => handleInit(row.id)}
         typeIcon="action"

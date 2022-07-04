@@ -27,7 +27,7 @@ const BakeryTotal = () => {
     <CardHeader
       percentageTitle={percentages}
       gramTitle={perGramsTotal}
-      className="row d-flex align-items-center bg-primary w-50"
+      className="row d-flex align-items-center bg-primary w-100"
     />
   );
 };
