@@ -8,10 +8,10 @@ import classes from "./CardRecipe.module.css";
 const CardTitle = ({ title, onAction, typeIcon, className }) => {
   return (
     <Card className={className} onAction={onAction}>
-      <h1 className="col fw-bold fs-5">{title}</h1>
+      <h1 className="col fs-5">{title}</h1>
 
       {onAction && (
-        <div className="col fw-bold d-flex justify-content-end">
+        <div className="col d-flex justify-content-end">
           <FontAwesomeIcon
             className={classes.iconHover}
             onClick={onAction}

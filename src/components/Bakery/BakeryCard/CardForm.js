@@ -17,32 +17,30 @@ const CardForm = () => {
   const { amount, perUnit, total } = cardFormCtx;
 
   return (
-    <Card>
-      <div className="row d-flex justify-content-between fs-5">
-        <div className="col-3">
-          <input
-            type="number"
-            value={amount}
-            onChange={amountHandler}
-            placeholder="Cantidad"
-            className="w-100"
-            autoFocus
-          />
-        </div>
-        <div className=" col-3">
-          <input
-            type="number"
-            value={perUnit}
-            onChange={perUnitHandler}
-            placeholder="Gramos c/u"
-            className="w-100"
-          />
-        </div>
-        <div className=" col-3">
-          <span htmlFor="perUnit" className=" w-25" style={{ border: "none" }}>
-            {total} grs.
-          </span>
-        </div>
+    <Card className="row d-flex justify-content-between w-50">
+      <div className="col-3">
+        <input
+          type="number"
+          value={amount}
+          onChange={amountHandler}
+          placeholder="Cantidad"
+          className=""
+          autoFocus
+        />
+      </div>
+      <div className=" col-3">
+        <input
+          type="number"
+          value={perUnit}
+          onChange={perUnitHandler}
+          placeholder="Gramos c/u"
+          className=""
+        />
+      </div>
+      <div className="col-3">
+        <span htmlFor="perUnit" className=" w-25" style={{ border: "none" }}>
+          {total} grs.
+        </span>
       </div>
     </Card>
   );

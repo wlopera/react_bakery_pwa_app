@@ -13,11 +13,11 @@ const CardHeader = ({
 }) => {
   return (
     <Card className={className}>
-      <h3 className="col-5 fw-bold fs-5">{ingredient}</h3>
-      <div className="col-2 fw-bold fs-5 d-flex justify-content-center">
+      <h5 className="col-5">{ingredient}</h5>
+      <div className="col-2 fs-5 d-flex justify-content-center">
         {percentageTitle}
       </div>
-      <div className="col-3 fw-bold fs-5 d-flex justify-content-center">
+      <div className="col-3 fs-5 d-flex justify-content-center">
         {gramTitle}
       </div>
       {onAdd && (

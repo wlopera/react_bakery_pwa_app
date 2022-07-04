@@ -31,8 +31,8 @@ const BakeryItem = (props) => {
   return (
     <li>
       <Card className={props.className}>
-        <h3 className="col-5 fw-bold fs-5">{props.ingredient}</h3>
-        <div className="col-2 fw-bold text-success fs-5 d-flex justify-content-center">
+        <h3 className="col-5 fs-6">{props.ingredient}</h3>
+        <div className="col-2 text-success fs-5 d-flex justify-content-center">
           <input
             type="number"
             value={props.percentage}
@@ -44,10 +44,10 @@ const BakeryItem = (props) => {
             className={classes.inputHover}
           />
         </div>
-        <div className="col-3 fw-bold fs-5  d-flex justify-content-center">
+        <div className="col-3 fs-5  d-flex justify-content-center">
           {props.grams}
         </div>
-        <div className="col-2 fw-bold d-flex justify-content-end">
+        <div className="col-2 d-flex justify-content-end">
           <FontAwesomeIcon
             className={classes.iconHover}
             onClick={props.onDelete}
