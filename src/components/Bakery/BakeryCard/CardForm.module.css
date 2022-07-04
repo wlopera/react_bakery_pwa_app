@@ -1,5 +1,5 @@
 .iconHover {
-    color: black;
+    color: rgb(37, 73, 251);
 }
 
 .iconHover:hover {
@@ -17,9 +17,9 @@
 }
 
 .inputHover {
-    border: none
+    border: 1px solid
 }
 
 .inputHover:hover {
-    border: 2px solid black;
+    border: 2px solid rgb(37, 73, 251);
 }

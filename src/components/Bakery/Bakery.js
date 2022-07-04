@@ -90,7 +90,9 @@ const Bakery = () => {
         onAction={() => handleReturn()}
         typeIcon="home"
       />
-      <CardForm />
+      <div className="mt-2 mb-2">
+        <CardForm />
+      </div>
       {cardFormCtx.total > 0 && (
         <div>
           <BakeryFlour />

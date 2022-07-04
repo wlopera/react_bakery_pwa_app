@@ -17,7 +17,9 @@ const Layout = (props) => {
           zIndex: -100,
         }}
       >
-        <section className=" container w-100 mt-2">{props.children}</section>
+        <section className=" container w-100 mt-2 me-auto">
+          {props.children}
+        </section>
         {/* <div>
           <div className={classes.footer}>
             <img

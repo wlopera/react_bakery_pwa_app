@@ -68,7 +68,7 @@ const BakeryIngredient = () => {
       <div>
         <CardHeader
           ingredient="Ingredientes"
-          percentageTitle="%"
+          percentageTitle="Porcentaje"
           gramTitle="Gramos"
           onAdd={addRowHandler}
           className="row d-flex align-items-center bg-primary w-100"

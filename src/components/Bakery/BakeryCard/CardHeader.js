@@ -14,7 +14,7 @@ const CardHeader = ({
   return (
     <Card className={className}>
       <h5 className="col-5">{ingredient}</h5>
-      <div className="col-2 fs-5 d-flex justify-content-center">
+      <div className="col-2 fs-5 d-flex justify-content-around">
         {percentageTitle}
       </div>
       <div className="col-3 fs-5 d-flex justify-content-center">

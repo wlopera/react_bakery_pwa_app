@@ -42,7 +42,7 @@ const Home = () => {
     <div>
       <CardTitle
         title="Recetas"
-        className="row d-flex align-items-center bg-primary w-50"
+        className="row d-flex align-items-center bg-primary w-100"
       />
       <ul className="list-unstyled">{recipeList}</ul>
     </div>

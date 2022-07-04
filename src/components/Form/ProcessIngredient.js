@@ -9,7 +9,6 @@ const ProcessIngredient = ({
   currentData,
   combo,
 }) => {
-  const [record, setRecord] = useState(row);
   const [ingredients, setIngredients] = useState([]);
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -58,19 +57,21 @@ const ProcessIngredient = ({
         <div
           style={{
             overflowY: "auto",
-            height: `${ingredients.length > 10 ? "42vh" : ""}`,
+            height: `${ingredients.length > 15 ? "58vh" : ""}`,
             paddingRight: "20px",
           }}
         >
           {checksList}
         </div>
-        <div className="row">
+        <div className="row justify-content-md-center">
           <button onClick={onClose} className="btn btn-link w-50">
             Cancelar
           </button>
-          <button type="submit" className="btn btn-link w-50">
-            Agregar
-          </button>
+          {selectedOption.length > 0 ? (
+            <button type="submit" className="btn btn-link w-50">
+              Agregar
+            </button>
+          ) : null}
         </div>
       </form>
     </>

@@ -7,9 +7,11 @@ import classes from "./CardRecipe.module.css";
 
 const CardTitle = ({ title, onAction, typeIcon, className }) => {
   return (
-    <Card className={className} onAction={onAction}>
+    <Card
+      className={className}
+      onAction={typeIcon === "home" ? null : onAction}
+    >
       <h1 className="col fs-5">{title}</h1>
-
       {onAction && (
         <div className="col d-flex justify-content-end">
           <FontAwesomeIcon
