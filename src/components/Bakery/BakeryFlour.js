@@ -84,6 +84,7 @@ const BakeryFlour = () => {
           onAdd={addRowHandler}
           className="row d-flex align-items-center bg-primary w-50"
         />
+
         <ul className="list-unstyled">{bakeryList}</ul>
       </div>
       {showModal && (
