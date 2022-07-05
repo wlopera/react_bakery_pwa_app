@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
 import CardCheck from "../Bakery/BakeryCard/CardCheck";
 
 const ProcessIngredient = ({
@@ -43,7 +42,6 @@ const ProcessIngredient = ({
   ));
 
   const submitHandler = (event) => {
-    console.log(123456, selectedOption);
     event.preventDefault();
     if (selectedOption.length > 0) {
       processRow(selectedOption);

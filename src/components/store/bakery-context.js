@@ -2,7 +2,6 @@ import { createContext } from "react";
 
 const BakeryContext = createContext({
   title: "",
-  flours: [],
   data: [],
   percentages: 0,
   grams: 0,

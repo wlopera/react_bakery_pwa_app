@@ -2,11 +2,8 @@ import React, { useCallback, useReducer } from "react";
 
 import BakeryContext from "./bakery-context";
 
-import flours from "./data/flours.json";
-
 const defaultState = {
   title: "",
-  flours: flours,
   data: [],
   percentages: 0,
   grams: 0,
@@ -124,7 +121,6 @@ const BakeryProvider = (props) => {
 
   const bakeryContext = {
     title: bakeryState.title,
-    flours: bakeryState.flours,
     data: bakeryState.data,
     percentages: bakeryState.percentages,
     grams: bakeryState.grams,

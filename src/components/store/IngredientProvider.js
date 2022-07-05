@@ -2,10 +2,7 @@ import React, { useCallback, useReducer } from "react";
 
 import IngredientContext from "./ingredient-context";
 
-import ingredients from "./data/ingredients.json";
-
 const defaultState = {
-  ingredients: ingredients,
   data: [],
   percentages: 0,
   grams: 0,
@@ -80,7 +77,6 @@ const processData = (data, state) => {
   }
 
   return {
-    ingredients: state.ingredients,
     data: data,
     percentages: isValid
       ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
@@ -115,7 +111,6 @@ const IngredientProvider = (props) => {
   }, []);
 
   const ingredientContext = {
-    ingredients: ingredientState.ingredients,
     data: ingredientState.data,
     percentages: ingredientState.percentages,
     grams: ingredientState.grams,

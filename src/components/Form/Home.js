@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import CardTitle from "../Bakery/BakeryCard/CardTitle";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe";
-
 import RecipeContext from "../store/recipe-context";
 
 const Home = () => {

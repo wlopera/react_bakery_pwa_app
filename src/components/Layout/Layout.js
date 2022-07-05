@@ -1,6 +1,6 @@
 import React from "react";
 
-import bg_bread from "../../assets/bg_bread.png";
+// import bg_bread from "../../assets/bg_bread.png";
 
 // import footer from "../../assets/programming.gif";
 // import classes from "./Layout.module.css";

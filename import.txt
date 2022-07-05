@@ -1,0 +1,81 @@
+-----------------------------------------------------------------------------------------
+Crear proyecto: Formula Panadera en React con PWA
+-----------------------------------------------------------------------------------------
+    > npx create-react-app node-bakery-formula --template cra-template-pwa
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+Dependencias:
+-----------------------------------------------------------------------------------------
+  - npm i bootstrap
+  - npm i axios
+  - npm i uuidv4
+
+  - Configurar ambiente
+  - Definir estilos para PWA
+
+  - publicar: npm start
+ -----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------
+  Conectar copn NODEJS para consumir servicios API 
+ -----------------------------------------------------------------------------------------
+ * Definir url de conexion a nodejs:
+ -----------------------------------
+  - react_bakery_pwa_app\public\runtime-config.js 
+    window["runConfig"] = {
+      BACKEND_URL: "http://localhost:8585/api",
+    };
+
+  - react_bakery_pwa_app\public\index.html
+      ...
+        <script src="%PUBLIC_URL%/runtime-config.js"></script>
+      ...
+
+ * Crear Servicios:
+ ------------------
+  - react_bakery_pwa_app\src\services\axios\http-common.js
+    import axios from "axios";
+
+    const { BACKEND_URL } = window["runConfig"];
+
+    const instance = axios.create({
+      baseURL: BACKEND_URL,
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    export default instance;
+
+  - react_bakery_pwa_app\src\services\flour.service.js
+      import http from "./axios/http-common";
+
+      class FlourDataService {
+        get() {
+          return http.get("/flours");
+        }
+
+        create(data) {
+          return http.post("/flours", data);
+        }
+
+        update(data) {
+          return http.put("/flours", data);
+        }
+
+        delete(id) {
+          return http.delete("/flours/" + id);
+        }
+      }
+
+    export default new FlourDataService();
+
+  - Ejemplo de consumo de un servicio:
+    ...
+      useEffect(() => {
+        console.log("Harinas: ", FlourService.get());
+      }, []);
+    ...
+
+ -----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------

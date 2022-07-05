@@ -1,10 +1,14 @@
 import React, { useReducer } from "react";
 
 import RecipeContext from "./recipe-context";
+import FlourService from "../../services/flour.service";
+import IngredientService from "../../services/ingredient.service";
 
 import recipesBasic from "./data/recipesBasic.json";
 
 const defaultState = {
+  flours: [],
+  ingredients: [],
   recipesBasic: recipesBasic,
   dataBasic: [],
 };
@@ -19,6 +23,7 @@ const recipeReducer = (state, action) => {
     }
 
     return {
+      ...state,
       recipesBasic: state.recipesBasic,
       dataBasic: data,
     };
@@ -34,11 +39,34 @@ const RecipeProvider = (props) => {
     dispatchAction({ type: "ADD", row });
   };
 
-  const recipeContext = {
-    recipesBasic: recipeState.recipesBasic,
-    dataBasic: recipeState.dataBasic,
-    addDataBasic: addDataBasicHandler,
+  const getRecipeContext = () => {
+    // Consultar combo de harinas en BD
+    const flours = FlourService.get().then((res) => {
+      recipeContext.flours = res.data.body.map((item) => ({
+        value: item._id,
+        label: item.label,
+      }));
+    });
+
+    // Consultar combo de ingredientes en BD
+
+    const ingredients = IngredientService.get().then((res) => {
+      recipeContext.ingredients = res.data.body.map((item) => ({
+        value: item._id,
+        label: item.label,
+      }));
+    });
+
+    return {
+      recipesBasic: recipeState.recipesBasic,
+      flours: flours,
+      ingredients: ingredients,
+      dataBasic: recipeState.dataBasic,
+      addDataBasic: addDataBasicHandler,
+    };
   };
+
+  const recipeContext = getRecipeContext();
 
   return (
     <RecipeContext.Provider value={recipeContext}>
