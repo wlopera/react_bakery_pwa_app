@@ -5,7 +5,7 @@ import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
-import RecipeContext from "../store/recipe-context";
+import CatalogContext from "../store/catalog-context";
 import BakeryContext from "../store/bakery-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
@@ -13,7 +13,7 @@ const BakeryFlour = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState({});
 
-  const recipeCtx = useContext(RecipeContext);
+  const catalogCtx = useContext(CatalogContext);
   const bakeryCtx = useContext(BakeryContext);
 
   const toggle = () => {
@@ -96,7 +96,7 @@ const BakeryFlour = () => {
             currentData={bakeryCtx.data}
             onClose={toggle}
             processRow={processRowHandler}
-            combo={recipeCtx.flours}
+            combo={catalogCtx.flours}
           />
         </Modal>
       )}

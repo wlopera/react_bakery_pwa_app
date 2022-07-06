@@ -15,8 +15,6 @@ const Home = () => {
       id: recipe.id,
       name: recipe.name,
       order: recipe.order,
-      flours: recipe.flours,
-      ingredients: recipe.ingredients,
     }));
 
     setDataBasic(data);
