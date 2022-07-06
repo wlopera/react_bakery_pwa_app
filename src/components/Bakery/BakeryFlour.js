@@ -67,15 +67,19 @@ const BakeryFlour = () => {
   ));
 
   let alert = null;
-  if (bakeryCtx.data.length > 0 && bakeryCtx.percentages !== 100) {
+  if (bakeryCtx.percentages !== 100) {
     alert = "La harina total debe ser 100%";
   }
 
+  console.log(bakeryCtx.data);
   return (
     <>
       <div>
         {alert && (
-          <div className="alert alert-danger mb-1" role="alert">
+          <div
+            className="alert alert-danger mb-1 me-4  d-flex align-items-center"
+            style={{ height: 0 }}
+          >
             {alert}
           </div>
         )}
@@ -86,7 +90,6 @@ const BakeryFlour = () => {
           onAdd={addRowHandler}
           className="row d-flex align-items-center bg-primary w-100"
         />
-
         <ul className="list-unstyled">{bakeryList}</ul>
       </div>
       {showModal && (

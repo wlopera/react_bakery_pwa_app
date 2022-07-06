@@ -8,6 +8,8 @@ const Layout = (props) => {
   //Carga de catalogos
   const catalogCtx = useContext(CatalogContext);
 
+  const { setCatalogs } = catalogCtx;
+
   useEffect(() => {
     const getCatalogContext = async () => {
       // Consultar combo de harinas en BD
@@ -26,14 +28,14 @@ const Layout = (props) => {
         }));
       });
 
-      catalogCtx.setCatalogs({
+      setCatalogs({
         flours: flours,
         ingredients: ingredients,
       });
     };
 
     getCatalogContext();
-  }, [catalogCtx]);
+  }, [setCatalogs]);
 
   return (
     <div>
@@ -45,7 +47,7 @@ const Layout = (props) => {
           zIndex: -100,
         }}
       >
-        <section className=" container w-100 mt-2 me-auto">
+        <section className="container w-100 mt-2 me-auto">
           {props.children}
         </section>
       </div>

@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import CatalogContext from "./catalog-context";
 
@@ -23,9 +23,9 @@ const CatalogProvider = (props) => {
     defaultState
   );
 
-  const setCatalogsHandler = (catalogs) => {
+  const setCatalogsHandler = useCallback((catalogs) => {
     dispatchAction({ type: "SET", catalogs });
-  };
+  }, []);
 
   const catalogContext = {
     flours: catalogState.flours,

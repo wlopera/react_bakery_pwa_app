@@ -96,12 +96,12 @@ const Bakery = () => {
       {cardFormCtx.total > 0 && (
         <div>
           <BakeryFlour />
-          {bakeryCtx.percentages === 100 && (
-            <div>
-              <BakeryIngredient />
-              <BakeryTotal />
-            </div>
-          )}
+          {/* {bakeryCtx.percentages === 100 && ( */}
+          <div>
+            <BakeryIngredient />
+            <BakeryTotal />
+          </div>
+          {/* )} */}
         </div>
       )}
     </Fragment>
