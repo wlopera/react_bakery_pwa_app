@@ -4,10 +4,10 @@ import { useHistory, useParams } from "react-router-dom";
 import CardForm from "./BakeryCard/CardForm";
 import BakeryFlour from "./BakeryFlour";
 
-import RecipeContext from "../store/recipe-context";
-import CardFormContext from "../store/card-form-context";
-import BakeryContext from "../store/bakery-context";
-import IngredientContext from "../store/ingredient-context";
+import RecipeContext from "../../store/Recipe/recipe-context";
+import CardFormContext from "../../store/CardForm/card-form-context";
+import FlourContext from "../../store/Flour/flour-context";
+import IngredientContext from "../../store/Ingredient/ingredient-context";
 
 import BakeryIngredient from "./BakeryIngredient";
 import BakeryTotal from "./BakeryTotal";
@@ -17,12 +17,12 @@ import CardRecipe from "../Bakery/BakeryCard/CardRecipe";
 const Bakery = () => {
   const cardFormCtx = useContext(CardFormContext);
   const recipeCtx = useContext(RecipeContext);
-  const bakeryCtx = useContext(BakeryContext);
+  const flourCtx = useContext(FlourContext);
   const ingredientCtx = useContext(IngredientContext);
   const param = useParams();
 
   const { onAmount, onPerUnit } = cardFormCtx;
-  const { resetFlour, setTitle, addFlour } = bakeryCtx;
+  const { resetFlour, setTitle, addFlour } = flourCtx;
   const { resetIngredient, addIngredient } = ingredientCtx;
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const Bakery = () => {
     <Fragment>
       <CardRecipe
         className="row d-flex align-items-center bg-primary border-bottom w-100"
-        title={bakeryCtx.title}
+        title={flourCtx.title}
         onAction={() => handleReturn()}
         typeIcon="home"
       />
@@ -96,7 +96,7 @@ const Bakery = () => {
       {cardFormCtx.total > 0 && (
         <div>
           <BakeryFlour />
-          {/* {bakeryCtx.percentages === 100 && ( */}
+          {/* {flourCtx.percentages === 100 && ( */}
           <div>
             <BakeryIngredient />
             <BakeryTotal />

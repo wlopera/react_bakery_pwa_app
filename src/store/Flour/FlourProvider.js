@@ -1,6 +1,6 @@
 import React, { useCallback, useReducer } from "react";
 
-import BakeryContext from "./bakery-context";
+import FlourContext from "./flour-context";
 
 const defaultState = {
   title: "",
@@ -9,7 +9,7 @@ const defaultState = {
   grams: 0,
 };
 
-const bakeryReducer = (state, action) => {
+const flourReducer = (state, action) => {
   if (action.type === "TITLE") {
     return { ...state, title: action.title };
   }
@@ -92,8 +92,8 @@ const processData = (data, state) => {
   };
 };
 
-const BakeryProvider = (props) => {
-  const [bakeryState, dispatchAction] = useReducer(bakeryReducer, defaultState);
+const FlourProvider = (props) => {
+  const [flourState, dispatchAction] = useReducer(flourReducer, defaultState);
 
   const setTitleHandler = useCallback((title) => {
     dispatchAction({ type: "TITLE", title });
@@ -119,11 +119,11 @@ const BakeryProvider = (props) => {
     dispatchAction({ type: "REMOVE", id });
   }, []);
 
-  const bakeryContext = {
-    title: bakeryState.title,
-    data: bakeryState.data,
-    percentages: bakeryState.percentages,
-    grams: bakeryState.grams,
+  const flourContext = {
+    title: flourState.title,
+    data: flourState.data,
+    percentages: flourState.percentages,
+    grams: flourState.grams,
     setTitle: setTitleHandler,
     resetFlour: resetFlourHandler,
     addFlour: addFlourHandler,
@@ -133,10 +133,10 @@ const BakeryProvider = (props) => {
   };
 
   return (
-    <BakeryContext.Provider value={bakeryContext}>
+    <FlourContext.Provider value={flourContext}>
       {props.children}
-    </BakeryContext.Provider>
+    </FlourContext.Provider>
   );
 };
 
-export default BakeryProvider;
+export default FlourProvider;

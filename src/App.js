@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import BakeryProvider from "./components/store/BakeryProvider";
-import CardFormProvider from "./components/store/CardFormProvider";
-import IngredientProvider from "./components/store/IngredientProvider";
-import RecipeProvider from "./components/store/RecipeProvider";
-import CatalogProvider from "./components/store/CatalogProvider";
+import BakeryProvider from "./store/Flour/FlourProvider";
+import CardFormProvider from "./store/CardForm/CardFormProvider";
+import IngredientProvider from "./store/Ingredient/IngredientProvider";
+import RecipeProvider from "./store/Recipe/RecipeProvider";
+import CatalogProvider from "./store/Catalog/CatalogProvider";
 
 import { BuildProviderTree } from "./components/util/Utilities";
 

@@ -5,8 +5,8 @@ import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
-import CatalogContext from "../store/catalog-context";
-import IngredientContext from "../store/ingredient-context";
+import CatalogContext from "../../store/Catalog/catalog-context";
+import IngredientContext from "../../store/Ingredient/ingredient-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
 const BakeryIngredient = () => {

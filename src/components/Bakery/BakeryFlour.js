@@ -5,8 +5,8 @@ import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
-import CatalogContext from "../store/catalog-context";
-import BakeryContext from "../store/bakery-context";
+import CatalogContext from "../../store/Catalog/catalog-context";
+import FlourContext from "../../store/Flour/flour-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
 const BakeryFlour = () => {
@@ -14,7 +14,7 @@ const BakeryFlour = () => {
   const [row, setRow] = useState({});
 
   const catalogCtx = useContext(CatalogContext);
-  const bakeryCtx = useContext(BakeryContext);
+  const flourCtx = useContext(FlourContext);
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -28,7 +28,7 @@ const BakeryFlour = () => {
   const processRowHandler = (record) => {
     record.forEach((item) => {
       const id = uuidv4();
-      bakeryCtx.addFlour({
+      flourCtx.addFlour({
         id: id,
         key: id,
         value: item.value,
@@ -42,18 +42,18 @@ const BakeryFlour = () => {
   };
 
   const editRowHadler = (value, id) => {
-    const row = bakeryCtx.data.filter((item) => item.id === id)[0];
-    bakeryCtx.updateFlour({
+    const row = flourCtx.data.filter((item) => item.id === id)[0];
+    flourCtx.updateFlour({
       ...row,
       percentage: value,
     });
   };
 
   const deleteRowHadler = (id) => {
-    bakeryCtx.removeFlour(id);
+    flourCtx.removeFlour(id);
   };
 
-  const bakeryList = bakeryCtx.data.map((row) => (
+  const bakeryList = flourCtx.data.map((row) => (
     <BakeryItem
       id={row.id}
       key={row.id}
@@ -67,11 +67,10 @@ const BakeryFlour = () => {
   ));
 
   let alert = null;
-  if (bakeryCtx.percentages !== 100) {
+  if (flourCtx.percentages !== 100) {
     alert = "La harina total debe ser 100%";
   }
 
-  console.log(bakeryCtx.data);
   return (
     <>
       <div>
@@ -96,7 +95,7 @@ const BakeryFlour = () => {
         <Modal onClose={toggle}>
           <ProcessIngredient
             row={row}
-            currentData={bakeryCtx.data}
+            currentData={flourCtx.data}
             onClose={toggle}
             processRow={processRowHandler}
             combo={catalogCtx.flours}

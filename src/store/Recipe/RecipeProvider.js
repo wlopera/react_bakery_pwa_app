@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 
 import RecipeContext from "./recipe-context";
 
-import recipesBasic from "./data/recipesBasic.json";
+import recipesBasic from "../../store/data/recipesBasic.json";
 
 const defaultState = {
   recipesBasic: recipesBasic,

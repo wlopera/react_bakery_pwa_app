@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
-import CatalogContext from "../store/catalog-context";
+import CatalogContext from "../../store/Catalog/catalog-context";
 import FlourService from "../../services/flour.service";
 import IngredientService from "../../services/ingredient.service";
 

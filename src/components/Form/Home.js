@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import CardTitle from "../Bakery/BakeryCard/CardTitle";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe";
-import RecipeContext from "../store/recipe-context";
+import RecipeContext from "../../store/Recipe/recipe-context";
 
 const Home = () => {
   const [dataBasic, setDataBasic] = useState([]);
