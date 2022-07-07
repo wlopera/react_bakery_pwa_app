@@ -3,10 +3,16 @@ import CatalogContext from "../../../store/Catalog/catalog-context";
 import CardAdd from "../../Bakery/BakeryCard/CardAdd/CardAdd";
 import service from "../../../services/flour.service";
 import CardHeader from "../../Bakery/BakeryCard/Card/CardHeader";
+import Modal from "../../UI/Modal/Modal";
 
 const AddFlour = () => {
+  const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState(null);
   const catalogCtx = useContext(CatalogContext);
+
+  const toggle = () => {
+    setShowModal((currentValue) => !currentValue);
+  };
 
   const handleInputChange = (event) => {
     setRow((currentRow) => ({
@@ -16,6 +22,7 @@ const AddFlour = () => {
   };
 
   const handleModify = (record) => {
+    toggle();
     setRow(record);
   };
 
@@ -53,6 +60,7 @@ const AddFlour = () => {
         ingredients: catalogCtx.ingredients,
       });
     }
+    toggle();
   };
 
   const handleCancel = (row) => {
@@ -61,6 +69,7 @@ const AddFlour = () => {
 
   const handleAddRow = () => {
     setRow({ id: 0, label: "" });
+    toggle();
   };
 
   const flours = catalogCtx.flours.map((row) => (
@@ -83,42 +92,44 @@ const AddFlour = () => {
       />
 
       {flours}
-      {row && (
-        <form style={{ border: "2px solid ", marginLeft: "5px" }}>
-          <div className="ms-1 me-1">
-            <div className="btn-custom-success mb-2">
-              <label className="form-label">Tipo de Harina</label>
+      {row && showModal && (
+        <Modal onClose={toggle}>
+          <form style={{ border: "2px solid ", marginLeft: "5px" }}>
+            <div className="ms-1 me-1">
+              <div className="btn-custom-success mb-2">
+                <label className="form-label">Tipo de Harina</label>
+              </div>
+              <input
+                type="text"
+                style={{ width: "100%" }}
+                id="flour"
+                value={row.label}
+                onChange={handleInputChange}
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" className="form-text  mb-2">
+                Agregar o modificar ingrediente.
+              </div>
             </div>
-            <input
-              type="text"
-              style={{ width: "100%" }}
-              id="flour"
-              value={row.label}
-              onChange={handleInputChange}
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" className="form-text  mb-2">
-              Agregar o modificar ingrediente.
-            </div>
-          </div>
-          <div className="d-flex justify-content-center mb-2">
-            <button
-              type="button"
-              className="btn btn-link me-2"
-              onClick={handleCancel}
-            >
-              Cancelar
-            </button>
+            <div className="d-flex justify-content-center mb-2">
+              <button
+                type="button"
+                className="btn btn-link me-2"
+                onClick={handleCancel}
+              >
+                Cancelar
+              </button>
 
-            <button
-              type="button"
-              className="btn btn-link"
-              onClick={handleProcess}
-            >
-              {row.id === 0 ? "Agregar" : "Modificar"}
-            </button>
-          </div>
-        </form>
+              <button
+                type="button"
+                className="btn btn-link"
+                onClick={handleProcess}
+              >
+                {row.id === 0 ? "Agregar" : "Modificar"}
+              </button>
+            </div>
+          </form>
+        </Modal>
       )}
     </div>
   );

@@ -62,7 +62,7 @@ const ProcessIngredient = ({
           {checksList}
         </div>
         <div className="row justify-content-md-center">
-          <button onClick={onClose} className="btn btn-link w-50">
+          <button type="button" onClick={onClose} className="btn btn-link w-50">
             Cancelar
           </button>
           {selectedOption.length > 0 ? (

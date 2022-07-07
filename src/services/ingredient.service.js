@@ -9,8 +9,8 @@ class IngredientDataService {
     return http.post("/ingredients", data);
   }
 
-  update(data) {
-    return http.put("/ingredients", data);
+  update(id, data) {
+    return http.put("/ingredients/" + id, data);
   }
 
   delete(id) {
