@@ -6,14 +6,22 @@ import Card from "../../UI/Card";
 
 import classes from "./BakeryItem.module.css";
 
-const BakeryItem = (props) => {
+const BakeryItem = ({
+  value,
+  ingredient,
+  percentage,
+  grams,
+  onEdit,
+  onDelete,
+  className,
+}) => {
   const handleFocus = (event) => event.target.select();
 
-  const handleInputChange = (event, id) => {
+  const handleInputChange = (event) => {
     if (parseFloat(event.target.value) < 0) {
       return;
     }
-    props.onEdit(event.target.value, props.id);
+    onEdit(value, event.target.value);
   };
 
   const handleKeyDown = (event) => {
@@ -30,13 +38,13 @@ const BakeryItem = (props) => {
 
   return (
     <li>
-      <Card className={props.className}>
-        <h3 className="col-5 fs-6">{props.ingredient}</h3>
+      <Card className={className}>
+        <h3 className="col-5 fs-6">{ingredient}</h3>
         <div className="col-2 text-success fs-5 d-flex justify-content-center">
           <input
             type="number"
-            value={props.percentage}
-            onChange={(event) => handleInputChange(event, props.id)}
+            value={percentage}
+            onChange={handleInputChange}
             onFocus={handleFocus}
             onKeyDown={handleKeyDown}
             min={0}
@@ -44,13 +52,11 @@ const BakeryItem = (props) => {
             className={classes.inputHover}
           />
         </div>
-        <div className="col-3 fs-5  d-flex justify-content-center">
-          {props.grams}
-        </div>
+        <div className="col-3 fs-5  d-flex justify-content-center">{grams}</div>
         <div className="col-2 d-flex justify-content-end">
           <FontAwesomeIcon
             className={classes.iconHover}
-            onClick={props.onDelete}
+            onClick={onDelete}
             icon={faTrashCan}
           />
         </div>

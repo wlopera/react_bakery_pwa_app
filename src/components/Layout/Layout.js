@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import CatalogContext from "../../store/Catalog/catalog-context";
 import FlourService from "../../services/flour.service";
 import IngredientService from "../../services/ingredient.service";
+import RecipeService from "../../services/recipe.service";
 import Navigation from "./Navigation";
 
 const Layout = (props) => {
@@ -29,9 +30,18 @@ const Layout = (props) => {
         }));
       });
 
+      // Consultar combo de ingredientes en BD
+      const recipes = await RecipeService.get().then((res) => {
+        return res.data.body.map((item) => ({
+          ...item,
+          id: item._id,
+        }));
+      });
+
       setCatalogs({
         flours: flours,
         ingredients: ingredients,
+        recipes: recipes,
       });
     };
 
