@@ -1,5 +1,18 @@
 /* custom.scss */
-$theme-colors: ("primary": #dcdcdc);
+$theme-colors: ("primary": #dcdcdc,
+    "secondary": #198754,
+    "custom-primary": #dcdcdc,
+    "custom-secondary": #007f2e,
+    "custom-success": #C00000,
+    "custom-info": #FF5000,
+    "custom-warning": #414A51,
+    "custom-danger": #E3E3E3,
+    "custom-light": #F0F0F0,
+    "custom-dark": #00B2CE,
+
+
+
+);
 $border-radius: 10rem;
 
 @import 'bootstrap/scss/bootstrap';

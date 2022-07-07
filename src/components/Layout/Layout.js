@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import CatalogContext from "../../store/Catalog/catalog-context";
 import FlourService from "../../services/flour.service";
 import IngredientService from "../../services/ingredient.service";
+import Navigation from "./Navigation";
 
 const Layout = (props) => {
   //Carga de catalogos
@@ -47,6 +48,7 @@ const Layout = (props) => {
           zIndex: -100,
         }}
       >
+        <Navigation />
         <section className="container w-100 mt-2 me-auto">
           {props.children}
         </section>

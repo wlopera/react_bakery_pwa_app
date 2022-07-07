@@ -9,8 +9,8 @@ class FlourDataService {
     return http.post("/flours", data);
   }
 
-  update(data) {
-    return http.put("/flours", data);
+  update(id, data) {
+    return http.put("/flours/" + id, data);
   }
 
   delete(id) {

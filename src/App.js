@@ -11,6 +11,9 @@ import { BuildProviderTree } from "./components/util/Utilities";
 
 import Bakery from "./components/Bakery/Bakery";
 import Home from "./components/Form/Home";
+import AddFlour from "./components/Form/Add/AddFlour";
+import AddIngredient from "./components/Form/Add/AddIngredient";
+
 import Layout from "./components/Layout/Layout";
 
 const App = () => {
@@ -34,6 +37,12 @@ const App = () => {
           </Route>
           <Route path="/bakery/:id">
             <Bakery />
+          </Route>
+          <Route path="/addFlour">
+            <AddFlour />
+          </Route>
+          <Route path="/addIngredient">
+            <AddIngredient />
           </Route>
         </Switch>
       </Layout>

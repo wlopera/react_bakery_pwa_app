@@ -1,0 +1,7 @@
+.iconHover {
+    color: #151515
+}
+
+.iconHover:hover {
+    color: rgb(13, 222, 241)
+}
