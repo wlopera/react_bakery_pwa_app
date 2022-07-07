@@ -5,6 +5,7 @@ import CatalogContext from "./catalog-context";
 const defaultState = {
   flours: [],
   ingredients: [],
+  recipes: [],
 };
 
 const catalogReducer = (state, action) => {
@@ -12,6 +13,7 @@ const catalogReducer = (state, action) => {
     return {
       flours: action.catalogs.flours,
       ingredients: action.catalogs.ingredients,
+      recipes: action.catalogs.recipes,
     };
   }
   return defaultState;
@@ -30,6 +32,7 @@ const CatalogProvider = (props) => {
   const catalogContext = {
     flours: catalogState.flours,
     ingredients: catalogState.ingredients,
+    recipes: catalogState.recipes,
     setCatalogs: setCatalogsHandler,
   };
 

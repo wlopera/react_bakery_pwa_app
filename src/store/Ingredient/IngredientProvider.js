@@ -25,7 +25,7 @@ const ingredientReducer = (state, action) => {
 
   if (action.type === "UPDATE") {
     const data = state.data.map((item) => {
-      if (item.id === action.row.id) {
+      if (item.value === action.row.value) {
         return {
           ...item,
           percentage: action.row.percentage,
@@ -52,7 +52,7 @@ const ingredientReducer = (state, action) => {
   }
 
   if (action.type === "REMOVE") {
-    const data = state.data.filter((item) => item.id !== action.id);
+    const data = state.data.filter((item) => item.value !== action.value);
     return processData(data, state);
   }
 
@@ -106,8 +106,8 @@ const IngredientProvider = (props) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
   }, []);
 
-  const removeIngredientHandler = useCallback((id) => {
-    dispatchAction({ type: "REMOVE", id: id });
+  const removeIngredientHandler = useCallback((value) => {
+    dispatchAction({ type: "REMOVE", value: value });
   }, []);
 
   const ingredientContext = {

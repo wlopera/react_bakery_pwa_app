@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/Card/CardHeader";
@@ -27,10 +26,7 @@ const BakeryIngredient = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      const id = uuidv4();
       ingredientCtx.addIngredient({
-        id: id,
-        key: id,
         value: item.value,
         ingredient: item.label,
         percentage: 0,
@@ -40,27 +36,27 @@ const BakeryIngredient = () => {
     toggle();
   };
 
-  const editRowHadler = (value, id) => {
-    const row = ingredientCtx.data.filter((item) => item.id === id)[0];
+  const editRowHadler = (value, label) => {
+    const row = ingredientCtx.data.filter((item) => item.value === value)[0];
     ingredientCtx.updateIngredient({
       ...row,
-      percentage: value,
+      percentage: label,
     });
   };
 
-  const deleteRowHadler = (id) => {
-    ingredientCtx.removeIngredient(id);
+  const deleteRowHadler = (value) => {
+    ingredientCtx.removeIngredient(value);
   };
 
   const bakeryList = ingredientCtx.data.map((row) => (
     <BakeryItem
-      id={row.id}
-      key={row.id}
+      key={row.value}
+      value={row.value}
       ingredient={row.ingredient}
       percentage={row.percentage}
       grams={row.grams}
       onEdit={editRowHadler}
-      onDelete={() => deleteRowHadler(row.id)}
+      onDelete={() => deleteRowHadler(row.value)}
       className="row d-flex align-items-center bg-white border-bottom w-100"
     />
   ));

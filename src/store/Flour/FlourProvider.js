@@ -31,7 +31,7 @@ const flourReducer = (state, action) => {
 
   if (action.type === "UPDATE") {
     const data = state.data.map((item) => {
-      if (item.id === action.row.id) {
+      if (item.value === action.row.value) {
         return {
           ...item,
           percentage: action.row.percentage,
@@ -58,7 +58,7 @@ const flourReducer = (state, action) => {
   }
 
   if (action.type === "REMOVE") {
-    const data = state.data.filter((item) => item.id !== action.id);
+    const data = state.data.filter((item) => item.value !== action.value);
     return processData(data, state);
   }
 
@@ -115,8 +115,8 @@ const FlourProvider = (props) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
   }, []);
 
-  const removeFlourHandler = useCallback((id) => {
-    dispatchAction({ type: "REMOVE", id });
+  const removeFlourHandler = useCallback((value) => {
+    dispatchAction({ type: "REMOVE", value });
   }, []);
 
   const flourContext = {
