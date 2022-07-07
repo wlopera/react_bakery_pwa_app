@@ -1,50 +1,63 @@
 # react_bakery_pwa_app
 React Fórmula Panadera -PWA - Bootstrap
 
-## Formula panadera WEB
-![Captura](https://user-images.githubusercontent.com/7141537/175749660-0b1c4d1e-d491-4538-befb-dbec89bc9d20.PNG)
+```
+-----------------------------------------------------------------------------------------
+Crear proyecto:
+-----------------------------------------------------------------------------------------
+    > npx create-react-app react_bakery_pwa_app --template cra-template-pwa
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+Dependencias:
+-----------------------------------------------------------------------------------------
+  - CND:
+   -> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   -> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+ -----------------------------------------------------------------------------------------
+  - Crear carpetas:
+    - assets
+    - components
+    - services
+    - store
+-----------------------------------------------------------------------------------------
+Customizar colores de bootstrap:
+-----------------------------------------------------------------------------------------
+  - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\src\custom.scss
+        /* custom.scss */
+        $theme-colors: ("primary": #dcdcdc,
+            "secondary": #198754,
+            "custom-primary": #dcdcdc,
+            "custom-secondary": #01bc45,
+            "custom-success": #C00000,
+            "custom-info": #86e5f4,
+            "custom-warning": #c8e6fc,
+            "custom-danger": #E3E3E3,
+            "custom-light": #F0F0F0,
+            "custom-dark": #000809,
+            "custom-white": #ffffff,
+        );
+        $border-radius: 10rem;
 
-## Formula panadera Progresive (Mobile)
-![Captura](https://user-images.githubusercontent.com/7141537/175749713-70dd7cb8-a28f-46e9-af46-10edc273c237.PNG)
+        @import 'bootstrap/scss/bootstrap';
 
-## Agregar cantidad y gramos por c/u
-![Captura](https://user-images.githubusercontent.com/7141537/176057222-0bc380f3-1dfd-4e66-8644-dfa0da3eb71d.PNG)
+    - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\src\index.js
+        import "./custom.scss";
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+Conectar React con NodeJS: Localmente
+-----------------------------------------------------------------------------------------
+   - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\public\runtime-config.js
+      window["runConfig"] = {
+        BACKEND_URL: "http://localhost:8585/api",
+      };
 
-## Acceso a la entrada de Harinas
-![Captura1](https://user-images.githubusercontent.com/7141537/176057233-2f3637e8-fea9-4190-aaac-fba5a77c8667.PNG)
-
-## Acceso a la entrada de Harinas
-![Captura2](https://user-images.githubusercontent.com/7141537/176057242-4af48bca-7ebb-4764-b3f1-6b2857940d3e.PNG)
-
-## SE muestra mensaje de error hasta completar 100 5 de la harina
-![Captura3](https://user-images.githubusercontent.com/7141537/176057248-aa01e2f7-faac-4edc-b093-804f52213d49.PNG)
-
-## Ajustar valores de las harinas al 100%
-![Captura4](https://user-images.githubusercontent.com/7141537/176057202-f5b6cd69-3b98-4f1d-8e07-74427e8563e0.PNG)
-
-## Al agregar el 100 de laharina se elimina el mensaje de error
-![Captura5](https://user-images.githubusercontent.com/7141537/176057208-7325038f-6b80-4e14-a111-adb0494c9cec.PNG)
-
-## Agregar ingredientes
-![Captura](https://user-images.githubusercontent.com/7141537/176325357-48e3766a-879a-4d5f-9cab-cdbbe7ec9a6a.PNG)
-
-## Calcular totales con boton 
-![Captura1](https://user-images.githubusercontent.com/7141537/176325355-eded5e94-6675-4e63-91d7-902ab3323e33.PNG)
-
-## Combo multi selección
-![Captura](https://user-images.githubusercontent.com/7141537/176921781-39237cf4-548b-4ada-9673-84c5e73aa93a.PNG)
-
-## Carga de porcentajes en la vista
-![Captura2](https://user-images.githubusercontent.com/7141537/176921777-a56a8939-73bd-45ed-9b85-7fc06ae22ad5.PNG)
-
-## Aregar recetas
-![Captura](https://user-images.githubusercontent.com/7141537/176973582-06267d05-589b-4dc4-9caf-b96a715dd8bf.PNG)
-![Captura2](https://user-images.githubusercontent.com/7141537/176973578-6425f6b6-0594-43fb-9054-ba7b770e6e86.PNG)
-
-## Publicado en [netflity](https://app.netlify.com/)
-![Captura](https://user-images.githubusercontent.com/7141537/176975019-0c6cf876-e13a-41cb-9af7-4640384cde3f.PNG)
-
-# Versión rama: change_style
+  - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\public\index.html
+      <script src="%PUBLIC_URL%/runtime-config.js"></script>
+      
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+```
 
 ## Ajuste de estilos WEB - PWA
 ![Captura222-a](https://user-images.githubusercontent.com/7141537/177217574-c864623e-0e05-4d66-8d5b-39db1786bd2e.PNG)
