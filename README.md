@@ -1,6 +1,8 @@
 # react_bakery_pwa_app
 React Fórmula Panadera -PWA - Bootstrap
 
+# REQUIERE: PROYECTO DE NODE-JS LENTADO
+  > https://github.com/wlopera/node-bakery-formula 
 ```
 -----------------------------------------------------------------------------------------
 Crear proyecto:
@@ -107,3 +109,13 @@ Conectar React con NodeJS: Localmente
 ![Capturaa](https://user-images.githubusercontent.com/7141537/177811612-bb1c2d70-48ab-4a7a-a8fa-12a899519a9c.PNG)
 ![Captura](https://user-images.githubusercontent.com/7141537/177811613-c484b368-6273-49c3-b829-0c091e46f015.PNG)
 ![Captura1](https://user-images.githubusercontent.com/7141537/177811609-ed90fdb7-94dd-4d14-b896-0ffd06de3bb6.PNG)
+
+## Configurar para buscar nodeJS en la web
+  - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\public\runtime-config.js
+  ```
+  window["runConfig"] = {
+  //BACKEND_URL: "http://localhost:8585/api", //Desarrollo
+  BACKEND_URL: "https://node-bakery-formula.herokuapp.com/api", // Produccion
+};
+
+  ```
