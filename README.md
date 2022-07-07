@@ -56,7 +56,6 @@ Conectar React con NodeJS: Localmente
       <script src="%PUBLIC_URL%/runtime-config.js"></script>
       
 -----------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
 ```
 
 ## Ajuste de estilos WEB - PWA
@@ -71,3 +70,40 @@ Conectar React con NodeJS: Localmente
 
 ## Validar si se puede agregar ingredientes (botón aceptar)
 ![CapturaAA](https://user-images.githubusercontent.com/7141537/177217576-70e598e0-9688-4843-85c6-d3f3025e3257.PNG)
+
+## Conexion con NodeJS - MongoDB
+```
+ - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\src\services\axios\http-common.js
+        import axios from "axios";
+        const { BACKEND_URL } = window["runConfig"];
+
+        const instance = axios.create({
+          baseURL: BACKEND_URL,
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        
+  - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\src\services\ingredient.service.js
+            import http from "./axios/http-common";
+            class IngredientDataService {
+              get() {
+                return http.get("/ingredients");
+              }
+              create(data) {
+                return http.post("/ingredients", data);
+              }
+              update(id, data) {
+                return http.put("/ingredients/" + id, data);
+              }
+              delete(id) {
+                return http.delete("/ingredients/" + id);
+              }
+            }
+            export default new IngredientDataService();
+            export default instance;
+```
+## Agregar, modificar o eliminar ingredientes 
+![Capturaa](https://user-images.githubusercontent.com/7141537/177811612-bb1c2d70-48ab-4a7a-a8fa-12a899519a9c.PNG)
+![Captura](https://user-images.githubusercontent.com/7141537/177811613-c484b368-6273-49c3-b829-0c091e46f015.PNG)
+![Captura1](https://user-images.githubusercontent.com/7141537/177811609-ed90fdb7-94dd-4d14-b896-0ffd06de3bb6.PNG)
