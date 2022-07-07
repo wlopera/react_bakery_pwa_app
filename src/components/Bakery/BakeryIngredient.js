@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
-import CardHeader from "./BakeryCard/CardHeader";
+import CardHeader from "./BakeryCard/Card/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
 import CatalogContext from "../../store/Catalog/catalog-context";

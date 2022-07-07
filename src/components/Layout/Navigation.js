@@ -6,8 +6,8 @@ import classes from "./Navigation.module.css";
 const Navigation = () => {
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light"
-      style={{ backgroundColor: "green", color: "white" }}
+      className="navbar navbar-expand-lg navbar-light bg-custom-secondary"
+      style={{ color: "white" }}
     >
       <div className="container-fluid">
         <h1>Fórmula Panadera</h1>
@@ -43,6 +43,15 @@ const Navigation = () => {
                   className="nav-link"
                 >
                   Agregar Ingredientes
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/home"
+                  activeClassName={classes.active}
+                  className="nav-link"
+                >
+                  Recetas
                 </NavLink>
               </li>
             </ul>

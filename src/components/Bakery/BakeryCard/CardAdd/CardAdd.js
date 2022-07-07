@@ -2,7 +2,7 @@ import React from "react";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Card from "../../UI/Card";
+import Card from "../../../UI/Card";
 import classes from "./CardAdd.module.css";
 
 const CardAdd = ({ id, label, className, onModify, onDelete }) => {
@@ -19,9 +19,23 @@ const CardAdd = ({ id, label, className, onModify, onDelete }) => {
 
   return (
     <Card className={className}>
-      <div className="row d-flex align-items-center">
+      <div
+        className="row d-flex align-items-center"
+        style={{
+          borderBottom: "2px solid lightgray",
+        }}
+      >
         <div className="col-8 d-flex justify-content-center">
-          <input type="text" value={label} disabled style={{ width: "100%" }} />
+          <input
+            type="text"
+            value={label}
+            disabled
+            style={{
+              width: "100%",
+              border: "none",
+              backgroundColor: "white",
+            }}
+          />
         </div>
         <div className="col-2 d-flex justify-content-end">
           <FontAwesomeIcon

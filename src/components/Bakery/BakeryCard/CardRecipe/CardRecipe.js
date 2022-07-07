@@ -2,7 +2,7 @@ import React from "react";
 import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Card from "../../UI/Card";
+import Card from "../../../UI/Card";
 import classes from "./CardRecipe.module.css";
 
 const CardTitle = ({ title, onAction, typeIcon, className }) => {

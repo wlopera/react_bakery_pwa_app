@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-import CardForm from "./BakeryCard/CardForm";
+import CardForm from "./BakeryCard/CardForm/CardForm";
 import BakeryFlour from "./BakeryFlour";
 
 import RecipeContext from "../../store/Recipe/recipe-context";
@@ -12,7 +12,7 @@ import IngredientContext from "../../store/Ingredient/ingredient-context";
 import BakeryIngredient from "./BakeryIngredient";
 import BakeryTotal from "./BakeryTotal";
 
-import CardRecipe from "../Bakery/BakeryCard/CardRecipe";
+import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 
 const Bakery = () => {
   const cardFormCtx = useContext(CardFormContext);

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import CatalogContext from "../../../store/Catalog/catalog-context";
-import CardAdd from "../../Bakery/BakeryCard/CardAdd";
+import CardAdd from "../../Bakery/BakeryCard/CardAdd/CardAdd";
 import service from "../../../services/flour.service";
-import CardHeader from "../../Bakery/BakeryCard/CardHeader";
+import CardHeader from "../../Bakery/BakeryCard/Card/CardHeader";
 
 const AddFlour = () => {
   const [row, setRow] = useState(null);
@@ -22,9 +22,26 @@ const AddFlour = () => {
   const handleDelete = async (id) => {
     setRow(null);
     const res = await service.delete(id);
+    updateCatalogs(res.status);
+  };
 
-    console.log(555555555555, res);
-    if (res.status === 200) {
+  const handleProcess = async () => {
+    if (row.id === 0) {
+      const res = await service.create({
+        label: row.label,
+      });
+      updateCatalogs(res.status);
+    } else {
+      const res = await service.update(row.id, {
+        label: row.label,
+      });
+      updateCatalogs(res.status);
+    }
+    setRow(null);
+  };
+
+  const updateCatalogs = async (status) => {
+    if (status === 200) {
       const flours = await service.get().then((res) => {
         return res.data.body.map((item) => ({
           value: item._id,
@@ -38,57 +55,6 @@ const AddFlour = () => {
     }
   };
 
-  console.log(11111, catalogCtx);
-  const flours = catalogCtx.flours.map((row) => (
-    <CardAdd
-      id={row.value}
-      key={row.value}
-      label={row.label}
-      className="row d-flex bg-primary mb-1 w-100 ms-1"
-      onModify={handleModify}
-      onDelete={handleDelete}
-    />
-  ));
-
-  const handleProcess = async () => {
-    if (row.id === 0) {
-      const res = await service.create({
-        label: row.label,
-      });
-      console.log(222222222222, res);
-      if (res.status === 200) {
-        const flours = await service.get().then((res) => {
-          return res.data.body.map((item) => ({
-            value: item._id,
-            label: item.label,
-          }));
-        });
-        catalogCtx.setCatalogs({
-          flours: flours,
-          ingredients: catalogCtx.ingredients,
-        });
-      }
-    } else {
-      const res = await service.update(row.id, {
-        label: row.label,
-      });
-      console.log(33333333333, res);
-      if (res.status === 200) {
-        const flours = await service.get().then((res) => {
-          return res.data.body.map((item) => ({
-            value: item._id,
-            label: item.label,
-          }));
-        });
-        catalogCtx.setCatalogs({
-          flours: flours,
-          ingredients: catalogCtx.ingredients,
-        });
-      }
-    }
-    setRow(null);
-  };
-
   const handleCancel = (row) => {
     setRow(null);
   };
@@ -97,18 +63,29 @@ const AddFlour = () => {
     setRow({ id: 0, label: "" });
   };
 
+  const flours = catalogCtx.flours.map((row) => (
+    <CardAdd
+      id={row.value}
+      key={row.value}
+      label={row.label}
+      className="row d-flex bg-custom-white mb-1 w-100 ms-1"
+      onModify={handleModify}
+      onDelete={handleDelete}
+    />
+  ));
+
   return (
     <div>
       <CardHeader
         ingredient="Administrar Harinas"
         onAdd={handleAddRow}
-        className="row d-flex align-items-center bg-primary w-100"
+        className="row d-flex align-items-center bg-custom-info w-100 ms-1 mb-1"
       />
 
       {flours}
       {row && (
-        <form style={{ border: "2px solid gray" }}>
-          <div className="mb-1 ">
+        <form style={{ border: "2px solid ", marginLeft: "5px" }}>
+          <div className="ms-1 me-1">
             <div className="btn-custom-success mb-2">
               <label className="form-label">Tipo de Harina</label>
             </div>
@@ -127,7 +104,7 @@ const AddFlour = () => {
           <div className="d-flex justify-content-center mb-2">
             <button
               type="button"
-              className="btn btn-custom-info me-2"
+              className="btn btn-link me-2"
               onClick={handleCancel}
             >
               Cancelar
@@ -135,7 +112,7 @@ const AddFlour = () => {
 
             <button
               type="button"
-              className="btn btn-custom-dark"
+              className="btn btn-link"
               onClick={handleProcess}
             >
               {row.id === 0 ? "Agregar" : "Modificar"}

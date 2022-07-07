@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
-import Card from "../../UI/Card";
-import CardFormContext from "../../../store/CardForm/card-form-context";
+import Card from "../../../UI/Card";
+import CardFormContext from "../../../../store/CardForm/card-form-context";
 
 import classes from "./CardForm.module.css";
 

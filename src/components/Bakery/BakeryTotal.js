@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import CardHeader from "./BakeryCard/CardHeader";
+import CardHeader from "./BakeryCard/Card/CardHeader";
 
 import FlourContext from "../../store/Flour/flour-context";
 import IngredientContext from "../../store/Ingredient/ingredient-context";

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import CardTitle from "../Bakery/BakeryCard/CardTitle";
-import CardRecipe from "../Bakery/BakeryCard/CardRecipe";
+import CardTitle from "../Bakery/BakeryCard/Card/CardTitle";
+import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 import RecipeContext from "../../store/Recipe/recipe-context";
 
 const Home = () => {

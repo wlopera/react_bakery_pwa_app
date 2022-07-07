@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CardCheck from "../Bakery/BakeryCard/CardCheck";
+import CardCheck from "../Bakery/BakeryCard/Card/CardCheck";
 
 const ProcessIngredient = ({
   row,

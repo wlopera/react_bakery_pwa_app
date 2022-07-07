@@ -19,14 +19,12 @@
 .nav a:active,
 .nav a.active {
   color: black;
-  border-bottom: 2px solid black;
-  background: rgb(73, 243, 73);
+  border-bottom: 2px solid rgb(4, 109, 4);
 }
 
 
 .nav a.active {
   color: black;
-  border-bottom: 2px solid black;
-  background: rgb(140, 245, 140);
+  border-bottom: 2px solid rgb(140, 245, 140);
   font-weight: bold;
 }
