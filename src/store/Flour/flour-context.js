@@ -1,8 +1,7 @@
 import { createContext } from "react";
 
-const BakeryContext = createContext({
+const FlourContext = createContext({
   title: "",
-  flours: [],
   data: [],
   percentages: 0,
   grams: 0,
@@ -14,4 +13,4 @@ const BakeryContext = createContext({
   updateGrams: () => {},
 });
 
-export default BakeryContext;
+export default FlourContext;

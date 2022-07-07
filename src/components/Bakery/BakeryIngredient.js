@@ -2,16 +2,18 @@ import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
-import CardHeader from "./BakeryCard/CardHeader";
+import CardHeader from "./BakeryCard/Card/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
-import IngredientContext from "../store/ingredient-context";
+import CatalogContext from "../../store/Catalog/catalog-context";
+import IngredientContext from "../../store/Ingredient/ingredient-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
 const BakeryIngredient = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState({});
 
+  const catalogCtx = useContext(CatalogContext);
   const ingredientCtx = useContext(IngredientContext);
 
   const toggle = () => {
@@ -82,7 +84,7 @@ const BakeryIngredient = () => {
             currentData={ingredientCtx.data}
             onClose={toggle}
             processRow={processRowHandler}
-            combo={ingredientCtx.ingredients}
+            combo={catalogCtx.ingredients}
           />
         </Modal>
       )}

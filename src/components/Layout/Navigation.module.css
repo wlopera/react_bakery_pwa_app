@@ -1,0 +1,30 @@
+.nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  margin-left: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #0b41f3;
+}
+
+.nav a:hover,
+.nav a:active,
+.nav a.active {
+  color: black;
+  border-bottom: 2px solid rgb(4, 109, 4);
+}
+
+
+.nav a.active {
+  color: black;
+  border-bottom: 2px solid rgb(140, 245, 140);
+  font-weight: bold;
+}

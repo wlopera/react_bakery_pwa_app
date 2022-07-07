@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../UI/Card";
+import Card from "../../../UI/Card";
 
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

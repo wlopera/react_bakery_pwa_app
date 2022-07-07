@@ -10,7 +10,7 @@
       {
         "id": "1000",
         "key": "1000",
-        "value": 1,
+        "value": "62c447f9807e1c4d875232f7",
         "ingredient": "Harina Panadera",
         "percentage": 100
       }
@@ -19,21 +19,21 @@
       {
         "id": "2000",
         "key": "2000",
-        "value": 100,
+        "value": "62c44c01b3cf3e68f6f3a917",
         "ingredient": "Agua",
         "percentage": 60
       },
       {
         "id": "2001",
         "key": "2001",
-        "value": 101,
+        "value": "62c44c5db07022920c59d410",
         "ingredient": "Levadura",
         "percentage": 1.8
       },
       {
         "id": "2002",
         "key": "2002",
-        "value": 102,
+        "value": "62c4b840a151a94f3b405f4c",
         "ingredient": "Sal",
         "percentage": 1
       }
@@ -50,7 +50,7 @@
       {
         "id": "1000",
         "key": "1000",
-        "value": 1,
+        "value": "62c447f9807e1c4d875232f7",
         "ingredient": "Harina Panadera",
         "percentage": 100
       }
@@ -59,42 +59,42 @@
       {
         "id": "2000",
         "key": "2000",
-        "value": 100,
+        "value": "62c44c01b3cf3e68f6f3a917",
         "ingredient": "Agua",
         "percentage": 52
       },
       {
         "id": "2001",
         "key": "2001",
-        "value": 101,
+        "value": "62c44c5db07022920c59d410",
         "ingredient": "Levadura",
         "percentage": 2
       },
       {
         "id": "2002",
         "key": "2002",
-        "value": 102,
+        "value": "62c4b840a151a94f3b405f4c",
         "ingredient": "Sal",
         "percentage": 1.8
       },
       {
         "id": "2003",
         "key": "2003",
-        "value": 103,
+        "value": "62c4ba0ca151a94f3b405f4d",
         "ingredient": "Azucar",
         "percentage": 3.3
       },
       {
         "id": "2004",
         "key": "2004",
-        "value": 108,
+        "value": "62c4ba45a151a94f3b405f52",
         "ingredient": "Manteca Vegetal",
         "percentage": 2.2
       },
       {
         "id": "2005",
         "key": "2005",
-        "value": 109,
+        "value": "62c4ba4ea151a94f3b405f53",
         "ingredient": "Huevos",
         "percentage": 2.8
       }
@@ -111,21 +111,21 @@
       {
         "id": "1000",
         "key": "1000",
-        "value": 1,
+        "value": "62c447f9807e1c4d875232f7",
         "ingredient": "Harina Panadera",
         "percentage": 87
       },
       {
         "id": "1001",
         "key": "1001",
-        "value": 2,
+        "value": "62c44841807e1c4d875232f8",
         "ingredient": "Afrecho",
         "percentage": 3
       },
       {
         "id": "1002",
         "key": "1002",
-        "value": 4,
+        "value": "62c4b74fa151a94f3b405f4b",
         "ingredient": "Harina Centeno",
         "percentage": 10
       }
@@ -134,21 +134,21 @@
       {
         "id": "2000",
         "key": "2000",
-        "value": 100,
+        "value": "62c44c01b3cf3e68f6f3a917",
         "ingredient": "Agua",
         "percentage": 63
       },
       {
         "id": "2001",
         "key": "2001",
-        "value": 101,
+        "value": "62c44c5db07022920c59d410",
         "ingredient": "Levadura",
         "percentage": 1.5
       },
       {
         "id": "2002",
         "key": "2002",
-        "value": 102,
+        "value": "62c4b840a151a94f3b405f4c",
         "ingredient": "Sal",
         "percentage": 1.8
       }
@@ -165,21 +165,21 @@
       {
         "id": "1000",
         "key": "1000",
-        "value": 1,
+        "value": "62c447f9807e1c4d875232f7",
         "ingredient": "Harina Panadera",
         "percentage": 75
       },
       {
         "id": "1001",
         "key": "1001",
-        "value": 2,
+        "value": "62c44841807e1c4d875232f8",
         "ingredient": "Afrecho",
         "percentage": 5
       },
       {
         "id": "1002",
         "key": "1002",
-        "value": 3,
+        "value": "62c4b73ca151a94f3b405f4a",
         "ingredient": "Avena en Polvo",
         "percentage": 20
       }
@@ -188,49 +188,49 @@
       {
         "id": "2000",
         "key": "2000",
-        "value": 100,
+        "value": "62c44c01b3cf3e68f6f3a917",
         "ingredient": "Agua",
         "percentage": 52
       },
       {
         "id": "2001",
         "key": "2001",
-        "value": 104,
+        "value": "62c4ba14a151a94f3b405f4e",
         "ingredient": "Leche en Polvo",
         "percentage": 3
       },
       {
         "id": "2002",
         "key": "2002",
-        "value": 101,
+        "value": "62c44c5db07022920c59d410",
         "ingredient": "Levadura",
         "percentage": 2
       },
       {
         "id": "2003",
         "key": "2003",
-        "value": 102,
+        "value": "62c4b840a151a94f3b405f4c",
         "ingredient": "Sal",
         "percentage": 1.5
       },
       {
         "id": "2004",
         "key": "2004",
-        "value": 105,
+        "value": "62c4ba1ea151a94f3b405f4f",
         "ingredient": "Extracto Malta",
         "percentage": 1.5
       },
       {
         "id": "2005",
         "key": "2005",
-        "value": 106,
+        "value": "62c4ba27a151a94f3b405f50",
         "ingredient": "Manteq/Margar",
         "percentage": 3
       },
       {
         "id": "2006",
         "key": "2006",
-        "value": 107,
+        "value": "62c4ba33a151a94f3b405f51",
         "ingredient": "Avena en Remojo",
         "percentage": 30
       }
@@ -247,14 +247,14 @@
       {
         "id": "1000",
         "key": "1000",
-        "value": 1,
+        "value": "62c447f9807e1c4d875232f7",
         "ingredient": "Harina Panadera",
         "percentage": 97
       },
       {
         "id": "1001",
         "key": "1001",
-        "value": 2,
+        "value": "62c44841807e1c4d875232f8",
         "ingredient": "Afrecho",
         "percentage": 3
       }
@@ -263,28 +263,28 @@
       {
         "id": "2000",
         "key": "2000",
-        "value": 100,
+        "value": "62c44c01b3cf3e68f6f3a917",
         "ingredient": "Agua",
         "percentage": 62
       },
       {
         "id": "2001",
         "key": "2001",
-        "value": 101,
+        "value": "62c44c5db07022920c59d410",
         "ingredient": "Levadura",
         "percentage": 1.5
       },
       {
         "id": "2002",
         "key": "2002",
-        "value": 102,
+        "value": "62c4b840a151a94f3b405f4c",
         "ingredient": "Sal",
         "percentage": 1.8
       },
       {
         "id": "2003",
         "key": "2003",
-        "value": 113,
+        "value": "62c4ba69a151a94f3b405f57",
         "ingredient": "Ajo Cortado",
         "percentage": 4
       }

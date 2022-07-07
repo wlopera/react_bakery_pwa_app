@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
-import CardCheck from "../Bakery/BakeryCard/CardCheck";
+import CardCheck from "../Bakery/BakeryCard/Card/CardCheck";
 
 const ProcessIngredient = ({
   row,
@@ -43,7 +42,6 @@ const ProcessIngredient = ({
   ));
 
   const submitHandler = (event) => {
-    console.log(123456, selectedOption);
     event.preventDefault();
     if (selectedOption.length > 0) {
       processRow(selectedOption);
@@ -64,7 +62,7 @@ const ProcessIngredient = ({
           {checksList}
         </div>
         <div className="row justify-content-md-center">
-          <button onClick={onClose} className="btn btn-link w-50">
+          <button type="button" onClick={onClose} className="btn btn-link w-50">
             Cancelar
           </button>
           {selectedOption.length > 0 ? (

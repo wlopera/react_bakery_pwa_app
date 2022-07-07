@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from "react";
-import CardHeader from "./BakeryCard/CardHeader";
+import CardHeader from "./BakeryCard/Card/CardHeader";
 
-import BakeryContext from "../store/bakery-context";
-import IngredientContext from "../store/ingredient-context";
-import CardFormContext from "../store/card-form-context";
+import FlourContext from "../../store/Flour/flour-context";
+import IngredientContext from "../../store/Ingredient/ingredient-context";
+import CardFormContext from "../../store/CardForm/card-form-context";
 
 const BakeryTotal = () => {
-  const bakeryCtx = useContext(BakeryContext);
+  const flourCtx = useContext(FlourContext);
   const ingredientCtx = useContext(IngredientContext);
   const cardFormCtx = useContext(CardFormContext);
 
-  const percentages = bakeryCtx.percentages + ingredientCtx.percentages;
-  const grams = bakeryCtx.grams + ingredientCtx.grams;
+  const percentages = flourCtx.percentages + ingredientCtx.percentages;
+  const grams = flourCtx.grams + ingredientCtx.grams;
   const gramsTotal = cardFormCtx.total;
-  const { updateGramsFlour } = bakeryCtx;
+  const { updateGramsFlour } = flourCtx;
   const { updateGramsIngredient } = ingredientCtx;
 
   useEffect(() => {

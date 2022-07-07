@@ -1,17 +1,19 @@
 import React, { useCallback, useReducer } from "react";
 
-import IngredientContext from "./ingredient-context";
-
-import ingredients from "./data/ingredients.json";
+import FlourContext from "./flour-context";
 
 const defaultState = {
-  ingredients: ingredients,
+  title: "",
   data: [],
   percentages: 0,
   grams: 0,
 };
 
-const ingredientReducer = (state, action) => {
+const flourReducer = (state, action) => {
+  if (action.type === "TITLE") {
+    return { ...state, title: action.title };
+  }
+
   if (action.type === "RESET") {
     return defaultState;
   }
@@ -19,10 +21,11 @@ const ingredientReducer = (state, action) => {
   if (action.type === "ADD") {
     let data = [...state.data, action.row];
 
-    // Ordenar la lista de ingredientes
-    data = data.sort((row1, row2) =>
-      row1.ingredient > row2.ingredient ? 1 : -1
-    );
+    // Ordenar la lista de harinas
+    if (data.length > 0) {
+      data = data.sort((row1, row2) => (row1.value > row2.value ? 1 : -1));
+    }
+
     return processData(data, state);
   }
 
@@ -80,57 +83,60 @@ const processData = (data, state) => {
   }
 
   return {
-    ingredients: state.ingredients,
+    ...state,
     data: data,
     percentages: isValid
       ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
-      : 0,
+      : 0.0,
     grams: Math.round(grams.reduce((acc, item) => acc + item, 0) * 100) / 100,
   };
 };
 
-const IngredientProvider = (props) => {
-  const [ingredientState, dispatchAction] = useReducer(
-    ingredientReducer,
-    defaultState
-  );
+const FlourProvider = (props) => {
+  const [flourState, dispatchAction] = useReducer(flourReducer, defaultState);
 
-  const resetIngredientHandler = useCallback(() => {
+  const setTitleHandler = useCallback((title) => {
+    dispatchAction({ type: "TITLE", title });
+  }, []);
+
+  const resetFlourHandler = useCallback(() => {
     dispatchAction({ type: "RESET" });
   }, []);
-  const addIngredientHandler = useCallback((row) => {
-    dispatchAction({ type: "ADD", row: row });
+
+  const addFlourHandler = useCallback((row) => {
+    dispatchAction({ type: "ADD", row });
   }, []);
 
-  const updateIngredientHandler = useCallback((row) => {
-    dispatchAction({ type: "UPDATE", row: row });
+  const updateFlourHandler = useCallback((row) => {
+    dispatchAction({ type: "UPDATE", row });
   }, []);
 
-  const updateGramsIngredientHandler = useCallback((percentages, grams) => {
+  const updateGramsFlourHandler = useCallback((percentages, grams) => {
     dispatchAction({ type: "UPDATE_GRAMS", percentages, grams });
   }, []);
 
-  const removeIngredientHandler = useCallback((id) => {
-    dispatchAction({ type: "REMOVE", id: id });
+  const removeFlourHandler = useCallback((id) => {
+    dispatchAction({ type: "REMOVE", id });
   }, []);
 
-  const ingredientContext = {
-    ingredients: ingredientState.ingredients,
-    data: ingredientState.data,
-    percentages: ingredientState.percentages,
-    grams: ingredientState.grams,
-    resetIngredient: resetIngredientHandler,
-    addIngredient: addIngredientHandler,
-    updateIngredient: updateIngredientHandler,
-    removeIngredient: removeIngredientHandler,
-    updateGramsIngredient: updateGramsIngredientHandler,
+  const flourContext = {
+    title: flourState.title,
+    data: flourState.data,
+    percentages: flourState.percentages,
+    grams: flourState.grams,
+    setTitle: setTitleHandler,
+    resetFlour: resetFlourHandler,
+    addFlour: addFlourHandler,
+    updateFlour: updateFlourHandler,
+    removeFlour: removeFlourHandler,
+    updateGramsFlour: updateGramsFlourHandler,
   };
 
   return (
-    <IngredientContext.Provider value={ingredientContext}>
+    <FlourContext.Provider value={flourContext}>
       {props.children}
-    </IngredientContext.Provider>
+    </FlourContext.Provider>
   );
 };
 
-export default IngredientProvider;
+export default FlourProvider;

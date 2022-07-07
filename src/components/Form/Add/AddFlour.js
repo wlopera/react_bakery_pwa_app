@@ -1,0 +1,138 @@
+import React, { useContext, useState } from "react";
+import CatalogContext from "../../../store/Catalog/catalog-context";
+import CardAdd from "../../Bakery/BakeryCard/CardAdd/CardAdd";
+import service from "../../../services/flour.service";
+import CardHeader from "../../Bakery/BakeryCard/Card/CardHeader";
+import Modal from "../../UI/Modal/Modal";
+
+const AddFlour = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [row, setRow] = useState(null);
+  const catalogCtx = useContext(CatalogContext);
+
+  const toggle = () => {
+    setShowModal((currentValue) => !currentValue);
+  };
+
+  const handleInputChange = (event) => {
+    setRow((currentRow) => ({
+      id: currentRow.id,
+      label: event.target.value,
+    }));
+  };
+
+  const handleModify = (record) => {
+    toggle();
+    setRow(record);
+  };
+
+  const handleDelete = async (id) => {
+    setRow(null);
+    const res = await service.delete(id);
+    updateCatalogs(res.status);
+  };
+
+  const handleProcess = async () => {
+    if (row.id === 0) {
+      const res = await service.create({
+        label: row.label,
+      });
+      updateCatalogs(res.status);
+    } else {
+      const res = await service.update(row.id, {
+        label: row.label,
+      });
+      updateCatalogs(res.status);
+    }
+    setRow(null);
+  };
+
+  const updateCatalogs = async (status) => {
+    if (status === 200) {
+      const flours = await service.get().then((res) => {
+        return res.data.body.map((item) => ({
+          value: item._id,
+          label: item.label,
+        }));
+      });
+      catalogCtx.setCatalogs({
+        flours: flours,
+        ingredients: catalogCtx.ingredients,
+      });
+    }
+    toggle();
+  };
+
+  const handleCancel = (row) => {
+    setRow(null);
+  };
+
+  const handleAddRow = () => {
+    setRow({ id: 0, label: "" });
+    toggle();
+  };
+
+  const flours = catalogCtx.flours.map((row) => (
+    <CardAdd
+      id={row.value}
+      key={row.value}
+      label={row.label}
+      className="row d-flex bg-custom-white mb-1 w-100 ms-1"
+      onModify={handleModify}
+      onDelete={handleDelete}
+    />
+  ));
+
+  return (
+    <div>
+      <CardHeader
+        ingredient="Administrar Harinas"
+        onAdd={handleAddRow}
+        className="row d-flex align-items-center bg-custom-info w-100 ms-1 mb-1"
+      />
+
+      {flours}
+      {row && showModal && (
+        <Modal onClose={toggle}>
+          <form style={{ border: "2px solid ", marginLeft: "5px" }}>
+            <div className="ms-1 me-1">
+              <div className="btn-custom-success mb-2">
+                <label className="form-label">Tipo de Harina</label>
+              </div>
+              <input
+                type="text"
+                style={{ width: "100%" }}
+                id="flour"
+                value={row.label}
+                onChange={handleInputChange}
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" className="form-text  mb-2">
+                Agregar o modificar ingrediente.
+              </div>
+            </div>
+            <div className="d-flex justify-content-center mb-2">
+              <button
+                type="button"
+                className="btn btn-link me-2"
+                onClick={handleCancel}
+              >
+                Cancelar
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-link"
+                onClick={handleProcess}
+              >
+                {row.id === 0 ? "Agregar" : "Modificar"}
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
+    </div>
+  );
+};
+
+export default AddFlour;
