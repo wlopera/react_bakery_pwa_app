@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navigation.module.css";
 
 const Navigation = () => {
+  const token = localStorage.getItem("token");
+  console.log(1111111111, token);
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-custom-secondary"
@@ -27,24 +30,28 @@ const Navigation = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <nav className={classes.nav}>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink
-                  to="/addFlour"
-                  activeClassName={classes.active}
-                  className="nav-link"
-                >
-                  Agregar Harinas
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to="/addIngredient"
-                  activeClassName={classes.active}
-                  className="nav-link"
-                >
-                  Agregar Ingredientes
-                </NavLink>
-              </li>
+              {!token && (
+                <li className="nav-item">
+                  <NavLink
+                    to="/addFlour"
+                    activeClassName={classes.active}
+                    className="nav-link"
+                  >
+                    Agregar Harinas
+                  </NavLink>
+                </li>
+              )}
+              {token && (
+                <li className="nav-item">
+                  <NavLink
+                    to="/addIngredient"
+                    activeClassName={classes.active}
+                    className="nav-link"
+                  >
+                    Agregar Ingredientes
+                  </NavLink>
+                </li>
+              )}
               <li className="nav-item">
                 <NavLink
                   to="/home"
@@ -60,7 +67,7 @@ const Navigation = () => {
                   activeClassName={classes.active}
                   className="nav-link"
                 >
-                  Login
+                  Administrador
                 </NavLink>
               </li>
             </ul>

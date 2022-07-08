@@ -106,7 +106,7 @@ const Login = () => {
                   </div>
                   <div className="d-flex justify-content-center">
                     <button type="submit" className="btn btn-primary w-50">
-                      Ingresar
+                      Conectarse
                     </button>
                   </div>
                 </form>
