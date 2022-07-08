@@ -54,6 +54,15 @@ const Navigation = () => {
                   Recetas
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/admin"
+                  activeClassName={classes.active}
+                  className="nav-link"
+                >
+                  Login
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>
