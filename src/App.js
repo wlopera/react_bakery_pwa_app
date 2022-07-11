@@ -16,6 +16,7 @@ import AddIngredient from "./components/Form/Add/AddIngredient";
 
 import Layout from "./components/Layout/Layout";
 import Login from "./components/Form/Login/Login";
+import Logout from "./components/Form/Login/Logout";
 
 const App = () => {
   const Providers = BuildProviderTree([
@@ -47,6 +48,9 @@ const App = () => {
           </Route>
           <Route path="/admin">
             <Login />
+          </Route>
+          <Route path="/logout">
+            <Logout />
           </Route>
         </Switch>
       </Layout>

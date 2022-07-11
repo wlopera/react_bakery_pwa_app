@@ -3,6 +3,7 @@ import md5 from "md5";
 
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from "react-router-dom";
 
 import service from "../../../services/auth.service";
 
@@ -10,6 +11,8 @@ const Login = () => {
   const [user, setUser] = useState({ username: "", password: "" });
   const [alert, setAlert] = useState(null);
   const [shown, setShown] = React.useState(false);
+
+  let history = useHistory();
 
   const handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -33,7 +36,9 @@ const Login = () => {
     if (res.data.error) {
       setAlert(res.data.error.message);
     } else {
-      localStorage.setItem("token", JSON.stringify(res.data.body.token));
+      localStorage.setItem("token", res.data.body.token);
+      history.push("/home");
+      window.location.reload();
     }
   };
 

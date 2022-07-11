@@ -5,7 +5,6 @@ import classes from "./Navigation.module.css";
 
 const Navigation = () => {
   const token = localStorage.getItem("token");
-  console.log(1111111111, token);
 
   return (
     <nav
@@ -30,7 +29,7 @@ const Navigation = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <nav className={classes.nav}>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {!token && (
+              {token && (
                 <li className="nav-item">
                   <NavLink
                     to="/addFlour"
@@ -61,15 +60,28 @@ const Navigation = () => {
                   Recetas
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  to="/admin"
-                  activeClassName={classes.active}
-                  className="nav-link"
-                >
-                  Administrador
-                </NavLink>
-              </li>
+              {!token && (
+                <li className="nav-item">
+                  <NavLink
+                    to="/admin"
+                    activeClassName={classes.active}
+                    className="nav-link"
+                  >
+                    Administrador
+                  </NavLink>
+                </li>
+              )}
+              {token && (
+                <li className="nav-item">
+                  <NavLink
+                    to="/logout"
+                    activeClassName={classes.active}
+                    className="nav-link"
+                  >
+                    Cerrar Sesión
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

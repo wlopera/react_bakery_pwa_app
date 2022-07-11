@@ -18,6 +18,28 @@ const instance = axios.create({
   },
 });
 
+// Add a request interceptor
+instance.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("token");
+  console.log("LocalStorage-token", token);
+  if (token) {
+    config.headers.Authorization = "Basic " + token;
+  }
+
+  return config;
+});
+
+// instance.interceptors.response.use(
+//   (response) => {
+//     console.log("response axios-interceptor: ", response);
+//   },
+//   (error) => {
+//     if (error.response.status == 403) {
+//       // refreshToken();
+//     }
+//   }
+// );
+
 // instance.interceptors.response.use(
 //   (response) => {
 //     if (response.data.code !== null && response.data.code !== undefined) {
