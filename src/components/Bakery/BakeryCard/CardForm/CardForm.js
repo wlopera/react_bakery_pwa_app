@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Card from "../../../UI/Card";
-import CardFormContext from "../../../../store/CardForm/card-form-context";
+import { useCardForm } from "../../../../store/CardForm/card-form-context";
 
 import classes from "./CardForm.module.css";
 
 const CardForm = () => {
-  const cardFormCtx = useContext(CardFormContext);
+  const { amount, perUnit, total, onAmount, onPerUnit } = useCardForm();
 
   const handleKeyDown = (event) => {
     //console.log("Caracter keyCode:", event.keyCode);
@@ -23,14 +23,12 @@ const CardForm = () => {
   const handleFocus = (event) => event.target.select();
 
   const amountHandler = (event) => {
-    cardFormCtx.onAmount(event.target.value);
+    onAmount(event.target.value);
   };
 
   const perUnitHandler = (event) => {
-    cardFormCtx.onPerUnit(event.target.value);
+    onPerUnit(event.target.value);
   };
-
-  const { amount, perUnit, total } = cardFormCtx;
 
   return (
     <Card className="row d-flex justify-content-between w-100">

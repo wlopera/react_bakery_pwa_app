@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import CatalogContext from "../../store/Catalog/catalog-context";
+import { useCatalog } from "../../store/Catalog/catalog-context";
 import FlourService from "../../services/flour.service";
 import IngredientService from "../../services/ingredient.service";
 import RecipeService from "../../services/recipe.service";
@@ -8,9 +8,7 @@ import Navigation from "./Navigation";
 
 const Layout = (props) => {
   //Carga de catalogos
-  const catalogCtx = useContext(CatalogContext);
-
-  const { setCatalogs } = catalogCtx;
+  const { setCatalogs } = useCatalog();
 
   useEffect(() => {
     const getCatalogContext = async () => {

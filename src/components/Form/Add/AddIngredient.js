@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
-import CatalogContext from "../../../store/Catalog/catalog-context";
+import { useCatalog } from "../../../store/Catalog/catalog-context";
 import CardAdd from "../../Bakery/BakeryCard/CardAdd/CardAdd";
 import service from "../../../services/ingredient.service";
 import CardHeader from "../../Bakery/BakeryCard/Card/CardHeader";
@@ -9,7 +9,8 @@ import Modal from "../../UI/Modal/Modal";
 const AddIngredient = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState(null);
-  const catalogCtx = useContext(CatalogContext);
+
+  const { setCatalogs, ingredients, flours } = useCatalog();
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -56,8 +57,8 @@ const AddIngredient = () => {
           label: item.label,
         }));
       });
-      catalogCtx.setCatalogs({
-        flours: catalogCtx.flours,
+      setCatalogs({
+        flours: flours,
         ingredients: ingredients,
       });
     }
@@ -74,7 +75,7 @@ const AddIngredient = () => {
     toggle();
   };
 
-  const ingredients = catalogCtx.ingredients.map((row) => (
+  const ingredientsList = ingredients.map((row) => (
     <CardAdd
       id={row.value}
       key={row.value}
@@ -93,7 +94,7 @@ const AddIngredient = () => {
         className="row d-flex align-items-center bg-custom-info w-100 ms-1 mb-1"
       />
 
-      {ingredients}
+      {ingredientsList}
 
       {row && showModal && (
         <Modal onClose={toggle}>

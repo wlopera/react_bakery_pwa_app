@@ -1,26 +1,27 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import CardTitle from "../Bakery/BakeryCard/Card/CardTitle";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 
-import CatalogContext from "../../store/Catalog/catalog-context";
+import { useCatalog } from "../../store/Catalog/catalog-context";
+import { useRecipe } from "../../store/Recipe/recipe-context";
 
 const Home = () => {
-  const [dataBasic, setDataBasic] = useState([]);
-  const catalogCtx = useContext(CatalogContext);
+  const { dataBasic, addDataBasic } = useRecipe();
+  const { recipes } = useCatalog();
 
   let history = useHistory();
 
   useEffect(() => {
-    const data = catalogCtx.recipes.map((recipe) => ({
+    const data = recipes.map((recipe) => ({
       id: recipe.id,
       name: recipe.name,
       order: recipe.order,
     }));
 
-    setDataBasic(data);
-  }, [catalogCtx]);
+    addDataBasic(data);
+  }, [recipes, addDataBasic]);
 
   const handleInit = (id) => {
     history.push("/bakery/" + id);

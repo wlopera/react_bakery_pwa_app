@@ -3,16 +3,16 @@ import CardHeader from "./BakeryCard/Card/CardHeader";
 
 import FlourContext from "../../store/Flour/flour-context";
 import IngredientContext from "../../store/Ingredient/ingredient-context";
-import CardFormContext from "../../store/CardForm/card-form-context";
+import { useCardForm } from "../../store/CardForm/card-form-context";
 
 const BakeryTotal = () => {
   const flourCtx = useContext(FlourContext);
   const ingredientCtx = useContext(IngredientContext);
-  const cardFormCtx = useContext(CardFormContext);
+  const { total } = useCardForm();
 
   const percentages = flourCtx.percentages + ingredientCtx.percentages;
   const grams = flourCtx.grams + ingredientCtx.grams;
-  const gramsTotal = cardFormCtx.total;
+  const gramsTotal = total;
   const { updateGramsFlour } = flourCtx;
   const { updateGramsIngredient } = ingredientCtx;
 

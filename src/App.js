@@ -2,10 +2,11 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import BakeryProvider from "./store/Flour/FlourProvider";
-import CardFormProvider from "./store/CardForm/CardFormProvider";
 import IngredientProvider from "./store/Ingredient/IngredientProvider";
-import RecipeProvider from "./store/Recipe/RecipeProvider";
-import CatalogProvider from "./store/Catalog/CatalogProvider";
+
+import { RecipeProvider } from "./store/Recipe/recipe-context";
+import { CardFormProvider } from "./store/CardForm/card-form-context";
+import { CatalogProvider } from "./store/Catalog/catalog-context";
 
 import { BuildProviderTree } from "./components/util/Utilities";
 
