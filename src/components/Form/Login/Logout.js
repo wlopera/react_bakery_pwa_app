@@ -8,7 +8,7 @@ const Logout = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     localStorage.removeItem("token");
-    history.push("/home");
+    history.push("/");
     window.location.reload();
   };
 

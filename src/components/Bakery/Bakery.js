@@ -34,7 +34,7 @@ const Bakery = () => {
       // Tipo de pan
       setTitle(recipe.name);
 
-      //  Orden
+      // Orden
       onAmount(recipe.order.amount);
       onPerUnit(recipe.order.perUnit);
 

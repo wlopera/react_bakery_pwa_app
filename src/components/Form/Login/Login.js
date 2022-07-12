@@ -28,8 +28,10 @@ const Login = () => {
     event.preventDefault();
     setAlert(null);
     localStorage.removeItem("token");
+
+    // Primer caracter se convierte a minuscula
     const res = await service.login({
-      username: user.username,
+      username: user.username.charAt(0).toLowerCase() + user.username.slice(1),
       password: md5(user.password),
     });
 
@@ -37,7 +39,7 @@ const Login = () => {
       setAlert(res.data.error.message);
     } else {
       localStorage.setItem("token", res.data.body.token);
-      history.push("/home");
+      history.push("/");
       window.location.reload();
     }
   };
