@@ -9,7 +9,7 @@ const AddFlour = () => {
   const [showModal, setShowModal] = useState(false);
   const [row, setRow] = useState(null);
 
-  const { setCatalogs, ingredients, flours } = useCatalog();
+  const { setCatalogs, ingredients, flours, recipes } = useCatalog();
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -59,6 +59,7 @@ const AddFlour = () => {
       setCatalogs({
         flours: flours,
         ingredients: ingredients,
+        recipes,
       });
     }
     toggle();
