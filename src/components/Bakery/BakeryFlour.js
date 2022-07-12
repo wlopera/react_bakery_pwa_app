@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/Card/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
-import { useCatalog } from "../../store/Catalog/catalog-context";
-import FlourContext from "../../store/Flour/flour-context";
+import { useCatalog } from "../../store/catalog-context";
+import { useFlour } from "../../store/flour-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
 const BakeryFlour = () => {
@@ -14,7 +14,7 @@ const BakeryFlour = () => {
 
   const { flours } = useCatalog();
 
-  const flourCtx = useContext(FlourContext);
+  const { percentages, data, addFlour, updateFlour, removeFlour } = useFlour();
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -27,7 +27,7 @@ const BakeryFlour = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      flourCtx.addFlour({
+      addFlour({
         value: item.value,
         ingredient: item.label,
         percentage: 0,
@@ -39,18 +39,18 @@ const BakeryFlour = () => {
   };
 
   const editRowHadler = (value, label) => {
-    const row = flourCtx.data.filter((item) => item.value === value)[0];
-    flourCtx.updateFlour({
+    const row = data.filter((item) => item.value === value)[0];
+    updateFlour({
       ...row,
       percentage: label,
     });
   };
 
   const deleteRowHadler = (value) => {
-    flourCtx.removeFlour(value);
+    removeFlour(value);
   };
 
-  const bakeryList = flourCtx.data.map((row) => (
+  const bakeryList = data.map((row) => (
     <BakeryItem
       key={row.value}
       value={row.value}
@@ -62,9 +62,8 @@ const BakeryFlour = () => {
       className="row d-flex align-items-center bg-white border-bottom w-100"
     />
   ));
-
   let alert = null;
-  if (flourCtx.percentages !== 100) {
+  if (percentages !== 100) {
     alert = "La harina total debe ser 100%";
   }
 
@@ -92,7 +91,7 @@ const BakeryFlour = () => {
         <Modal onClose={toggle}>
           <ProcessIngredient
             row={row}
-            currentData={flourCtx.data}
+            currentData={data}
             onClose={toggle}
             processRow={processRowHandler}
             combo={flours}

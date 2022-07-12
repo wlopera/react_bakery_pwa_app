@@ -1,12 +1,11 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import BakeryProvider from "./store/Flour/FlourProvider";
-import IngredientProvider from "./store/Ingredient/IngredientProvider";
-
-import { RecipeProvider } from "./store/Recipe/recipe-context";
-import { CardFormProvider } from "./store/CardForm/card-form-context";
-import { CatalogProvider } from "./store/Catalog/catalog-context";
+import { IngredientProvider } from "./store/ingredient-context";
+import { FlourProvider } from "./store/flour-context";
+import { RecipeProvider } from "./store/recipe-context";
+import { CardFormProvider } from "./store/card-form-context";
+import { CatalogProvider } from "./store/catalog-context";
 
 import { BuildProviderTree } from "./components/util/Utilities";
 
@@ -21,9 +20,9 @@ import Logout from "./components/Form/Login/Logout";
 
 const App = () => {
   const Providers = BuildProviderTree([
-    CardFormProvider,
     IngredientProvider,
-    BakeryProvider,
+    FlourProvider,
+    CardFormProvider,
     RecipeProvider,
     CatalogProvider,
   ]);

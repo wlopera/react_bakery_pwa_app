@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { useCatalog } from "../../store/Catalog/catalog-context";
+import { useCatalog } from "../../store/catalog-context";
 import FlourService from "../../services/flour.service";
 import IngredientService from "../../services/ingredient.service";
 import RecipeService from "../../services/recipe.service";

@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import BakeryItem from "./BakeryItem/BakeryItem";
 import CardHeader from "./BakeryCard/Card/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
-import { useCatalog } from "../../store/Catalog/catalog-context";
+import { useCatalog } from "../../store/catalog-context";
+import { useIngredient } from "../../store/ingredient-context";
 
-import IngredientContext from "../../store/Ingredient/ingredient-context";
 import ProcessIngredient from "../Form/ProcessIngredient";
 
 const BakeryIngredient = () => {
@@ -15,7 +15,8 @@ const BakeryIngredient = () => {
 
   const { ingredients } = useCatalog();
 
-  const ingredientCtx = useContext(IngredientContext);
+  const { data, addIngredient, updateIngredient, removeIngredient } =
+    useIngredient();
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -28,7 +29,7 @@ const BakeryIngredient = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      ingredientCtx.addIngredient({
+      addIngredient({
         value: item.value,
         ingredient: item.label,
         percentage: 0,
@@ -39,18 +40,18 @@ const BakeryIngredient = () => {
   };
 
   const editRowHadler = (value, label) => {
-    const row = ingredientCtx.data.filter((item) => item.value === value)[0];
-    ingredientCtx.updateIngredient({
+    const row = data.filter((item) => item.value === value)[0];
+    updateIngredient({
       ...row,
       percentage: label,
     });
   };
 
   const deleteRowHadler = (value) => {
-    ingredientCtx.removeIngredient(value);
+    removeIngredient(value);
   };
 
-  const bakeryList = ingredientCtx.data.map((row) => (
+  const bakeryList = data.map((row) => (
     <BakeryItem
       key={row.value}
       value={row.value}
@@ -79,7 +80,7 @@ const BakeryIngredient = () => {
         <Modal onClose={toggle}>
           <ProcessIngredient
             row={row}
-            currentData={ingredientCtx.data}
+            currentData={data}
             onClose={toggle}
             processRow={processRowHandler}
             combo={ingredients}

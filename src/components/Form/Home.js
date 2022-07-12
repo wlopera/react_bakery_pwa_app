@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 import CardTitle from "../Bakery/BakeryCard/Card/CardTitle";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 
-import { useCatalog } from "../../store/Catalog/catalog-context";
-import { useRecipe } from "../../store/Recipe/recipe-context";
+import { useCatalog } from "../../store/catalog-context";
+import { useRecipe } from "../../store/recipe-context";
 
 const Home = () => {
   const { dataBasic, addDataBasic } = useRecipe();

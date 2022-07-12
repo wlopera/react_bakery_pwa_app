@@ -1,7 +1,7 @@
 import React from "react";
 
 import Card from "../../../UI/Card";
-import { useCardForm } from "../../../../store/CardForm/card-form-context";
+import { useCardForm } from "../../../../store/card-form-context";
 
 import classes from "./CardForm.module.css";
 

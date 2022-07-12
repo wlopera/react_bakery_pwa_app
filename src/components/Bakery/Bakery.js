@@ -1,13 +1,13 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import CardForm from "./BakeryCard/CardForm/CardForm";
 import BakeryFlour from "./BakeryFlour";
 
-import { useCatalog } from "../../store/Catalog/catalog-context";
-import { useCardForm } from "../../store/CardForm/card-form-context";
-import FlourContext from "../../store/Flour/flour-context";
-import IngredientContext from "../../store/Ingredient/ingredient-context";
+import { useCatalog } from "../../store/catalog-context";
+import { useCardForm } from "../../store/card-form-context";
+import { useFlour } from "../../store/flour-context";
+import { useIngredient } from "../../store/ingredient-context";
 
 import BakeryIngredient from "./BakeryIngredient";
 import BakeryTotal from "./BakeryTotal";
@@ -15,28 +15,26 @@ import BakeryTotal from "./BakeryTotal";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 
 const Bakery = () => {
-  const flourCtx = useContext(FlourContext);
-  const ingredientCtx = useContext(IngredientContext);
   const param = useParams();
 
-  const { onAmount, onPerUnit, total } = useCardForm();
+  const { id } = param;
   const { recipes } = useCatalog();
-
-  const { resetFlour, setTitle, addFlour } = flourCtx;
-  const { resetIngredient, addIngredient } = ingredientCtx;
+  const { onAmount, onPerUnit, total } = useCardForm();
+  const { title, setTitle, resetFlour, addFlour } = useFlour();
+  const { resetIngredient, addIngredient } = useIngredient();
 
   useEffect(() => {
     if (recipes.length > 0) {
-      const recipe = recipes.find((row) => row.id === param.id);
+      const recipe = recipes.find((row) => row.id === id);
 
-      // Limpiar la data
+      // // Limpiar la data
       resetFlour();
       resetIngredient();
 
-      //Tipo de pan
+      // //Tipo de pan
       setTitle(recipe.name);
 
-      // Orden
+      // // Orden
       onAmount(recipe.order.amount);
       onPerUnit(recipe.order.perUnit);
 
@@ -63,7 +61,7 @@ const Bakery = () => {
       });
     }
   }, [
-    param.id,
+    id,
     recipes,
     onAmount,
     onPerUnit,
@@ -85,7 +83,7 @@ const Bakery = () => {
     <Fragment>
       <CardRecipe
         className="row d-flex align-items-center bg-primary border-bottom w-100"
-        title={flourCtx.title}
+        title={title}
         onAction={() => handleReturn()}
         typeIcon="home"
       />
@@ -95,7 +93,7 @@ const Bakery = () => {
       {total > 0 && (
         <div>
           <BakeryFlour />
-          {/* {flourCtx.percentages === 100 && ( */}
+          {/* {percentages === 100 && ( */}
           <div>
             <BakeryIngredient />
             <BakeryTotal />

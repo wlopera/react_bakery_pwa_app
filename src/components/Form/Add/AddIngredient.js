@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useCatalog } from "../../../store/Catalog/catalog-context";
+import { useCatalog } from "../../../store/catalog-context";
 import CardAdd from "../../Bakery/BakeryCard/CardAdd/CardAdd";
 import service from "../../../services/ingredient.service";
 import CardHeader from "../../Bakery/BakeryCard/Card/CardHeader";

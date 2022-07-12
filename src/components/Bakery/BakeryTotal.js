@@ -1,31 +1,29 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import CardHeader from "./BakeryCard/Card/CardHeader";
 
-import FlourContext from "../../store/Flour/flour-context";
-import IngredientContext from "../../store/Ingredient/ingredient-context";
-import { useCardForm } from "../../store/CardForm/card-form-context";
+import { useCardForm } from "../../store/card-form-context";
+import { useFlour } from "../../store/flour-context";
+import { useIngredient } from "../../store/ingredient-context";
 
 const BakeryTotal = () => {
-  const flourCtx = useContext(FlourContext);
-  const ingredientCtx = useContext(IngredientContext);
   const { total } = useCardForm();
+  const { percentages, grams, updateGramsFlour } = useFlour();
+  const ingredientUSE = useIngredient();
 
-  const percentages = flourCtx.percentages + ingredientCtx.percentages;
-  const grams = flourCtx.grams + ingredientCtx.grams;
-  const gramsTotal = total;
-  const { updateGramsFlour } = flourCtx;
-  const { updateGramsIngredient } = ingredientCtx;
+  const newPercentages = percentages + ingredientUSE.percentages;
+  const newGrams = grams + ingredientUSE.grams;
+  const { updateGramsIngredient } = ingredientUSE;
 
   useEffect(() => {
-    updateGramsFlour(percentages, gramsTotal);
-    updateGramsIngredient(percentages, gramsTotal);
-  }, [percentages, gramsTotal, updateGramsFlour, updateGramsIngredient]);
+    updateGramsFlour(newPercentages, total);
+    updateGramsIngredient(newPercentages, total);
+  }, [newPercentages, total, updateGramsFlour, updateGramsIngredient]);
 
-  const perGramsTotal = Math.round(grams * 100) / 100;
+  const perGramsTotal = Math.round(newGrams * 100) / 100;
 
   return (
     <CardHeader
-      percentageTitle={percentages}
+      percentageTitle={newPercentages}
       gramTitle={perGramsTotal}
       className="row d-flex align-items-center bg-primary w-100"
     />
