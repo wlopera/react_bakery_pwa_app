@@ -27,14 +27,14 @@ const Bakery = () => {
     if (recipes.length > 0) {
       const recipe = recipes.find((row) => row.id === id);
 
-      // // Limpiar la data
+      // Limpiar la data
       resetFlour();
       resetIngredient();
 
-      // //Tipo de pan
+      // Tipo de pan
       setTitle(recipe.name);
 
-      // // Orden
+      //  Orden
       onAmount(recipe.order.amount);
       onPerUnit(recipe.order.perUnit);
 
@@ -76,7 +76,6 @@ const Bakery = () => {
 
   const handleReturn = () => {
     history.push("/home");
-    // window.location.reload();
   };
 
   return (
@@ -93,12 +92,10 @@ const Bakery = () => {
       {total > 0 && (
         <div>
           <BakeryFlour />
-          {/* {percentages === 100 && ( */}
           <div>
             <BakeryIngredient />
             <BakeryTotal />
           </div>
-          {/* )} */}
         </div>
       )}
     </Fragment>
