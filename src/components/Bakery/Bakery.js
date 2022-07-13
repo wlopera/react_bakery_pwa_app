@@ -28,10 +28,13 @@ const Bakery = () => {
     data: dataIngredient,
   } = useIngredient();
 
-  useEffect(() => {
-    if (id !== "0" && recipes.length > 0) {
-      const recipe = recipes.find((row) => row.id === id);
+  let recipe = null;
+  if (id !== "0" && recipes.length > 0) {
+    recipe = recipes.find((row) => row.id === id);
+  }
 
+  useEffect(() => {
+    if (recipe) {
       // Limpiar la data
       resetFlour();
       resetIngredient();
@@ -39,9 +42,9 @@ const Bakery = () => {
       // Tipo de pan
       setTitle(recipe.name);
 
-      // // Orden
-      // onAmount(recipe.order.amount);
-      // onPerUnit(recipe.order.perUnit);
+      // Orden
+      onAmount(recipe.order.amount);
+      onPerUnit(recipe.order.perUnit);
 
       // harinas
       recipe.flours.forEach((row) => {
@@ -65,24 +68,11 @@ const Bakery = () => {
         });
       });
     }
-  }, [
-    id,
-    recipes,
-    onAmount,
-    onPerUnit,
-    resetFlour,
-    setTitle,
-    addFlour,
-    resetIngredient,
-    addIngredient,
-  ]);
+  }, [recipe, resetFlour, setTitle, addFlour, resetIngredient, addIngredient]);
 
   let history = useHistory();
 
   const handleReturn = () => {
-    // Reiniciar los valores base
-    onAmount(1);
-    onPerUnit(1);
     history.push("/home");
   };
 

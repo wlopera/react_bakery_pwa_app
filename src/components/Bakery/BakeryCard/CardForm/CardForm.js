@@ -23,12 +23,10 @@ const CardForm = () => {
   const handleFocus = (event) => event.target.select();
 
   const amountHandler = (event) => {
-    console.log(111, event.target.value);
     onAmount(event.target.value);
   };
 
   const perUnitHandler = (event) => {
-    console.log(222, event.target.value);
     onPerUnit(event.target.value);
   };
 

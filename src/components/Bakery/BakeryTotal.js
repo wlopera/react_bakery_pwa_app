@@ -6,7 +6,7 @@ import { useFlour } from "../../store/flour-context";
 import { useIngredient } from "../../store/ingredient-context";
 
 const BakeryTotal = () => {
-  const { total } = useCardForm();
+  const { total, amount, perUnit } = useCardForm();
   const { percentages, grams, updateGramsFlour } = useFlour();
   const ingredientUSE = useIngredient();
 
@@ -15,9 +15,16 @@ const BakeryTotal = () => {
   const { updateGramsIngredient } = ingredientUSE;
 
   useEffect(() => {
-    updateGramsFlour(newPercentages, total);
-    updateGramsIngredient(newPercentages, total);
-  }, [newPercentages, total, updateGramsFlour, updateGramsIngredient]);
+    updateGramsFlour(newPercentages, amount * perUnit);
+    updateGramsIngredient(newPercentages, amount * perUnit);
+  }, [
+    newPercentages,
+    total,
+    updateGramsFlour,
+    updateGramsIngredient,
+    amount,
+    perUnit,
+  ]);
 
   const perGramsTotal = Math.round(newGrams * 100) / 100;
 
