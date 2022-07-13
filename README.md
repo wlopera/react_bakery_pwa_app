@@ -105,10 +105,23 @@ Conectar React con NodeJS: Localmente
             export default new IngredientDataService();
             export default instance;
 ```
-## Agregar, modificar o eliminar ingredientes 
-![Capturaa](https://user-images.githubusercontent.com/7141537/177811612-bb1c2d70-48ab-4a7a-a8fa-12a899519a9c.PNG)
-![Captura](https://user-images.githubusercontent.com/7141537/177811613-c484b368-6273-49c3-b829-0c091e46f015.PNG)
-![Captura1](https://user-images.githubusercontent.com/7141537/177811609-ed90fdb7-94dd-4d14-b896-0ffd06de3bb6.PNG)
+## Probar recetas. Puede agregar harinas e ingredientes y sus porcentajes 
+![Captura](https://user-images.githubusercontent.com/7141537/178596769-ce39137f-e2b5-4759-8d1e-2df830ab6df5.PNG)
+
+## Conectarse como admnistrador
+![Captura1](https://user-images.githubusercontent.com/7141537/178596762-17d31845-799e-41e9-9bb1-19effcc83ca3.PNG)
+
+## Agregar, modificar o eliminar harinas o ingredientes 
+![Captura2](https://user-images.githubusercontent.com/7141537/178596765-0bcb5d64-8bb8-4516-bd43-557950109482.PNG)
+
+## Desconectarse como adminitrador
+![Captura3](https://user-images.githubusercontent.com/7141537/178596767-c8ed8626-b97e-4195-a975-0eb34d748c2b.PNG)
+
+# Notas:
+ 1. Solo se puede modificar, agregar o borrar harinas o ingredientes como administrador
+ 2. Como usuario solo puede ver recetas actuales y se permite agregar harinas o ingredientes con sus porcentajes para el cálculo panadero. 
+
+
 
 ## Configurar para buscar nodeJS en la web
   - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\public\runtime-config.js
