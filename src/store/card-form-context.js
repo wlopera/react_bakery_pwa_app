@@ -3,9 +3,9 @@ import React, { createContext, useCallback, useContext, useState } from "react";
 const CardFormContext = createContext();
 
 export const CardFormProvider = (props) => {
-  const [amount, setAmount] = useState(0);
-  const [perUnit, setPerUnit] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [amount, setAmount] = useState(1);
+  const [perUnit, setPerUnit] = useState(1);
+  const [total, setTotal] = useState(1);
 
   const onAmount = useCallback(
     (value) => {
