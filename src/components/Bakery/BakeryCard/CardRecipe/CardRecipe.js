@@ -5,13 +5,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "../../../UI/Card";
 import classes from "./CardRecipe.module.css";
 
-const CardTitle = ({ title, onAction, typeIcon, className }) => {
+const CardRecipe = ({
+  title,
+  onAction,
+  typeIcon,
+  className,
+  type = "header",
+  onTitleChange,
+}) => {
   return (
     <Card
       className={className}
       onAction={typeIcon === "home" ? null : onAction}
     >
-      <h1 className="col fs-5">{title}</h1>
+      {type === "header" ? (
+        <h1 className="col fs-5">{title}</h1>
+      ) : (
+        <input
+          className="col fs-5"
+          value={title}
+          onChange={onTitleChange}
+          placeholder="Nombre del Pan"
+        />
+      )}
+
       {onAction && (
         <div className="col d-flex justify-content-end">
           <FontAwesomeIcon
@@ -25,4 +42,4 @@ const CardTitle = ({ title, onAction, typeIcon, className }) => {
   );
 };
 
-export default CardTitle;
+export default CardRecipe;

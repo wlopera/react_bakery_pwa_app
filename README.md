@@ -108,11 +108,16 @@ Conectar React con NodeJS: Localmente
 ## Probar recetas. Puede agregar harinas e ingredientes y sus porcentajes 
 ![Captura](https://user-images.githubusercontent.com/7141537/178596769-ce39137f-e2b5-4759-8d1e-2df830ab6df5.PNG)
 
-## Conectarse como admnistrador
+## Conectarse como administrador
 ![Captura1](https://user-images.githubusercontent.com/7141537/178596762-17d31845-799e-41e9-9bb1-19effcc83ca3.PNG)
 
 ## Agregar, modificar o eliminar harinas o ingredientes 
 ![Captura2](https://user-images.githubusercontent.com/7141537/178596765-0bcb5d64-8bb8-4516-bd43-557950109482.PNG)
+
+## Agregar, modificar o eliminar recetas
+![Captura](https://user-images.githubusercontent.com/7141537/178816587-79206a5f-8b0d-4f7f-8319-d488b3380942.PNG)
+![Captura1](https://user-images.githubusercontent.com/7141537/178816584-e1a9d289-e17d-4510-8762-53b50e46a370.PNG)
+![Captura3](https://user-images.githubusercontent.com/7141537/178816586-2a8ddd55-ac05-4700-a4ae-0a6f9a6d2d95.PNG)
 
 ## Desconectarse como adminitrador
 ![Captura3](https://user-images.githubusercontent.com/7141537/178596767-c8ed8626-b97e-4195-a975-0eb34d748c2b.PNG)
@@ -120,8 +125,6 @@ Conectar React con NodeJS: Localmente
 # Notas:
  1. Solo se puede modificar, agregar o borrar harinas o ingredientes como administrador
  2. Como usuario solo puede ver recetas actuales y se permite agregar harinas o ingredientes con sus porcentajes para el cálculo panadero. 
-
-
 
 ## Configurar para buscar nodeJS en la web
   - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\public\runtime-config.js

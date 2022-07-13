@@ -41,7 +41,7 @@ const CardForm = () => {
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           min={0}
-          max={100}
+          max={10000}
           className={classes.inputHover}
         />
       </div>
@@ -54,7 +54,7 @@ const CardForm = () => {
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           min={0}
-          max={100}
+          max={10000}
           className={classes.inputHover}
         />
       </div>
