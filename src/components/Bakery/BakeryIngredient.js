@@ -27,13 +27,16 @@ const BakeryIngredient = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      add({
-        value: item.value,
-        ingredient: item.label,
-        percentage: 0,
-        type: "ingredient",
-        grams: 0,
-      });
+      add(
+        {
+          value: item.value,
+          ingredient: item.label,
+          percentage: 0,
+          type: "ingredient",
+          grams: 0,
+        },
+        { amount, perUnit }
+      );
     });
     toggle();
   };

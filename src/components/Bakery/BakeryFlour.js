@@ -27,13 +27,16 @@ const BakeryFlour = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      add({
-        value: item.value,
-        ingredient: item.label,
-        percentage: 0,
-        type: "flour",
-        grams: 0,
-      });
+      add(
+        {
+          value: item.value,
+          ingredient: item.label,
+          percentage: 0,
+          type: "flour",
+          grams: 0,
+        },
+        { amount, perUnit }
+      );
     });
 
     toggle();
@@ -74,10 +77,12 @@ const BakeryFlour = () => {
 
   let alert = null;
 
-  const percentages =
+  const percentagesList =
     dataFlours.length > 0
       ? dataFlours.map((item) => parseFloat(item.percentage))
       : [];
+
+  const percentages = percentagesList.reduce((acc, item) => acc + item, 0);
 
   if (percentages !== 100) {
     alert = "La harina total debe ser 100%";

@@ -1,10 +1,7 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import { IngredientProvider } from "./store/ingredient-context";
-import { FlourProvider } from "./store/flour-context";
 import { RecipeProvider } from "./store/recipe-context";
-import { CardFormProvider } from "./store/card-form-context";
 import { CatalogProvider } from "./store/catalog-context";
 import { BakeryProvider } from "./store/bakery-context";
 
@@ -21,9 +18,6 @@ import Logout from "./components/Form/Login/Logout";
 
 const App = () => {
   const Providers = BuildProviderTree([
-    IngredientProvider,
-    FlourProvider,
-    CardFormProvider,
     RecipeProvider,
     CatalogProvider,
     BakeryProvider,
