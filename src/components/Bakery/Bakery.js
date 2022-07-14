@@ -5,9 +5,7 @@ import CardForm from "./BakeryCard/CardForm/CardForm";
 import BakeryFlour from "./BakeryFlour";
 
 import { useCatalog } from "../../store/catalog-context";
-import { useCardForm } from "../../store/card-form-context";
-import { useFlour } from "../../store/flour-context";
-import { useIngredient } from "../../store/ingredient-context";
+import { useBakery } from "../../store/bakery-context";
 
 import BakeryIngredient from "./BakeryIngredient";
 import BakeryTotal from "./BakeryTotal";
@@ -20,13 +18,17 @@ const Bakery = () => {
 
   const { id } = param;
   const { recipes } = useCatalog();
-  const { onAmount, onPerUnit, total, amount, perUnit } = useCardForm();
-  const { title, setTitle, resetFlour, addFlour, data: dataFlour } = useFlour();
   const {
-    resetIngredient,
-    addIngredient,
-    data: dataIngredient,
-  } = useIngredient();
+    amount,
+    perUnit,
+    onAmount,
+    onPerUnit,
+    title,
+    setTitle,
+    reset,
+    add,
+    data,
+  } = useBakery();
 
   let recipe = null;
   if (id !== "0" && recipes.length > 0) {
@@ -36,8 +38,7 @@ const Bakery = () => {
   useEffect(() => {
     if (recipe) {
       // Limpiar la data
-      resetFlour();
-      resetIngredient();
+      reset();
 
       // Tipo de pan
       setTitle(recipe.name);
@@ -46,29 +47,35 @@ const Bakery = () => {
       onAmount(recipe.order.amount);
       onPerUnit(recipe.order.perUnit);
 
-      // harinas
+      // Harinas
       recipe.flours.forEach((row) => {
-        addFlour({
-          value: row.value,
-          ingredient: row.ingredient,
-          percentage: row.percentage,
-          grams: 0,
-        });
+        add(
+          {
+            value: row.value,
+            ingredient: row.ingredient,
+            percentage: row.percentage,
+            type: "flour",
+            grams: 0,
+          },
+          recipe.order
+        );
       });
 
-      //Otros Ingredientes
+      // //Otros Ingredientes
       recipe.ingredients.forEach((row) => {
-        addIngredient({
-          id: row.id,
-          key: row.id,
-          value: row.value,
-          ingredient: row.ingredient,
-          percentage: row.percentage,
-          grams: 0,
-        });
+        add(
+          {
+            value: row.value,
+            ingredient: row.ingredient,
+            percentage: row.percentage,
+            type: "ingredient",
+            grams: 0,
+          },
+          recipe.order
+        );
       });
     }
-  }, [recipe, resetFlour, setTitle, addFlour, resetIngredient, addIngredient]);
+  }, [recipe, reset, setTitle, onAmount, onPerUnit, add]);
 
   let history = useHistory();
 
@@ -81,18 +88,21 @@ const Bakery = () => {
   };
 
   const handleModify = async () => {
+    const flours = data.filter((flour) => flour.type === "flour");
+    const ingredients = data.filter((flour) => flour.type === "ingredient");
+
     const record = {
       name: title,
       order: {
         amount: amount,
         perUnit: perUnit,
       },
-      flours: dataFlour.map((flour) => ({
+      flours: flours.map((flour) => ({
         value: flour.value,
         ingredient: flour.ingredient,
         percentage: flour.percentage,
       })),
-      ingredients: dataIngredient.map((ingredient) => ({
+      ingredients: ingredients.map((ingredient) => ({
         value: ingredient.value,
         ingredient: ingredient.ingredient,
         percentage: ingredient.percentage,
@@ -119,6 +129,8 @@ const Bakery = () => {
 
   const token = localStorage.getItem("token");
   const buttonTitle = id === "0" ? "Agregar" : "Modificar";
+  const total = amount * perUnit;
+
   return (
     <Fragment>
       <CardRecipe

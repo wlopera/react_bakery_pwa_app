@@ -1,37 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CardHeader from "./BakeryCard/Card/CardHeader";
 
-import { useCardForm } from "../../store/card-form-context";
-import { useFlour } from "../../store/flour-context";
-import { useIngredient } from "../../store/ingredient-context";
+import { useBakery } from "../../store/bakery-context";
 
 const BakeryTotal = () => {
-  const { total, amount, perUnit } = useCardForm();
-  const { percentages, grams, updateGramsFlour } = useFlour();
-  const ingredientUSE = useIngredient();
+  const { data, amount, perUnit } = useBakery();
 
-  const newPercentages = percentages + ingredientUSE.percentages;
-  const newGrams = grams + ingredientUSE.grams;
-  const { updateGramsIngredient } = ingredientUSE;
+  const gramsTotal = amount * perUnit;
 
-  useEffect(() => {
-    updateGramsFlour(newPercentages, amount * perUnit);
-    updateGramsIngredient(newPercentages, amount * perUnit);
-  }, [
-    newPercentages,
-    total,
-    updateGramsFlour,
-    updateGramsIngredient,
-    amount,
-    perUnit,
-  ]);
+  const percentages =
+    data.length > 0 ? data.map((item) => parseFloat(item.percentage)) : [];
 
-  const perGramsTotal = Math.round(newGrams * 100) / 100;
+  const percentagesTotal =
+    percentages.length > 0
+      ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
+      : 0.0;
 
   return (
     <CardHeader
-      percentageTitle={newPercentages}
-      gramTitle={perGramsTotal}
+      percentageTitle={percentagesTotal}
+      gramTitle={gramsTotal}
       className="row d-flex align-items-center bg-primary w-100"
     />
   );

@@ -5,7 +5,8 @@ import CardHeader from "./BakeryCard/Card/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
 import { useCatalog } from "../../store/catalog-context";
-import { useFlour } from "../../store/flour-context";
+import { useBakery } from "../../store/bakery-context";
+
 import ProcessIngredient from "../Form/ProcessIngredient";
 
 const BakeryFlour = () => {
@@ -13,8 +14,7 @@ const BakeryFlour = () => {
   const [row, setRow] = useState({});
 
   const { flours } = useCatalog();
-
-  const { percentages, data, addFlour, updateFlour, removeFlour } = useFlour();
+  const { amount, perUnit, data, add, update, remove } = useBakery();
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -27,10 +27,11 @@ const BakeryFlour = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      addFlour({
+      add({
         value: item.value,
         ingredient: item.label,
         percentage: 0,
+        type: "flour",
         grams: 0,
       });
     });
@@ -40,17 +41,25 @@ const BakeryFlour = () => {
 
   const editRowHadler = (value, label) => {
     const row = data.filter((item) => item.value === value)[0];
-    updateFlour({
-      ...row,
-      percentage: label,
-    });
+    update(
+      {
+        ...row,
+        percentage: parseFloat(label),
+      },
+      {
+        amount,
+        perUnit,
+      }
+    );
   };
 
   const deleteRowHadler = (value) => {
-    removeFlour(value);
+    remove(value, { amount, perUnit });
   };
 
-  const bakeryList = data.map((row) => (
+  const dataFlours = data.filter((flour) => flour.type === "flour");
+
+  const bakeryList = dataFlours.map((row) => (
     <BakeryItem
       key={row.value}
       value={row.value}
@@ -62,7 +71,14 @@ const BakeryFlour = () => {
       className="row d-flex align-items-center bg-white border-bottom w-100"
     />
   ));
+
   let alert = null;
+
+  const percentages =
+    dataFlours.length > 0
+      ? dataFlours.map((item) => parseFloat(item.percentage))
+      : [];
+
   if (percentages !== 100) {
     alert = "La harina total debe ser 100%";
   }

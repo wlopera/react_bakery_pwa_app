@@ -1,22 +1,18 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import CardTitle from "../Bakery/BakeryCard/Card/CardTitle";
-import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
-
 import { useCatalog } from "../../store/catalog-context";
 import { useRecipe } from "../../store/recipe-context";
-import { useCardForm } from "../../store/card-form-context";
-import { useFlour } from "../../store/flour-context";
-import { useIngredient } from "../../store/ingredient-context";
+import { useBakery } from "../../store/bakery-context";
+
+import CardTitle from "../Bakery/BakeryCard/Card/CardTitle";
+import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 import CardHeader from "../Bakery/BakeryCard/Card/CardHeader";
 
 const Home = () => {
   const { dataBasic, addDataBasic } = useRecipe();
   const { recipes } = useCatalog();
-  const { onAmount, onPerUnit } = useCardForm();
-  const { setTitle, resetFlour } = useFlour();
-  const { resetIngredient } = useIngredient();
+  const { onAmount, onPerUnit, setTitle, reset } = useBakery();
 
   let history = useHistory();
 
@@ -24,8 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     // Limpiar la data
-    resetFlour();
-    resetIngredient();
+    reset();
 
     const data = recipes.map((recipe) => ({
       id: recipe.id,
@@ -34,12 +29,11 @@ const Home = () => {
     }));
 
     addDataBasic(data);
-  }, [recipes, addDataBasic, resetFlour, resetIngredient]);
+  }, [recipes, addDataBasic, reset]);
 
   const handleInit = (id) => {
     if (id === 0) {
-      resetFlour();
-      resetIngredient();
+      reset();
       setTitle("");
       onAmount(0);
       onPerUnit(0);

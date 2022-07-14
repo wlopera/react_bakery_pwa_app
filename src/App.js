@@ -6,6 +6,7 @@ import { FlourProvider } from "./store/flour-context";
 import { RecipeProvider } from "./store/recipe-context";
 import { CardFormProvider } from "./store/card-form-context";
 import { CatalogProvider } from "./store/catalog-context";
+import { BakeryProvider } from "./store/bakery-context";
 
 import { BuildProviderTree } from "./components/util/Utilities";
 
@@ -25,6 +26,7 @@ const App = () => {
     CardFormProvider,
     RecipeProvider,
     CatalogProvider,
+    BakeryProvider,
   ]);
 
   return (

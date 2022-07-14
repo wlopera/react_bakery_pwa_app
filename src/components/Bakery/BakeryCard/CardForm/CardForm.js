@@ -1,12 +1,12 @@
 import React from "react";
 
 import Card from "../../../UI/Card";
-import { useCardForm } from "../../../../store/card-form-context";
+import { useBakery } from "../../../../store/bakery-context";
 
 import classes from "./CardForm.module.css";
 
 const CardForm = () => {
-  const { amount, perUnit, total, onAmount, onPerUnit } = useCardForm();
+  const { amount, perUnit, onAmount, onPerUnit } = useBakery();
 
   const handleKeyDown = (event) => {
     //console.log("Caracter keyCode:", event.keyCode);
@@ -29,6 +29,8 @@ const CardForm = () => {
   const perUnitHandler = (event) => {
     onPerUnit(event.target.value);
   };
+
+  const total = amount * perUnit;
 
   return (
     <Card className="row d-flex justify-content-between w-100">

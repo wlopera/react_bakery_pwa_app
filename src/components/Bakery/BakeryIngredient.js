@@ -5,7 +5,7 @@ import CardHeader from "./BakeryCard/Card/CardHeader";
 import Modal from "../UI/Modal/Modal";
 
 import { useCatalog } from "../../store/catalog-context";
-import { useIngredient } from "../../store/ingredient-context";
+import { useBakery } from "../../store/bakery-context";
 
 import ProcessIngredient from "../Form/ProcessIngredient";
 
@@ -14,9 +14,7 @@ const BakeryIngredient = () => {
   const [row, setRow] = useState({});
 
   const { ingredients } = useCatalog();
-
-  const { data, addIngredient, updateIngredient, removeIngredient } =
-    useIngredient();
+  const { amount, perUnit, data, add, update, remove } = useBakery();
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);
@@ -29,10 +27,11 @@ const BakeryIngredient = () => {
 
   const processRowHandler = (record) => {
     record.forEach((item) => {
-      addIngredient({
+      add({
         value: item.value,
         ingredient: item.label,
         percentage: 0,
+        type: "ingredient",
         grams: 0,
       });
     });
@@ -41,17 +40,25 @@ const BakeryIngredient = () => {
 
   const editRowHadler = (value, label) => {
     const row = data.filter((item) => item.value === value)[0];
-    updateIngredient({
-      ...row,
-      percentage: label,
-    });
+    update(
+      {
+        ...row,
+        percentage: label,
+      },
+      {
+        amount,
+        perUnit,
+      }
+    );
   };
 
   const deleteRowHadler = (value) => {
-    removeIngredient(value);
+    remove(value, { amount, perUnit });
   };
 
-  const bakeryList = data.map((row) => (
+  const dataIngredients = data.filter((flour) => flour.type === "ingredient");
+
+  const bakeryList = dataIngredients.map((row) => (
     <BakeryItem
       key={row.value}
       value={row.value}
