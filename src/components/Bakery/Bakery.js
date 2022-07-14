@@ -131,35 +131,44 @@ const Bakery = () => {
         type={token ? "input" : "header"}
         onTitleChange={token ? handleTitleChange : null}
       />
+
       <div className="mt-2 mb-2">
         <CardForm />
       </div>
-      {total > 0 && (
-        <div>
-          <BakeryFlour />
+      <div
+        style={{
+          overflowY: "auto",
+          height: "58vh",
+          paddingRight: "20px",
+        }}
+      >
+        {total > 0 && (
           <div>
-            <BakeryIngredient />
-            <BakeryTotal />
+            <BakeryFlour />
+            <div>
+              <BakeryIngredient />
+              <BakeryTotal />
+            </div>
           </div>
+        )}
+        <div className="d-flex justify-content-around mt-2">
+          {token && (
+            <button
+              className="btn btn-sm btn-custom-secondary w-25"
+              onClick={handleModify}
+            >
+              {buttonTitle}
+            </button>
+          )}
+          {token && id !== "0" && (
+            <button
+              className="btn btn-sm btn-custom-success w-25"
+              onClick={handleDelete}
+            >
+              Eliminar
+            </button>
+          )}
         </div>
-      )}
-      <div className="d-flex justify-content-around mt-2">
-        {token && (
-          <button
-            className="btn btn-sm btn-custom-secondary w-25"
-            onClick={handleModify}
-          >
-            {buttonTitle}
-          </button>
-        )}
-        {token && id !== "0" && (
-          <button
-            className="btn btn-sm btn-custom-success w-25"
-            onClick={handleDelete}
-          >
-            Eliminar
-          </button>
-        )}
       </div>
     </Fragment>
   );

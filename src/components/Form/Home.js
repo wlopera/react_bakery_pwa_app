@@ -72,7 +72,13 @@ const Home = () => {
   );
 
   return (
-    <div>
+    <div
+      style={{
+        overflowY: "auto",
+        height: "58vh",
+        paddingRight: "20px",
+      }}
+    >
       {context}
       <ul className="list-unstyled">{recipeList}</ul>
     </div>
