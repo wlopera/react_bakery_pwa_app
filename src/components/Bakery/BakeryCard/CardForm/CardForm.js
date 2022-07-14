@@ -6,7 +6,8 @@ import { useBakery } from "../../../../store/bakery-context";
 import classes from "./CardForm.module.css";
 
 const CardForm = () => {
-  const { amount, perUnit, onAmount, onPerUnit } = useBakery();
+  const { order, onOrder } = useBakery();
+  const { amount, perUnit } = order;
 
   const handleKeyDown = (event) => {
     //console.log("Caracter keyCode:", event.keyCode);
@@ -23,11 +24,11 @@ const CardForm = () => {
   const handleFocus = (event) => event.target.select();
 
   const amountHandler = (event) => {
-    onAmount(event.target.value);
+    onOrder(parseFloat(event.target.value), perUnit);
   };
 
   const perUnitHandler = (event) => {
-    onPerUnit(event.target.value);
+    onOrder(amount, parseFloat(event.target.value));
   };
 
   const total = amount * perUnit;

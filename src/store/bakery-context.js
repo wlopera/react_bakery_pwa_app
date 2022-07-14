@@ -1,39 +1,32 @@
 import React, { createContext, useCallback, useContext, useState } from "react";
+import { getPercentages } from "../util/utility";
 
 const BakeryContext = createContext();
 
 export const BakeryProvider = (props) => {
   const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [perUnit, setPerUnit] = useState(0);
+  const [order, setOrder] = useState({ amount: 0, perUnit: 0 });
   const [data, setData] = useState([]);
 
   const reset = useCallback(() => {
     setTitle("");
     setData([]);
-    setAmount(0);
-    setPerUnit(0);
+    setOrder({ amount: 0, perUnit: 0 });
   }, []);
 
-  const onAmount = useCallback((value) => {
-    setAmount(value);
-
-    setPerUnit((currentPerUnit) => {
-      setData((currentData) =>
-        updateGrams(currentData, { amount: value, perUnit: currentPerUnit })
-      );
-      return currentPerUnit;
+  const onOrder = useCallback((newAmount, newPerUnit) => {
+    setOrder({
+      amount: newAmount,
+      perUnit: newPerUnit,
     });
-  }, []);
 
-  const onPerUnit = useCallback((value) => {
-    setPerUnit(value);
-
-    setAmount((currentAmount) => {
-      setData((currentData) =>
-        updateGrams(currentData, { amount: currentAmount, perUnit: value })
-      );
-      return currentAmount;
+    //Actualizar data al valor introducido
+    setData((currentData) => {
+      const datos = updateGrams(currentData, {
+        amount: newAmount,
+        perUnit: newPerUnit,
+      });
+      return datos;
     });
   }, []);
 
@@ -78,43 +71,28 @@ export const BakeryProvider = (props) => {
 
   const updateGrams = (newData, order) => {
     // Porcentajes total de harinas
-    let percentages =
-      newData.length > 0
-        ? newData.map((item) => parseFloat(item.percentage))
-        : [];
-
-    let isValid = true;
-    for (let index = 0; index < percentages.length; index++) {
-      if (isNaN(percentages[index])) {
-        isValid = false;
-        break;
-      }
-    }
-
-    percentages = isValid
-      ? Math.round(percentages.reduce((acc, item) => acc + item, 0) * 100) / 100
-      : 0.0;
+    const percentages = getPercentages(newData);
 
     const total = order.amount * order.perUnit;
 
-    return newData.map((item) => {
+    const test = newData.map((item) => {
       return {
         ...item,
-        grams: isValid
-          ? Math.round(((item.percentage * total) / percentages) * 100) / 100
-          : 0.0,
+        grams:
+          percentages !== 0
+            ? Math.round(((item.percentage * total) / percentages) * 100) / 100
+            : percentages,
       };
     });
+    return test;
   };
 
   const value = {
     title,
-    amount,
-    perUnit,
+    order,
     data,
     setTitle,
-    onAmount,
-    onPerUnit,
+    onOrder,
     reset,
     add,
     update,

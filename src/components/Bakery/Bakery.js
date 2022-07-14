@@ -18,17 +18,8 @@ const Bakery = () => {
 
   const { id } = param;
   const { recipes } = useCatalog();
-  const {
-    amount,
-    perUnit,
-    onAmount,
-    onPerUnit,
-    title,
-    setTitle,
-    reset,
-    add,
-    data,
-  } = useBakery();
+  const { order, onOrder, title, setTitle, reset, add, data } = useBakery();
+  const { amount, perUnit } = order;
 
   let recipe = null;
   if (id !== "0" && recipes.length > 0) {
@@ -44,8 +35,7 @@ const Bakery = () => {
       setTitle(recipe.name);
 
       // Orden
-      onAmount(recipe.order.amount);
-      onPerUnit(recipe.order.perUnit);
+      onOrder(recipe.order.amount, recipe.order.perUnit);
 
       // Harinas
       recipe.flours.forEach((row) => {
@@ -75,7 +65,7 @@ const Bakery = () => {
         );
       });
     }
-  }, [recipe, reset, setTitle, onAmount, onPerUnit, add]);
+  }, [recipe, reset, setTitle, onOrder, add]);
 
   let history = useHistory();
 

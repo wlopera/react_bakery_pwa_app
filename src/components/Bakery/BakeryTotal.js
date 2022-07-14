@@ -4,9 +4,9 @@ import CardHeader from "./BakeryCard/Card/CardHeader";
 import { useBakery } from "../../store/bakery-context";
 
 const BakeryTotal = () => {
-  const { data, amount, perUnit } = useBakery();
+  const { order, data } = useBakery();
 
-  const gramsTotal = amount * perUnit;
+  const gramsTotal = order.amount * order.perUnit;
 
   const percentages =
     data.length > 0 ? data.map((item) => parseFloat(item.percentage)) : [];

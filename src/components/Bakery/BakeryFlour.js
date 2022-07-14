@@ -14,7 +14,8 @@ const BakeryFlour = () => {
   const [row, setRow] = useState({});
 
   const { flours } = useCatalog();
-  const { amount, perUnit, data, add, update, remove } = useBakery();
+  const { order, data, add, update, remove } = useBakery();
+  const { amount, perUnit } = order;
 
   const toggle = () => {
     setShowModal((currentValue) => !currentValue);

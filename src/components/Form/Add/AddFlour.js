@@ -86,7 +86,13 @@ const AddFlour = () => {
   ));
 
   return (
-    <div>
+    <div
+      style={{
+        overflowY: "auto",
+        height: `${ingredients.length > 15 ? "58vh" : ""}`,
+        paddingRight: "20px",
+      }}
+    >
       <CardHeader
         ingredient="Administrar Harinas"
         onAdd={handleAddRow}

@@ -12,7 +12,7 @@ import CardHeader from "../Bakery/BakeryCard/Card/CardHeader";
 const Home = () => {
   const { dataBasic, addDataBasic } = useRecipe();
   const { recipes } = useCatalog();
-  const { onAmount, onPerUnit, setTitle, reset } = useBakery();
+  const { onOrder, reset } = useBakery();
 
   let history = useHistory();
 
@@ -34,14 +34,10 @@ const Home = () => {
   const handleInit = (id) => {
     if (id === 0) {
       reset();
-      setTitle("");
-      onAmount(0);
-      onPerUnit(0);
     } else {
       if (recipes.length > 0) {
         const recipe = recipes.find((row) => row.id === id);
-        onAmount(recipe.order.amount);
-        onPerUnit(recipe.order.perUnit);
+        onOrder(recipe.order.amount, recipe.order.perUnit);
       }
     }
     history.push("/bakery/" + id);
