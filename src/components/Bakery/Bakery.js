@@ -13,6 +13,8 @@ import BakeryTotal from "./BakeryTotal";
 import CardRecipe from "../Bakery/BakeryCard/CardRecipe/CardRecipe";
 import RecipeService from "../../services/recipe.service";
 
+import { addIngredient, createRecord } from "../util/Utilities";
+
 const Bakery = () => {
   const param = useParams();
 
@@ -38,32 +40,10 @@ const Bakery = () => {
       onOrder(recipe.order.amount, recipe.order.perUnit);
 
       // Harinas
-      recipe.flours.forEach((row) => {
-        add(
-          {
-            value: row.value,
-            ingredient: row.ingredient,
-            percentage: row.percentage,
-            type: "flour",
-            grams: 0,
-          },
-          recipe.order
-        );
-      });
+      addIngredient(recipe.flours, recipe.order, add, "flour");
 
       // //Otros Ingredientes
-      recipe.ingredients.forEach((row) => {
-        add(
-          {
-            value: row.value,
-            ingredient: row.ingredient,
-            percentage: row.percentage,
-            type: "ingredient",
-            grams: 0,
-          },
-          recipe.order
-        );
-      });
+      addIngredient(recipe.ingredients, recipe.order, add, "ingredient");
     }
   }, [recipe, reset, setTitle, onOrder, add]);
 
@@ -78,26 +58,7 @@ const Bakery = () => {
   };
 
   const handleModify = async () => {
-    const flours = data.filter((flour) => flour.type === "flour");
-    const ingredients = data.filter((flour) => flour.type === "ingredient");
-
-    const record = {
-      name: title,
-      order: {
-        amount: amount,
-        perUnit: perUnit,
-      },
-      flours: flours.map((flour) => ({
-        value: flour.value,
-        ingredient: flour.ingredient,
-        percentage: flour.percentage,
-      })),
-      ingredients: ingredients.map((ingredient) => ({
-        value: ingredient.value,
-        ingredient: ingredient.ingredient,
-        percentage: ingredient.percentage,
-      })),
-    };
+    const record = createRecord(title, order, data);
 
     if (id === "0") {
       const result = await RecipeService.create(record);
