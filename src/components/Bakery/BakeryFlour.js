@@ -8,6 +8,7 @@ import { useCatalog } from "../../store/catalog-context";
 import { useBakery } from "../../store/bakery-context";
 
 import ProcessIngredient from "../Form/ProcessIngredient";
+import { addIngredient } from "../util/Utilities";
 
 const BakeryFlour = () => {
   const [showModal, setShowModal] = useState(false);
@@ -27,19 +28,7 @@ const BakeryFlour = () => {
   };
 
   const processRowHandler = (record) => {
-    record.forEach((item) => {
-      add(
-        {
-          value: item.value,
-          ingredient: item.label,
-          percentage: 0,
-          type: "flour",
-          grams: 0,
-        },
-        { amount, perUnit }
-      );
-    });
-
+    addIngredient(record, { amount, perUnit }, add, "flour");
     toggle();
   };
 

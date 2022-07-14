@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useState } from "react";
-import { getPercentages } from "../util/utility";
+import { getPercentages } from "../../src/components/util/Utilities";
 
 const BakeryContext = createContext();
 
