@@ -73,7 +73,10 @@ export const BakeryProvider = (props) => {
     // Porcentajes total de harinas
     const percentages = getPercentages(newData);
 
-    const total = order.amount * order.perUnit;
+    const total =
+      !isNaN(order.amount) && !isNaN(order.perUnit)
+        ? order.amount * order.perUnit
+        : 0;
 
     const test = newData.map((item) => {
       return {

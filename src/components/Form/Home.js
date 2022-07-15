@@ -75,7 +75,7 @@ const Home = () => {
     <div
       style={{
         overflowY: "auto",
-        height: "58vh",
+        height: "59vh",
         paddingRight: "20px",
       }}
     >

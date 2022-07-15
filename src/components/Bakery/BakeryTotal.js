@@ -6,10 +6,21 @@ import { useBakery } from "../../store/bakery-context";
 const BakeryTotal = () => {
   const { order, data } = useBakery();
 
-  const gramsTotal = order.amount * order.perUnit;
+  const gramsTotal =
+    !isNaN(order.amount) && !isNaN(order.perUnit)
+      ? order.amount * order.perUnit
+      : 0;
 
   const percentages =
-    data.length > 0 ? data.map((item) => parseFloat(item.percentage)) : [];
+    data.length > 0
+      ? data.map((item) => {
+          if (isNaN(parseFloat(item.percentage))) {
+            return 0;
+          } else {
+            return parseFloat(item.percentage);
+          }
+        })
+      : [];
 
   const percentagesTotal =
     percentages.length > 0

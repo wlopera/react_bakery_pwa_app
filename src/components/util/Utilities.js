@@ -17,7 +17,15 @@ export const BuildProviderTree = (providers) => {
 
 export const getPercentages = (data) => {
   let percentages =
-    data.length > 0 ? data.map((item) => parseFloat(item.percentage)) : [];
+    data.length > 0
+      ? data.map((item) => {
+          if (isNaN(parseFloat(item.percentage))) {
+            return 0;
+          } else {
+            return parseFloat(item.percentage);
+          }
+        })
+      : [];
 
   let isValid = true;
   for (let index = 0; index < percentages.length; index++) {
@@ -51,7 +59,7 @@ export const createRecord = (title, order, data) => {
   const flours = data.filter((flour) => flour.type === "flour");
   const ingredients = data.filter((flour) => flour.type === "ingredient");
 
-  const record = {
+  return {
     name: title,
     order: order,
     flours: flours.map((flour) => ({

@@ -28,7 +28,14 @@ const BakeryFlour = () => {
   };
 
   const processRowHandler = (record) => {
-    addIngredient(record, { amount, perUnit }, add, "flour");
+    const ingredients = record.map((item) => ({
+      value: item.value,
+      ingredient: item.label,
+      percentage: 0,
+      grams: 0,
+    }));
+
+    addIngredient(ingredients, { amount, perUnit }, add, "flour");
     toggle();
   };
 
@@ -37,7 +44,7 @@ const BakeryFlour = () => {
     update(
       {
         ...row,
-        percentage: parseFloat(label),
+        percentage: label,
       },
       {
         amount,
@@ -52,18 +59,20 @@ const BakeryFlour = () => {
 
   const dataFlours = data.filter((flour) => flour.type === "flour");
 
-  const bakeryList = dataFlours.map((row) => (
-    <BakeryItem
-      key={row.value}
-      value={row.value}
-      ingredient={row.ingredient}
-      percentage={row.percentage}
-      grams={row.grams}
-      onEdit={editRowHadler}
-      onDelete={() => deleteRowHadler(row.value)}
-      className="row d-flex align-items-center bg-white border-bottom w-100"
-    />
-  ));
+  const bakeryList = dataFlours.map((row) => {
+    return (
+      <BakeryItem
+        key={row.value}
+        value={row.value}
+        ingredient={row.ingredient}
+        percentage={row.percentage}
+        grams={row.grams}
+        onEdit={editRowHadler}
+        onDelete={() => deleteRowHadler(row.value)}
+        className="row d-flex align-items-center bg-white border-bottom w-100"
+      />
+    );
+  });
 
   let alert = null;
 

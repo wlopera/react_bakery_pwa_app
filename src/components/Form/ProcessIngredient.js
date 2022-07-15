@@ -55,7 +55,7 @@ const ProcessIngredient = ({
         <div
           style={{
             overflowY: "auto",
-            height: `${ingredients.length > 15 ? "58vh" : ""}`,
+            height: `${ingredients.length > 15 ? "59vh" : ""}`,
             paddingRight: "20px",
           }}
         >

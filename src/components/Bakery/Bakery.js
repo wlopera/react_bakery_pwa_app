@@ -80,7 +80,7 @@ const Bakery = () => {
 
   const token = localStorage.getItem("token");
   const buttonTitle = id === "0" ? "Agregar" : "Modificar";
-  const total = amount * perUnit;
+  const total = !isNaN(amount) && !isNaN(perUnit) ? amount * perUnit : 0;
 
   return (
     <Fragment>
@@ -99,7 +99,7 @@ const Bakery = () => {
       <div
         style={{
           overflowY: "auto",
-          height: "58vh",
+          height: "59vh",
           paddingRight: "20px",
         }}
       >

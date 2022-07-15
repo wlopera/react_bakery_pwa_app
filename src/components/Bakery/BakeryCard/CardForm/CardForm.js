@@ -10,7 +10,7 @@ const CardForm = () => {
   const { amount, perUnit } = order;
 
   const handleKeyDown = (event) => {
-    //console.log("Caracter keyCode:", event.keyCode);
+    // console.log("Caracter keyCode:", event.keyCode, event.charCode);
     if (
       event.keyCode === 109 ||
       event.keyCode === 189 ||
@@ -24,14 +24,22 @@ const CardForm = () => {
   const handleFocus = (event) => event.target.select();
 
   const amountHandler = (event) => {
-    onOrder(parseFloat(event.target.value), perUnit);
+    const value =
+      event.target.value.trim().length > 0
+        ? parseFloat(event.target.value)
+        : "";
+    onOrder(value, perUnit);
   };
 
   const perUnitHandler = (event) => {
-    onOrder(amount, parseFloat(event.target.value));
+    const value =
+      event.target.value.trim().length > 0
+        ? parseFloat(event.target.value)
+        : "";
+    onOrder(amount, value);
   };
 
-  const total = amount * perUnit;
+  const total = !isNaN(amount) && !isNaN(perUnit) ? amount * perUnit : 0;
 
   return (
     <Card className="row d-flex justify-content-between w-100">
