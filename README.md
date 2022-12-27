@@ -126,12 +126,13 @@ Conectar React con NodeJS: Localmente
  1. Solo se puede modificar, agregar o borrar harinas o ingredientes como administrador
  2. Como usuario solo puede ver recetas actuales y se permite agregar harinas o ingredientes con sus porcentajes para el cálculo panadero. 
 
-## Configurar para buscar nodeJS en la web
+## Configurar para buscar nodeJS en la web Heroku deprecad o vecel (actual)
   - D:\WorkSpace\WS_PERSONAL_PROGRAMS\react_bakery_pwa_app\public\runtime-config.js
   ```
-  window["runConfig"] = {
-  //BACKEND_URL: "http://localhost:8585/api", //Desarrollo
-  BACKEND_URL: "https://node-bakery-formula.herokuapp.com/api", // Produccion
+window["runConfig"] = {
+  // BACKEND_URL: "http://localhost:8585/api", //Desarrollo
+  // BACKEND_URL: "https://node-bakery-formula.herokuapp.com/api", // Produccion Heroku
+  BACKEND_URL: "https://vercel.com/wlopera/node-bakery-formula/api", // Produccion Vecel
 };
 
   ```
